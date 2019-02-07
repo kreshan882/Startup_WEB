@@ -9,7 +9,7 @@
     <package name="pglobal" namespace="/" extends="struts-default,json-default">
         
         <interceptors>
-            <interceptor name="EpicAccesControl" class="com.epic.interceptor.AccessControlInterceptor" />              
+            <interceptor name="EpicAccesControl" class="com.shop.interceptor.AccessControlInterceptor" />              
             <interceptor-stack name="EpicStack">
                 <interceptor-ref name="EpicAccesControl"/> 
                 <interceptor-ref name="workflow"/>
@@ -36,22 +36,22 @@
 
     <package name="Epic_Login_DEFAULT" namespace="/" extends="struts-default">
         <default-action-ref name="DefLogin"/>
-        <action name="DefLogin" class="com.epic.login.action.UserLogin" >
+        <action name="DefLogin" class="com.shop.login.action.UserLogin" >
             <result>/pages/login/Login.jsp</result>
         </action>
     </package>
      
      
     <package name="Epic_login_manage" namespace="/" extends="pglobal">           
-        <action name="*loginCall" class="com.epic.login.action.UserLogin" method="{1}">
+        <action name="*loginCall" class="com.shop.login.action.UserLogin" method="{1}">
             <result name="success">/pages/login/Home.jsp</result>
             <result name="login">/pages/login/Login.jsp</result>              
         </action>
                 
-        <action name="homeCall" class="com.epic.login.action.UserLogin" method="homeFunction">
+        <action name="homeCall" class="com.shop.login.action.UserLogin" method="homeFunction">
             <result name="success">/pages/login/Home.jsp</result>          
         </action>
-        <action name="statusCgecking" class="com.epic.login.action.UserLogin" method="statusCgecking">
+        <action name="statusCgecking" class="com.shop.login.action.UserLogin" method="statusCgecking">
             <result name="qrcoderead">/pages/login/qrCodeRead.jsp</result>  
             <result name="statusCgecking" type="json"></result>      
         </action>
@@ -60,7 +60,7 @@
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start User Management ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->       
     <package name="Epic_user_manage" namespace="/" extends="pglobal">
                   
-        <action name="*usrMng"    class="com.epic.cla.user.action.UserManagement"   method="{1}"> 
+        <action name="*usrMng"    class="com.shop.cla.user.action.UserManagement"   method="{1}"> 
             <result name="success">/pages/userManagement/userManagement.jsp</result>        
             <result name="update">/pages/msgFrag.jsp</result>
             <result name="add">/pages/msgFrag.jsp</result>
@@ -68,7 +68,7 @@
             <result name="find" type="json"></result>              
             <result name="delete"  type="json"  ></result>        
         </action>
-        <action name="*usrprofileMng"    class="com.epic.cla.user.action.UsrProfileManagement"   method="{1}"> 
+        <action name="*usrprofileMng"    class="com.shop.cla.user.action.UsrProfileManagement"   method="{1}"> 
             <result name="success">/pages/userManagement/userProfileManagement.jsp</result>        
             <result name="update">/pages/msgFrag.jsp</result>
             <result name="add">/pages/msgFrag.jsp</result>

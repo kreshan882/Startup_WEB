@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="org.apache.struts2.ServletActionContext"%>
-<%@page import="com.epic.login.bean.SessionUserBean"%>
+<%@page import="com.shop.login.bean.SessionUserBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>

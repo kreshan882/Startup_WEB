@@ -27,6 +27,6 @@
     </filter-mapping>
     <listener>
         <description>Context Listener</description>
-        <listener-class>com.epic.global.ContextListener</listener-class>
+        <listener-class>com.shop.global.ContextListener</listener-class>
     </listener>
 </web-app>

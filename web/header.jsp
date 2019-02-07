@@ -6,10 +6,10 @@
 
 
 
-<%@page import="com.epic.util.ModuleComparator"%>
+<%@page import="com.shop.util.ModuleComparator"%>
 <%@page import="java.util.TreeSet"%>
-<%@page import="com.epic.login.bean.PageBean"%>
-<%@page import="com.epic.login.bean.ModuleBean"%>
+<%@page import="com.shop.login.bean.PageBean"%>
+<%@page import="com.shop.login.bean.ModuleBean"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
