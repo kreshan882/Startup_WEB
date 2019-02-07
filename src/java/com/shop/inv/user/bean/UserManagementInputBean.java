@@ -1,4 +1,4 @@
-package com.shop.cla.user.bean;
+package com.shop.inv.user.bean;
 
 import com.shop.util.Util;
 import java.util.ArrayList;

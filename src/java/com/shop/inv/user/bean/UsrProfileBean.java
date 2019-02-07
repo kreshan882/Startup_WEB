@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.shop.cla.user.bean;
+package com.shop.inv.user.bean;
 
 /**
  *

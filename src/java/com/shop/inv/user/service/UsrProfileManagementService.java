@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.shop.cla.user.service;
+package com.shop.inv.user.service;
 
-import com.shop.cla.user.bean.UsrProfileBean;
-import com.shop.cla.user.bean.UsrProfileManagementInputBean;
+import com.shop.inv.user.bean.UsrProfileBean;
+import com.shop.inv.user.bean.UsrProfileManagementInputBean;
 import com.shop.db.DBConnection;
 import com.shop.init.Status;
 import com.shop.util.Util;

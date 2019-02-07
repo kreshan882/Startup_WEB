@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.shop.cla.user.action;
+package com.shop.inv.user.action;
 
 import com.shop.init.Module;
 import com.shop.util.LogFileCreator;
 import com.shop.login.bean.SessionUserBean;
-import com.shop.cla.user.bean.UserBean;
-import com.shop.cla.user.bean.UserManagementInputBean;
-import com.shop.cla.user.service.UserManagementService;
+import com.shop.inv.user.bean.UserBean;
+import com.shop.inv.user.bean.UserManagementInputBean;
+import com.shop.inv.user.service.UserManagementService;
 import com.shop.util.AccessControlService;
 import com.shop.util.Common;
 import com.shop.init.InitConfigValue;

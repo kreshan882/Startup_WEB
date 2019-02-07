@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.shop.cla.user.bean;
+package com.shop.inv.user.bean;
 
 import java.util.HashMap;
 import java.util.Map;

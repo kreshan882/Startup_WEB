@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.shop.cla.user.service;
+package com.shop.inv.user.service;
 
 import com.shop.db.DBConnection;
 
 import com.shop.init.Status;
 
-import com.shop.cla.user.bean.UserBean;
-import com.shop.cla.user.bean.UserManagementInputBean;
+import com.shop.inv.user.bean.UserBean;
+import com.shop.inv.user.bean.UserManagementInputBean;
 import com.shop.util.Util;
 import java.sql.Connection;
 import java.sql.Date;

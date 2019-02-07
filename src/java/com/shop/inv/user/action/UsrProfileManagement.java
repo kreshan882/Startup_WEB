@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package com.shop.cla.user.action;
+package com.shop.inv.user.action;
 
-import com.shop.cla.user.bean.UsrProfileBean;
-import com.shop.cla.user.bean.UsrProfileManagementInputBean;
-import com.shop.cla.user.service.UsrProfileManagementService;
+import com.shop.inv.user.bean.UsrProfileBean;
+import com.shop.inv.user.bean.UsrProfileManagementInputBean;
+import com.shop.inv.user.service.UsrProfileManagementService;
 import com.shop.init.Module;
 import com.shop.init.PageVarList;
 import com.shop.init.TaskVarList;
