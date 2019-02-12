@@ -22,8 +22,8 @@
                 $('#password').val("");
                 $('#repassword').val("");
                 $('#email').val("");
-                $('#imei').val("");
                 $('#mobile').val("");
+                $('#userPro').val("-1");
 
                 $('#upname').val("");
                 $('#upusername').val("");
@@ -179,18 +179,18 @@
 
             }
 
-            function loadAuthType(keyval){ 
-                if(keyval=='1'){
-                    $('#imei').hide();
-                    $('#password').show();
-                    $('#repassword').show();
-                }else{ //2
-                    $('#imei').show()
-                    $('#password').hide();
-                    $('#repassword').hide();
-                }
-                
-            }
+//            function loadAuthType(keyval){ 
+//                if(keyval=='1'){
+//                    $('#imei').hide();
+//                    $('#password').show();
+//                    $('#repassword').show();
+//                }else{ //2
+//                    $('#imei').show()
+//                    $('#password').hide();
+//                    $('#repassword').hide();
+//                }
+//                
+//            }
         </script>
     </head>
 
@@ -257,14 +257,7 @@
                                     <td class="formLable">Mobile</td> <td >:</td>
                                     <td><s:textfield id="mobile" name="mobile" cssClass="textField" placeholder="+94778906755" /></td>      
                                 </tr>
-                                
-                                <tr>
-                                    <td class="formLable">Authentication type<span class="mandatory">*</span></td>  <td >:</td>
-                                    <td><s:select  name="authType" headerKey="-1" 
-                                               headerValue="---Select---"  list="%{authTypeList}" listKey="key" listValue="value"
-                                               id="status" onchange="loadAuthType(this.value)" cssClass="dropdown" /></td>
-                                     <td width="25px;"></td>
-                                </tr>
+
                                 <tr>
                                     <td class="formLable">Password<span class="mandatory">*</span></td> <td >:</td>
                                     <td><s:password id="password" name="password" cssClass="textField" /></td>                                    
@@ -272,14 +265,13 @@
                                     <td class="formLable">Re Password<span class="mandatory">*</span></td> <td>:</td>
                                     <td><s:password id="repassword" name="repassword" cssClass="textField" /></td>
                                 </tr>
-
-
+                                
                                 <tr>
-                                    <td class="formLable">Imei<span class="mandatory">*</span></td>  <td >:</td>
-                                    <td><s:textfield id="imei" name="imei" cssClass="textField" /></td>
+                                    <td class="formLable">User Profile<span class="mandatory">*</span></td>  <td >:</td>
+                                    <td><s:select  name="userPro" id="userPro"  headerKey="-1" 
+                                               headerValue="---Select---"  list="%{userProList}"  cssClass="dropdown" /></td>
                                      <td width="25px;"></td>
                                 </tr>
-
                                 <tr>
                                     <td class="content_td formLable" colspan="7"><span class="mandatory_text">Mandatory fields are marked with</span><span class="mandatory">*</span></td>
                                 </tr>

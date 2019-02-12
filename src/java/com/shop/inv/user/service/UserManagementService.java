@@ -332,7 +332,7 @@ public class UserManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
             sql = "INSERT INTO web_user(USERNAME,NAME,STATUS,PROFILE_ID,PASSWORD,"
-                    + "IMEI,EMAIL,MOBILE) "
+                    + "EMAIL,MOBILE) "
                     + " VALUES(?,?,?,?,?,  ?,?,?)";
 
             preStat = con.prepareStatement(sql);
@@ -340,12 +340,11 @@ public class UserManagementService {
             preStat.setString(1, inputBean.getUsername().toLowerCase());
             preStat.setString(2, inputBean.getName());
             preStat.setString(3, "1");
-            preStat.setString(4, "1");
+            preStat.setString(4, inputBean.getUserPro());
             preStat.setString(5, Util.generateHash(inputBean.getPassword()));
             
-            preStat.setString(6, inputBean.getImei());
-            preStat.setString(7, inputBean.getEmail());
-            preStat.setString(8, inputBean.getMobile());
+            preStat.setString(6, inputBean.getEmail());
+            preStat.setString(7, inputBean.getMobile());
 
             int n = preStat.executeUpdate();
             if (n >= 0) {
@@ -363,6 +362,38 @@ public class UserManagementService {
             }
         }
         return ok;
+    }
+    
+        public void getProfileList(UserManagementInputBean inputBean) throws Exception {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet result = null;
+
+        try {
+            connection = DBConnection.getConnection();
+            connection.setAutoCommit(true);
+            String sql = " SELECT PROFILE_ID,DESCRIPTION FROM WEB_USER_PROFILE where STATUS=?";
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, Status.ACTIVE);
+            result = ps.executeQuery();
+
+            while (result.next()) {
+                inputBean.getUserProList().put(result.getString("PROFILE_ID"), result.getString("DESCRIPTION"));
+            }
+        } catch (Exception ex) {
+            throw ex;
+        } finally {
+            if (result != null) {
+                result.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
     }
 
 }

@@ -24,8 +24,8 @@ public class UserManagementInputBean {
     private String imei;
     private String mobile;
     
-    private String authType="";
-    private Map<String,String>  authTypeList=new HashMap<String, String>();
+//    private String authType="";
+//    private Map<String,String>  authTypeList=new HashMap<String, String>();
 
     
     //Delete Data
@@ -81,22 +81,22 @@ public class UserManagementInputBean {
     public void setImei(String imei) {
         this.imei = imei;
     }
-
-    public String getAuthType() {
-        return authType;
-    }
-
-    public void setAuthType(String authType) {
-        this.authType = authType;
-    }
-
-    public Map<String, String> getAuthTypeList() {
-        return authTypeList;
-    }
-
-    public void setAuthTypeList(Map<String, String> authTypeList) {
-        this.authTypeList = authTypeList;
-    }
+//
+//    public String getAuthType() {
+//        return authType;
+//    }
+//
+//    public void setAuthType(String authType) {
+//        this.authType = authType;
+//    }
+//
+//    public Map<String, String> getAuthTypeList() {
+//        return authTypeList;
+//    }
+//
+//    public void setAuthTypeList(Map<String, String> authTypeList) {
+//        this.authTypeList = authTypeList;
+//    }
 
     
     

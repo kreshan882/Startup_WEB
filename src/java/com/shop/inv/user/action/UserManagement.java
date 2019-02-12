@@ -51,8 +51,7 @@ public class UserManagement extends ActionSupport implements ModelDriven<UserMan
     @Override
     public UserManagementInputBean getModel() {
         try {
-            inputBean.getAuthTypeList().put("1", "Auth By Local Db");
-            inputBean.getAuthTypeList().put("2", "Auth By Seq Server");
+            service.getProfileList(inputBean);
         } catch (Exception ex) {
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
@@ -213,12 +212,17 @@ public class UserManagement extends ActionSupport implements ModelDriven<UserMan
             } else if (!Util.validateEMAIL(userBean.getEmail())) {
                 addActionError(SystemMessage.USR_EMAIL_INVALID);
                 return ok;
-            }  
-            else if (!(userBean.getMobile().isEmpty() || userBean.getMobile() == null) && !Util.validatePHONENO(userBean.getMobile())) {
-                addActionError(SystemMessage.USR_PHONE_INVALID);
+            } else if (!(userBean.getMobile().isEmpty() || userBean.getMobile() == null) ) {
+                addActionError(SystemMessage.USR_PHONE_EMPTY);
                 return ok;
 
-            } else {
+            } else if(!Util.validatePHONENO(userBean.getMobile())){
+                addActionError(SystemMessage.USR_PHONE_INVALID);
+                return ok;
+            }else if (userBean.getUpuserPro().equals("-1")) {
+                addActionError(SystemMessage.USR_PROFILE_SELECT);
+                return ok;
+            }else {
                 ok = true;
             }
 

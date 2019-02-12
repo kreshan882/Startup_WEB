@@ -16,7 +16,7 @@ public class TaskVarList {
         public static final String UPDATE       = "03";
         public static final String DELETE       = "04";
         public static final String DOWNLOAD     = "05";
-        public static final String PWRESET      = "09";
-        public static final String RECIPIENTADD = "07";
+        public static final String PWRESET      = "06";
+       // public static final String RECIPIENTADD = "07";
       
 }
