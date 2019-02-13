@@ -5,38 +5,60 @@
  */
 package com.shop.inv.user.bean;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  * @author epic_kapila
  */
 public class UserBean {
     
-    //private String profileId;
-   // private String usertypeID;
+    private String profileId;
     
     private String name;
     private String username;
     private String email;
     private String mobile;
-    private String imei;
- 
+    private String profile;
+    private String profilename;
 
     private String status;
-    //private String regDate;
+    private String regDate;
     
     private long fullCount;
 
-
-    public String getImei() {
-        return imei;
+    public String getProfile() {
+        return profile;
     }
 
-    public void setImei(String imei) {
-        this.imei = imei;
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
+
+    public String getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(String profileId) {
+        this.profileId = profileId;
+    }
+
+    public String getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(String regDate) {
+        this.regDate = regDate;
+    }
+
+    public String getProfilename() {
+        return profilename;
+    }
+
+    public void setProfilename(String profilename) {
+        this.profilename = profilename;
+    }
+
+
+
 
     public String getUsername() {
         return username;

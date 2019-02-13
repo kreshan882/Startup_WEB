@@ -47,7 +47,10 @@ public class UserManagementService {
             }
 
 
-            getUsersListQuery = "SELECT USERNAME,NAME,STATUS,IMEI,EMAIL,MOBILE FROM web_user where UPPER(USERNAME) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
+            getUsersListQuery = "SELECT up.DESCRIPTION AS PROFILENAME,u.NAME,u.USERNAME,u.PROFILE_ID, u.EMAIL,"
+                    + "u.MOBILE,u.STATUS,u.CREATE_DATE  "
+                    + "FROM WEB_USER u,WEB_USER_PROFILE up  "
+                    + "where u.PROFILE_ID=up.PROFILE_ID AND UPPER(u.USERNAME) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, "%" + bean.getSearchname().toUpperCase() + "%");
@@ -57,13 +60,17 @@ public class UserManagementService {
 
             while (res.next()) {
                 UserBean dataBean = new UserBean();
-                dataBean.setUsername(res.getString("USERNAME"));
+
+                dataBean.setProfilename(res.getString("PROFILENAME"));
                 dataBean.setName(res.getString("NAME"));
-                dataBean.setStatus(res.getString("STATUS"));
-                dataBean.setImei(res.getString("IMEI"));
+                dataBean.setUsername(res.getString("USERNAME"));
+                dataBean.setProfileId(res.getString("PROFILE_ID"));
+
                 dataBean.setEmail(res.getString("EMAIL"));
                 dataBean.setMobile(res.getString("MOBILE"));
-
+                dataBean.setStatus(res.getString("STATUS"));
+                dataBean.setRegDate(res.getString("CREATE_DATE"));
+                
                 dataBean.setFullCount(totalCount);
                 dataList.add(dataBean);
             }
@@ -333,7 +340,7 @@ public class UserManagementService {
             //con.setAutoCommit(true);
             sql = "INSERT INTO web_user(USERNAME,NAME,STATUS,PROFILE_ID,PASSWORD,"
                     + "EMAIL,MOBILE) "
-                    + " VALUES(?,?,?,?,?,  ?,?,?)";
+                    + " VALUES(?,?,?,?,?,  ?,?)";
 
             preStat = con.prepareStatement(sql);
 
@@ -347,10 +354,11 @@ public class UserManagementService {
             preStat.setString(7, inputBean.getMobile());
 
             int n = preStat.executeUpdate();
+            
             if (n >= 0) {
                 ok = true;
             }
-
+            con.commit();
         } catch (Exception e) {
             throw e;
         } finally {

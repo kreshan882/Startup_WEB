@@ -402,16 +402,18 @@
                                 rowTotal="false"
                                 viewrecords="true"
                                 >
-
+                                
+                                <sjg:gridColumn name="profileId" index="PROFILE_ID" title="ProfileId"  frozen="true" hidden="true"/>
+                                
                                 <sjg:gridColumn name="name" index="NAME" title="Name" align="left" width="100" frozen="true" sortable="true"/>
                                 <sjg:gridColumn name="username" index="USERNAME" title="User Name" align="left" width="100" sortable="true"/>                    
                                 <sjg:gridColumn name="email" index="EMAIL" title="EMAIL" align="left"  width="100"  sortable="true"/>
                                 <sjg:gridColumn name="mobile" index="MOBILE" title="Mobile" align="left"  width="100"  sortable="true"/>
-                                <sjg:gridColumn name="imei" index="IMEI" title="IMEI" align="left"  width="100"  sortable="true"/>
-
-
+                                <sjg:gridColumn name="profilename" index="PROFILENAME" title="Profile Name" align="left" width="100" sortable="true"/>
+                                
                                 <sjg:gridColumn name="status" index="STATUS" title="Status" align="center" width="50" formatter="statusformatter" sortable="true"/>  
-
+                                <sjg:gridColumn name="regDate" index="CREATE_DATE" title="Reg Date" align="center"  width="100"  sortable="true"/>
+                                
                                 <%--<sjg:gridColumn name="username" index="USERNAME" title="Reset Pw" align="center" width="7" align="center"  formatter="pdchangeformatter" sortable="false" hidden="#vresetpass"/>--%>
                                 <sjg:gridColumn name="username" index="USERNAME" title="Edit" align="center" width="50" align="center"  formatter="editformatter" sortable="false" hidden="#vupdate"/>
                                 <sjg:gridColumn name="username" index="USERNAME" title="Delete" align="center" width="50" align="center"   formatter="deleteformatter" sortable="false" hidden="#vdelete"/>
