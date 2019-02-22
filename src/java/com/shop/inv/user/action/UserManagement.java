@@ -179,7 +179,10 @@ public class UserManagement extends ActionSupport implements ModelDriven<UserMan
 
     private boolean doValidation(UserManagementInputBean userBean) throws Exception {
         boolean ok = false;
-
+        System.out.println(">1:"+userBean.getMobile());
+        System.out.println(">2:"+userBean.getPassword());
+        System.out.println(">2:"+userBean.getRepassword());
+        System.out.println(">3:"+userBean.getUserPro());
         try {
 
             if (userBean.getName() == null || userBean.getName().isEmpty()) {
@@ -194,32 +197,29 @@ public class UserManagement extends ActionSupport implements ModelDriven<UserMan
             } else if (service.checkUserName(userBean.getUsername().toLowerCase())) {
                 addActionError(SystemMessage.USR_USERNAME_ALREADY);
                 return ok;
-            } else if (userBean.getPassword() == null || userBean.getPassword().isEmpty()) {
-                addActionError(SystemMessage.USR_PASSWORD_EMPTY);
-                return ok;
-//            } else if (!"Successful".equals(pwdvalidator.validatePassword(userBean.getPassword()))) {
-//                addActionError(SystemMessage.USR_PASSWORD_POLICY_VIALATION + " : " + pwdvalidator.validatePassword(userBean.getPassword()));
-//                return ok;
-            } else if (userBean.getRepassword() == null || userBean.getRepassword().isEmpty()) {
-                addActionError(SystemMessage.USR_CONPASSWORD_EMPTY);
-                return ok;
-            } else if (!(userBean.getPassword().equals(userBean.getRepassword()))) {
-                addActionError(SystemMessage.USR_PASSWORD_NOT_MATCH);
-                return ok;
             } else if (userBean.getEmail() == null || userBean.getEmail().isEmpty()) {
                 addActionError(SystemMessage.USR_EMAIL_EMPTY);
                 return ok;
             } else if (!Util.validateEMAIL(userBean.getEmail())) {
                 addActionError(SystemMessage.USR_EMAIL_INVALID);
                 return ok;
-            } else if (!(userBean.getMobile().isEmpty() || userBean.getMobile() == null) ) {
+            } else if (userBean.getMobile().isEmpty() || userBean.getMobile() == null ) {
                 addActionError(SystemMessage.USR_PHONE_EMPTY);
                 return ok;
 
             } else if(!Util.validatePHONENO(userBean.getMobile())){
                 addActionError(SystemMessage.USR_PHONE_INVALID);
                 return ok;
-            }else if (userBean.getUpuserPro().equals("-1")) {
+            }else if (userBean.getPassword() == null || userBean.getPassword().isEmpty()) {
+                addActionError(SystemMessage.USR_PASSWORD_EMPTY);
+                return ok;
+            } else if (userBean.getRepassword() == null || userBean.getRepassword().isEmpty()) {
+                addActionError(SystemMessage.USR_CONPASSWORD_EMPTY);
+                return ok;
+            } else if (!(userBean.getPassword().equals(userBean.getRepassword()))) {
+                addActionError(SystemMessage.USR_PASSWORD_NOT_MATCH);
+                return ok;
+            } else if (userBean.getUserPro().equals("-1")) {
                 addActionError(SystemMessage.USR_PROFILE_SELECT);
                 return ok;
             }else {
@@ -250,28 +250,14 @@ public class UserManagement extends ActionSupport implements ModelDriven<UserMan
             }else if (userBean.getUpuserPro().equals("-1")) {
                 addActionError(SystemMessage.USR_PROFILE_SELECT);
                 return ok;
-            } else if (userBean.getUpusertype().equals("-1")) {
-                addActionError(SystemMessage.USR_USERTYPE_SELECT);
-                return ok;
-            } else if (userBean.getUpnic() == null || userBean.getUpnic().isEmpty()) {
-                addActionError(SystemMessage.USR_NIC_EMPTY);
-                return ok;
             } 
-//            else if (!Util.validateNIC(userBean.getUpnic())) {
-//                addActionError(SystemMessage.USR_NIC_INVALID);
-//                return ok;
-//            } 
             else if (userBean.getUpemail() == null || userBean.getUpemail().isEmpty()) {
                 addActionError(SystemMessage.USR_EMAIL_EMPTY);
                 return ok;
             } else if (!Util.validateEMAIL(userBean.getUpemail())) {
                 addActionError(SystemMessage.USR_EMAIL_INVALID);
                 return ok;
-            } else if (!(inputBean.getUpaddress().isEmpty() || inputBean.getUpaddress() == null) && !Util.validateDESCRIPTION(userBean.getUpaddress())) {
-                addActionError(SystemMessage.USR_ADDRESS_INVALID);
-                return ok;
-
-            } else if (!(userBean.getUpmobile().isEmpty() || userBean.getUpmobile() == null) && !Util.validatePHONENO(userBean.getUpmobile())) {
+            }  else if (!(userBean.getUpmobile().isEmpty() || userBean.getUpmobile() == null) && !Util.validatePHONENO(userBean.getUpmobile())) {
                 addActionError(SystemMessage.USR_PHONE_INVALID);
                 return ok;
 

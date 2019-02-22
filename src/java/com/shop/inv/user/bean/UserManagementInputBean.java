@@ -13,7 +13,6 @@ public class UserManagementInputBean {
     private boolean search;
     
     //Add data
-//    private String username;
     private String username;
     private String name;
     private String password;
@@ -21,12 +20,8 @@ public class UserManagementInputBean {
     private String userPro;
     private HashMap<String,String> userProList = new HashMap<String,String>();
     private String email;
-    private String imei;
     private String mobile;
     
-//    private String authType="";
-//    private Map<String,String>  authTypeList=new HashMap<String, String>();
-
     
     //Delete Data
     private String message;
@@ -36,21 +31,12 @@ public class UserManagementInputBean {
     private String upusername;
      private String upusernamecopy;
 
-    public String getUpusernamecopy() {
-        return upusernamecopy;
-    }
 
-    public void setUpusernamecopy(String upusernamecopy) {
-        this.upusernamecopy = upusernamecopy;
-    }
     private String upname;
     private String upuserPro;
-    private String upusertype;
     private String upstatus;     
     private String upemail;
-    private String upaddress;
     private String upmobile;
-    private String upnic;
     private Map<Integer,String>  upstatusList=Util.getBasicStatus();
      
     /*-------for access control-----------*/
@@ -74,32 +60,17 @@ public class UserManagementInputBean {
     private String searchString;
     private String searchOper;
 
-    public String getImei() {
-        return imei;
-    }
 
-    public void setImei(String imei) {
-        this.imei = imei;
-    }
-//
-//    public String getAuthType() {
-//        return authType;
-//    }
-//
-//    public void setAuthType(String authType) {
-//        this.authType = authType;
-//    }
-//
-//    public Map<String, String> getAuthTypeList() {
-//        return authTypeList;
-//    }
-//
-//    public void setAuthTypeList(Map<String, String> authTypeList) {
-//        this.authTypeList = authTypeList;
-//    }
+
 
     
-    
+    public String getUpusernamecopy() {
+        return upusernamecopy;
+    }
+
+    public void setUpusernamecopy(String upusernamecopy) {
+        this.upusernamecopy = upusernamecopy;
+    }
     public String getSearchname() {
         return searchname;
     }
@@ -259,21 +230,21 @@ public class UserManagementInputBean {
         this.upname = upname;
     }
 
-    public String getUpusertype() {
-        return upusertype;
-    }
-
-    public void setUpusertype(String upusertype) {
-        this.upusertype = upusertype;
-    }
-
-    public String getUpaddress() {
-        return upaddress;
-    }
-
-    public void setUpaddress(String upaddress) {
-        this.upaddress = upaddress;
-    }
+//    public String getUpusertype() {
+//        return upusertype;
+//    }
+//
+//    public void setUpusertype(String upusertype) {
+//        this.upusertype = upusertype;
+//    }
+//
+//    public String getUpaddress() {
+//        return upaddress;
+//    }
+//
+//    public void setUpaddress(String upaddress) {
+//        this.upaddress = upaddress;
+//    }
 
     public String getUpmobile() {
         return upmobile;
@@ -317,13 +288,13 @@ public class UserManagementInputBean {
         this.upemail = upemail;
     }
 
-    public String getUpnic() {
-        return upnic;
-    }
-
-    public void setUpnic(String upnic) {
-        this.upnic = upnic;
-    }
+//    public String getUpnic() {
+//        return upnic;
+//    }
+//
+//    public void setUpnic(String upnic) {
+//        this.upnic = upnic;
+//    }
 
     
     

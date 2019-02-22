@@ -255,7 +255,7 @@
                                     <td><s:textfield id="email" name="email" cssClass="textField" /></td>
                                     <td width="25px;"></td>
                                     <td class="formLable">Mobile</td> <td >:</td>
-                                    <td><s:textfield id="mobile" name="mobile" cssClass="textField" placeholder="+94778906755" /></td>      
+                                    <td><s:textfield id="mobile" name="mobile" cssClass="textField" placeholder="0777123456" /></td>      
                                 </tr>
 
                                 <tr>
@@ -319,21 +319,19 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="formLable">NIC/PP/BR<span class="mandatory">*</span></td> <td>:</td>
-                                    <td ><s:textfield name="upnic" id="upnic" cssClass="textField"  />  </td>
-                                    <td width="25px"></td>
                                     <td class="formLable">Email<span class="mandatory">*</span></td> <td>:</td>
                                     <td ><s:textfield name="upemail" id="upemail" cssClass="textField" /></td>
-                                </tr>
-                                <tr>
-                                    <td class="formLable">Address</td> <td>:</td>
-                                    <td ><s:textfield name="upaddress" id="upaddress" cssClass="textField" /></td>
                                     <td width="25px"></td>
                                     <td class="formLable">Mobile</td> <td>:</td>
                                     <td ><s:textfield name="upmobile" id="upmobile" cssClass="textField" placeholder="+94778906755"/></td>
                                 </tr>
                                 <tr> 
                                     <td class="formLable">Status<span class="mandatory">*</span></td><td>:</td>
+                                    <td ><s:select  name="upstatus" id="upstatus" list="%{upstatusList}" 
+                                               listKey="key" listValue="value"    headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" />
+                                    </td>
+                                    <td width="25px"></td>
+                                    <td class="formLable">User Profile<span class="mandatory">*</span></td><td>:</td>
                                     <td ><s:select  name="upstatus" id="upstatus" list="%{upstatusList}" 
                                                listKey="key" listValue="value"    headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" />
                                     </td>
@@ -403,20 +401,20 @@
                                 viewrecords="true"
                                 >
                                 
-                                <sjg:gridColumn name="profileId" index="PROFILE_ID" title="ProfileId"  frozen="true" hidden="true"/>
+                                <sjg:gridColumn name="profileId" index="PROFILE_ID" title="ProfileId"  frozen="false" hidden="true"/>
                                 
-                                <sjg:gridColumn name="name" index="NAME" title="Name" align="left" width="100" frozen="true" sortable="true"/>
-                                <sjg:gridColumn name="username" index="USERNAME" title="User Name" align="left" width="100" sortable="true"/>                    
-                                <sjg:gridColumn name="email" index="EMAIL" title="EMAIL" align="left"  width="100"  sortable="true"/>
+                                <sjg:gridColumn name="name" index="NAME" title="Name" align="left" width="150" frozen="false" sortable="true"/>
+                                <sjg:gridColumn name="username" index="USERNAME" title="User Name" align="left" width="150" sortable="true"/>                    
+                                <sjg:gridColumn name="email" index="EMAIL" title="EMAIL" align="left"  width="150"  sortable="true"/>
                                 <sjg:gridColumn name="mobile" index="MOBILE" title="Mobile" align="left"  width="100"  sortable="true"/>
                                 <sjg:gridColumn name="profilename" index="PROFILENAME" title="Profile Name" align="left" width="100" sortable="true"/>
-                                
-                                <sjg:gridColumn name="status" index="STATUS" title="Status" align="center" width="50" formatter="statusformatter" sortable="true"/>  
                                 <sjg:gridColumn name="regDate" index="CREATE_DATE" title="Reg Date" align="center"  width="100"  sortable="true"/>
                                 
+                                <sjg:gridColumn name="status" index="STATUS" title="Status" align="center" width="80" formatter="statusformatter" sortable="true"/>  
+                       
                                 <%--<sjg:gridColumn name="username" index="USERNAME" title="Reset Pw" align="center" width="7" align="center"  formatter="pdchangeformatter" sortable="false" hidden="#vresetpass"/>--%>
-                                <sjg:gridColumn name="username" index="USERNAME" title="Edit" align="center" width="50" align="center"  formatter="editformatter" sortable="false" hidden="#vupdate"/>
-                                <sjg:gridColumn name="username" index="USERNAME" title="Delete" align="center" width="50" align="center"   formatter="deleteformatter" sortable="false" hidden="#vdelete"/>
+                                <sjg:gridColumn name="username" index="USERNAME" title="Edit" align="center" width="80" align="center"  formatter="editformatter" sortable="false" hidden="#vupdate"/>
+                                <sjg:gridColumn name="username" index="USERNAME" title="Delete" align="center" width="80" align="center"   formatter="deleteformatter" sortable="false" hidden="#vdelete"/>
 
                             </sjg:grid> 
 

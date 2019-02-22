@@ -102,8 +102,8 @@ public class UserManagementService {
 
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
-            getUsersListQuery = "SELECT USERNAME,NAME,PROFILE_ID,USER_TYPE,STATUS,EMAIL,ADDRESS,MOBILE,NIC "
-                    + " from CLA_USER Where USERNAME=?";
+            getUsersListQuery = "SELECT USERNAME,NAME,PROFILE_ID,STATUS,EMAIL,MOBILE "
+                    + " from WEB_USER Where USERNAME=?";
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, bean.getUsername());
@@ -113,13 +113,10 @@ public class UserManagementService {
                 bean.setUpusernamecopy(res.getString("USERNAME"));
                 bean.setUpname(res.getString("NAME"));
                 bean.setUpuserPro(res.getString("PROFILE_ID"));
-                bean.setUpusertype(res.getString("USER_TYPE"));
 
                 bean.setUpstatus(res.getString("STATUS"));
                 bean.setUpemail(res.getString("EMAIL"));
-                bean.setUpaddress(res.getString("ADDRESS"));
                 bean.setUpmobile(res.getString("MOBILE"));
-                bean.setUpnic(res.getString("NIC"));
 
             }
         } catch (Exception e) {
@@ -158,13 +155,13 @@ public class UserManagementService {
             System.out.println("update="+inputBean.getUpusername().toLowerCase());
             prepSt.setString(2, inputBean.getUpusername().toLowerCase());
             prepSt.setInt(3, Integer.parseInt(inputBean.getUpuserPro()));
-            prepSt.setString(4, inputBean.getUpusertype());
+//            prepSt.setString(4, inputBean.getUpusertype());
             prepSt.setInt(5, Integer.parseInt(inputBean.getUpstatus()));
 
             prepSt.setString(6, inputBean.getUpemail());
-            prepSt.setString(7, inputBean.getUpaddress());
+//            prepSt.setString(7, inputBean.getUpaddress());
             prepSt.setString(8, inputBean.getUpmobile());
-            prepSt.setString(9, inputBean.getUpnic());
+//            prepSt.setString(9, inputBean.getUpnic());
 
             prepSt.setString(10, inputBean.getUpusernamecopy());
 
@@ -200,19 +197,17 @@ public class UserManagementService {
         try {
 
             con = DBConnection.getConnection();
-            //con.setAutoCommit(true);
-            deleteUser = "DELETE FROM CLA_USER  where USERNAME=? AND CUSTOMER_ID=?";
+            con.setAutoCommit(false);
+            deleteUser = "DELETE FROM WEB_USER  where USERNAME=? ";
             prepSt = con.prepareStatement(deleteUser);
             prepSt.setString(1, bean.getUsername());
-//            prepSt.setString(2, UserType.MERCHANT);
-            prepSt.setInt(2, -1);
             int n = prepSt.executeUpdate();
             if (n > 0) {
                 ok = true;
             }
-
+            con.commit();
         } catch (Exception e) {
-//            con.rollback();
+            con.rollback();
             ok = false;
             throw e;
         } finally {
@@ -337,7 +332,7 @@ public class UserManagementService {
 
         try {
             con = DBConnection.getConnection();
-            //con.setAutoCommit(true);
+            con.setAutoCommit(false);
             sql = "INSERT INTO web_user(USERNAME,NAME,STATUS,PROFILE_ID,PASSWORD,"
                     + "EMAIL,MOBILE) "
                     + " VALUES(?,?,?,?,?,  ?,?)";

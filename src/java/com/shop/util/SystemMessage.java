@@ -56,12 +56,12 @@ public class SystemMessage {
 
     public static final String USR_EMAIL_EMPTY = "Empty e-mail";
     public static final String USR_EMAIL_INVALID = "Invalid email";
-    public static final String USR_ADDRESS_EMPTY = "Empty address ";
-    public static final String USR_ADDRESS_INVALID = "Invalid address ";
+//    public static final String USR_ADDRESS_EMPTY = "Empty address ";
+//    public static final String USR_ADDRESS_INVALID = "Invalid address ";
     public static final String USR_PHONE_EMPTY = "Empty phone number ";
     public static final String USR_PHONE_INVALID = "Invalid phone number ";
-    public static final String USR_NIC_EMPTY = "Empty NIC ";
-    public static final String USR_NIC_INVALID = "Invalid NIC  ";
+//    public static final String USR_NIC_EMPTY = "Empty NIC ";
+//    public static final String USR_NIC_INVALID = "Invalid NIC  ";
 
     public static final String USR_STATUS_SELECT = "Select user status ";
 
