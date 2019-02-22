@@ -148,22 +148,18 @@ public class UserManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
 
-            sql = "UPDATE CLA_USER SET NAME=?,USERNAME=?,PROFILE_ID=?,USER_TYPE=?,STATUS=?,"
-                    + "EMAIL=?,ADDRESS=?,MOBILE=?,NIC=?  Where USERNAME=?";
+            sql = "UPDATE WEB_USER SET NAME=?,USERNAME=?,PROFILE_ID=?,STATUS=?,"
+                    + "EMAIL=?,MOBILE=? Where USERNAME=?";
             prepSt = con.prepareStatement(sql);
             prepSt.setString(1, inputBean.getUpname());
             System.out.println("update="+inputBean.getUpusername().toLowerCase());
             prepSt.setString(2, inputBean.getUpusername().toLowerCase());
             prepSt.setInt(3, Integer.parseInt(inputBean.getUpuserPro()));
-//            prepSt.setString(4, inputBean.getUpusertype());
-            prepSt.setInt(5, Integer.parseInt(inputBean.getUpstatus()));
+            prepSt.setInt(4, Integer.parseInt(inputBean.getUpstatus()));
 
-            prepSt.setString(6, inputBean.getUpemail());
-//            prepSt.setString(7, inputBean.getUpaddress());
-            prepSt.setString(8, inputBean.getUpmobile());
-//            prepSt.setString(9, inputBean.getUpnic());
-
-            prepSt.setString(10, inputBean.getUpusernamecopy());
+            prepSt.setString(5, inputBean.getUpemail());
+            prepSt.setString(6, inputBean.getUpmobile());
+            prepSt.setString(7, inputBean.getUpusernamecopy());
 
             int n = prepSt.executeUpdate();
             if (n > 0) {

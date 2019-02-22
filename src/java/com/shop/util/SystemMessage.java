@@ -68,8 +68,8 @@ public class SystemMessage {
     public static final String USR_ADD = "User registration successful";
     public static final String USR_ADD_FAIL = "User registration fail";
 
-    public static final String USR_PROFILE_UPDATED = "User profile task updated successfully";
-    public static final String USR_PROFILE_UPDATED_ERROR = "User profile task update failed";
+    public static final String USR_UPDATED = "User updated successfully";
+    public static final String USR_UPDATED_ERROR = "User update failed";
 
     public static final String USR_DELETED = "User deleted successfully";
     public static final String USR_DELETED_ERROR = "User delete failed";

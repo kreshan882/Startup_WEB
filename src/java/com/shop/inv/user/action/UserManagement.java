@@ -113,16 +113,16 @@ public class UserManagement extends ActionSupport implements ModelDriven<UserMan
 
                 if (service.updateData(inputBean)) {
 
-                    addActionMessage(SystemMessage.USR_PROFILE_UPDATED);
-                    LogFileCreator.writeInfoToLog(SystemMessage.USR_PROFILE_UPDATED);
+                    addActionMessage(SystemMessage.USR_UPDATED);
+                    LogFileCreator.writeInfoToLog(SystemMessage.USR_UPDATED);
 
                 } else {
-                    addActionError(SystemMessage.USR_PROFILE_UPDATED_ERROR);
+                    addActionError(SystemMessage.USR_UPDATED_ERROR);
                 }
 
             }
         } catch (Exception ex) {
-            addActionError(SystemMessage.USR_PROFILE_UPDATED_ERROR);
+            addActionError(SystemMessage.USR_UPDATED_ERROR);
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
         }

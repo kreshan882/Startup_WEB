@@ -28,8 +28,8 @@
                 $('#upname').val("");
                 $('#upusername').val("");
                 $('#upstatus').val("-1");
+                $('#upuserPro').val("-1");
                 $('#upemail').val("");
-                $('#upimei').val("");
                 $('#upmobile').val("");
 
                 jQuery("#gridtable").trigger("reloadGrid");
@@ -255,7 +255,7 @@
                                     <td><s:textfield id="email" name="email" cssClass="textField" /></td>
                                     <td width="25px;"></td>
                                     <td class="formLable">Mobile</td> <td >:</td>
-                                    <td><s:textfield id="mobile" name="mobile" cssClass="textField" placeholder="0777123456" /></td>      
+                                    <td><s:textfield id="mobile" name="mobile" cssClass="textField" placeholder="+94777123456" /></td>      
                                 </tr>
 
                                 <tr>
@@ -312,7 +312,7 @@
                                 <tr> 
                                     <td style="display: none;"><s:textfield name="upusernamecopy" id="upusernamecopy" cssClass="textField" /></td>
                                     <td class="formLable">User Name</td><td>:</td>
-                                    <td ><s:textfield name="upusername" id="upusername" cssClass="textField" /></td>
+                                    <td ><s:textfield name="upusername" id="upusername" cssClass="textField" readonly="true"/></td>
                                     <td width="25px"></td>
                                     <td class="formLable">Name<span class="mandatory">*</span></td> <td>:</td>
                                     <td ><s:textfield name="upname" id="upname" cssClass="textField" /></td>
@@ -323,7 +323,7 @@
                                     <td ><s:textfield name="upemail" id="upemail" cssClass="textField" /></td>
                                     <td width="25px"></td>
                                     <td class="formLable">Mobile</td> <td>:</td>
-                                    <td ><s:textfield name="upmobile" id="upmobile" cssClass="textField" placeholder="+94778906755"/></td>
+                                    <td ><s:textfield name="upmobile" id="upmobile" cssClass="textField" placeholder="+94777123456"/></td>
                                 </tr>
                                 <tr> 
                                     <td class="formLable">Status<span class="mandatory">*</span></td><td>:</td>
@@ -331,8 +331,8 @@
                                                listKey="key" listValue="value"    headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" />
                                     </td>
                                     <td width="25px"></td>
-                                    <td class="formLable">User Profile<span class="mandatory">*</span></td><td>:</td>
-                                    <td ><s:select  name="upstatus" id="upstatus" list="%{upstatusList}" 
+                                    <td class="formLable">User Profile<span class="mandatory">*</span></td> <td>:</td>
+                                    <td ><s:select  name="upuserPro" id="upuserPro" list="%{userProList}" 
                                                listKey="key" listValue="value"    headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" />
                                     </td>
                                 <tr>

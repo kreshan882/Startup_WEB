@@ -125,13 +125,13 @@ public class UsrProfileManagement extends ActionSupport implements ModelDriven<U
                     return "update";
                 }
                 if (service.updateData(inputBean)) { 
-                    addActionMessage(SystemMessage.USR_PROFILE_UPDATED);             
-                    LogFileCreator.writeInfoToLog(SystemMessage.USR_PROFILE_UPDATED);
+                    addActionMessage(SystemMessage.USRPROFILE_UPDATED);             
+                    LogFileCreator.writeInfoToLog(SystemMessage.USRPROFILE_UPDATED);
                 } else {
-                    addActionError(SystemMessage.USR_PROFILE_UPDATED_ERROR);
+                    addActionError(SystemMessage.USRPROFILE_UPDATED_ERROR);
                 }
         } catch (Exception ex) {
-            addActionError(SystemMessage.USR_PROFILE_UPDATED_ERROR);
+            addActionError(SystemMessage.USRPROFILE_UPDATED_ERROR);
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
         }
@@ -198,16 +198,16 @@ public class UsrProfileManagement extends ActionSupport implements ModelDriven<U
 
                 if (service.updateTaskData(inputBean)) {
                     
-                    addActionMessage(SystemMessage.USR_PROFILE_UPDATED);             
-                    LogFileCreator.writeInfoToLog(SystemMessage.USR_PROFILE_UPDATED);
+                    addActionMessage(SystemMessage.USRPROFILE_UPDATED);             
+                    LogFileCreator.writeInfoToLog(SystemMessage.USRPROFILE_UPDATED);
 
                 } else {
-                    addActionError(SystemMessage.USR_PROFILE_UPDATED_ERROR);
+                    addActionError(SystemMessage.USRPROFILE_UPDATED_ERROR);
                 }
 
             }
         } catch (Exception ex) {
-            addActionError(SystemMessage.USR_PROFILE_UPDATED_ERROR);
+            addActionError(SystemMessage.USRPROFILE_UPDATED_ERROR);
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
         }
