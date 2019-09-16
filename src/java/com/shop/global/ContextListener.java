@@ -30,9 +30,9 @@ public class ContextListener implements ServletContextListener {
 //            InitConfigValue.QR_IMG_PATH="";
 //            
             if (System.getProperty("os.name").startsWith("Windows")) {
-                InitConfigValue.SCONFIGPATH = "C:/mcs_indpro/conf/";
+                InitConfigValue.SCONFIGPATH = "C:/my_sys_k/conf/";
             }else if (System.getProperty("os.name").startsWith("Linux")) {
-                InitConfigValue.SCONFIGPATH = "/opt/mcs_indpro/conf/";
+                InitConfigValue.SCONFIGPATH = "/opt/my_sys_k/conf/";
             }
                 
 		
