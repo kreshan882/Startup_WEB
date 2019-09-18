@@ -39,7 +39,7 @@ public class UsrProfileManagementService {
 
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
-            String sqlCount = "select count(*) AS TOTAL FROM CLA_USER_PROFILE where UPPER(DESCRIPTION) LIKE ?";   
+            String sqlCount = "select count(*) AS TOTAL FROM WEB_USER_PROFILE where UPPER(DESCRIPTION) LIKE ?";   
             prepSt = con.prepareStatement(sqlCount);
             prepSt.setString(1, "%" + bean.getProfilename().toUpperCase() + "%");
             res = prepSt.executeQuery();
@@ -52,7 +52,7 @@ public class UsrProfileManagementService {
                     
             
             
-            getUsersListQuery = "select PROFILE_ID,DESCRIPTION,STATUS,CREATE_DATE from CLA_USER_PROFILE WHERE UPPER(DESCRIPTION) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
+            getUsersListQuery = "select PROFILE_ID,DESCRIPTION,STATUS,CREATE_DATE from WEB_USER_PROFILE WHERE UPPER(DESCRIPTION) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, "%" + bean.getProfilename().toUpperCase() + "%");
@@ -94,7 +94,7 @@ public class UsrProfileManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
             getUsersListQuery = "select PROFILE_ID,DESCRIPTION,STATUS "
-                    + "from CLA_USER_PROFILE WHERE PROFILE_ID=? ";
+                    + "from WEB_USER_PROFILE WHERE PROFILE_ID=? ";
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1,bean.getUpprofileId());
@@ -136,7 +136,7 @@ public class UsrProfileManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
 
-            sql = " delete  from CLA_USER_PROFILE_PRIVILAGE where PROFILE_ID=? AND SECTION_ID=?";
+            sql = " delete  from WEB_USER_PROFILE_PRIVILAGE where PROFILE_ID=? AND SECTION_ID=?";
             prepSt = con.prepareStatement(sql);
             prepSt.setInt(1, Integer.parseInt(inputBean.getUpprofileId()));
             prepSt.setString(2, inputBean.getUppageId());
@@ -148,7 +148,7 @@ public class UsrProfileManagementService {
             if (prepSt != null)     prepSt.close();
             
             for(int i=0;i<inputBean.getNewBox().size();i++){
-                sql = " insert into CLA_USER_PROFILE_PRIVILAGE(PROFILE_ID,MODULE_ID,SECTION_ID,TASK_ID)"
+                sql = " insert into WEB_USER_PROFILE_PRIVILAGE(PROFILE_ID,MODULE_ID,SECTION_ID,TASK_ID)"
                         + " values(?,?,?,?)";
                 prepSt = con.prepareStatement(sql);
                 prepSt.setInt(1, Integer.parseInt(inputBean.getUpprofileId()));
@@ -185,7 +185,7 @@ public class UsrProfileManagementService {
 
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
-            deleteUser = "DELETE from CLA_USER_PROFILE_PRIVILAGE where PROFILE_ID=?";
+            deleteUser = "DELETE from WEB_USER_PROFILE_PRIVILAGE where PROFILE_ID=?";
             prepSt = con.prepareStatement(deleteUser);
             prepSt.setString(1, bean.getUpprofileId());            
             int n= prepSt.executeUpdate();
@@ -194,7 +194,7 @@ public class UsrProfileManagementService {
             }
             if (prepSt != null)  prepSt.close();
             
-            deleteUser = "DELETE from CLA_USER_PROFILE WHERE PROFILE_ID=?";
+            deleteUser = "DELETE from WEB_USER_PROFILE WHERE PROFILE_ID=?";
             prepSt = con.prepareStatement(deleteUser);
             prepSt.setString(1, bean.getUpprofileId());            
             n= prepSt.executeUpdate();
@@ -225,7 +225,7 @@ public class UsrProfileManagementService {
 
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
-            getUsersListQuery = "select MODULE_ID,DESCRIPTION from CLA_MT_MODULES";
+            getUsersListQuery = "select MODULE_ID,DESCRIPTION from MT_MODULES";
 
             prepSt = con.prepareStatement(getUsersListQuery);
             res = prepSt.executeQuery();
@@ -263,7 +263,7 @@ public class UsrProfileManagementService {
 
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
-            getUsersListQuery = "select SECTION_ID,SECTION_NAME from CLA_MT_SECTION WHERE MODULE_ID=?";
+            getUsersListQuery = "select SECTION_ID,SECTION_NAME from MT_SECTION WHERE MODULE_ID=?";
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, modulId);
@@ -301,7 +301,7 @@ public class UsrProfileManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
             getUsersListQuery = "select st.TASK_ID AS TASK_ID,ta.DESCRIPTION TASK_NAME  "
-                    + "from CLA_MT_SECTION_TASK st,CLA_MT_TASKS ta  WHERE st.TASK_ID=ta.TASK_ID AND  st.SECTION_ID=?";
+                    + "from MT_SECTION_TASK st,MT_TASKS ta  WHERE st.TASK_ID=ta.TASK_ID AND  st.SECTION_ID=?";
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, pageId);
@@ -338,7 +338,7 @@ public class UsrProfileManagementService {
         try {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
-            sql="INSERT INTO CLA_USER_PROFILE (DESCRIPTION,STATUS,CREATE_DATE) "
+            sql="INSERT INTO WEB_USER_PROFILE (DESCRIPTION,STATUS,CREATE_DATE) "
                     + " VALUES(?,?,?)";
             
             preStat = con.prepareStatement(sql);
@@ -374,7 +374,7 @@ public class UsrProfileManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
             getUsersListQuery = "select st.TASK_ID AS TASK_ID,ta.DESCRIPTION TASK_NAME  "
-                    + "from CLA_MT_SECTION_TASK st,CLA_MT_TASKS ta  WHERE st.TASK_ID=ta.TASK_ID AND  st.SECTION_ID=?";
+                    + "from MT_SECTION_TASK st,MT_TASKS ta  WHERE st.TASK_ID=ta.TASK_ID AND  st.SECTION_ID=?";
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, inputBean.getUppageId());
@@ -389,7 +389,7 @@ public class UsrProfileManagementService {
             //con = DBConnection.getConnection();
             //con.setAutoCommit(true);
             getUsersListQuery = " select pp.TASK_ID AS TASK_ID ,ts.DESCRIPTION AS TASK_NAME "
-                    + " from CLA_USER_PROFILE_PRIVILAGE pp, CLA_MT_TASKS ts "
+                    + " from WEB_USER_PROFILE_PRIVILAGE pp, MT_TASKS ts "
                     + " WHERE pp.TASK_ID=ts.TASK_ID AND  pp.PROFILE_ID=? AND pp.SECTION_ID=?";
 
             prepSt = con.prepareStatement(getUsersListQuery);
@@ -426,7 +426,7 @@ public class UsrProfileManagementService {
         try {
             connection = DBConnection.getConnection();
             connection.setAutoCommit(true);
-            String sql = "SELECT * FROM CLA_USER_PROFILE where UPPER(DESCRIPTION)=?";
+            String sql = "SELECT * FROM WEB_USER_PROFILE where UPPER(DESCRIPTION)=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, profilename.toUpperCase());
             result = ps.executeQuery();
@@ -465,7 +465,7 @@ public class UsrProfileManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
 
-            sql = " update CLA_USER_PROFILE SET STATUS=? where PROFILE_ID=? ";
+            sql = " update WEB_USER_PROFILE SET STATUS=? where PROFILE_ID=? ";
             prepSt = con.prepareStatement(sql);
             prepSt.setInt(1, Integer.parseInt(inputBean.getUpestatus()));
             prepSt.setInt(2, Integer.parseInt(inputBean.getUpeprofileId()));

@@ -45,6 +45,8 @@ public class LoginService {
                 ulb.setName(res.getString("NAME"));
                 ulb.setDbPassword(res.getString("PASSWORD"));
                 isUser = true;
+                System.out.println(">>>0:"+ulb.getStatus()+":"+ulb.getDbPassword());
+                
             }
         } catch (Exception ex) {
             throw ex;

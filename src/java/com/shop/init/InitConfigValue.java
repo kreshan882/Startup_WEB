@@ -25,10 +25,10 @@ public class InitConfigValue {
 	public static int 			DBCONEXPIRTIMEOUT;
 
         
-        public static String                    SCONFIGPATH = "C:/mcs_indpro/conf/";
+        public static String                    SCONFIGPATH = "C:/my_sys_k/conf/";
         public static String                    WS_URL = "http://127.0.0.1:8080/webservice";
-        public static String                    LOGPATH = "/opt/mcs_indpro/logs/";
-        public static String                    QR_IMG_PATH ="C:\\mcs_indpro\\conf\\";
+        public static String                    LOGPATH = "/opt/my_sys_k/logs/";
+        public static String                    QR_IMG_PATH ="C:\\my_sys_k\\conf\\";
 
         
 }

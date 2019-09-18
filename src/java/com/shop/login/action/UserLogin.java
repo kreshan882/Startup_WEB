@@ -60,7 +60,9 @@ public class UserLogin extends ActionSupport implements Action, ModelDriven<User
 
         try {
         	System.out.println("pass:"+Util.generateHash(inputBean.getPassword()));
-            if (service.getDbUserDetails(inputBean)) {
+           
+                if (service.getDbUserDetails(inputBean)) {
+                System.out.println(">>>"+inputBean.getStatus()+":"+inputBean.getDbPassword());
                 if (inputBean.getStatus() == Status.ACTIVE) {
                 	System.out.println("pass:"+Util.generateHash(inputBean.getPassword()));
                         if (Util.generateHash(inputBean.getPassword()).equals(inputBean.getDbPassword())) {
