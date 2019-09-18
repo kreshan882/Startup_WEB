@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `testk` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `testk`;
 -- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: testk
@@ -63,7 +61,7 @@ CREATE TABLE `mt_section` (
 
 LOCK TABLES `mt_section` WRITE;
 /*!40000 ALTER TABLE `mt_section` DISABLE KEYS */;
-INSERT INTO `mt_section` VALUES ('0101','User Management','usrMng','01'),('0102','User Profile Managemant','usrprofileMng','01');
+INSERT INTO `mt_section` VALUES ('0101','User Managements','usrMng','01'),('0102','User Profile Managemant','usrprofileMng','01');
 /*!40000 ALTER TABLE `mt_section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,9 +98,9 @@ DROP TABLE IF EXISTS `mt_tasks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mt_tasks` (
-  `MT_TASKS` varchar(2) NOT NULL,
+  `TASK_ID` varchar(2) NOT NULL,
   `DESCRIPTION` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`MT_TASKS`)
+  PRIMARY KEY (`TASK_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -154,10 +152,12 @@ DROP TABLE IF EXISTS `web_user_profile`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `web_user_profile` (
-  `PROFILE_ID` int(11) NOT NULL,
+  `PROFILE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `DESCRIPTION` varchar(45) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `CREATE_DATE` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`PROFILE_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `web_user_profile` (
 
 LOCK TABLES `web_user_profile` WRITE;
 /*!40000 ALTER TABLE `web_user_profile` DISABLE KEYS */;
-INSERT INTO `web_user_profile` VALUES (1,'Admin'),(2,'NormalUser');
+INSERT INTO `web_user_profile` VALUES (1,'Admin',1,'2019-09-18 07:22:38'),(2,'NormalUser',2,'2019-09-18 07:22:38'),(4,'kreee',1,'2019-09-18 07:00:00');
 /*!40000 ALTER TABLE `web_user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +184,7 @@ CREATE TABLE `web_user_profile_privilage` (
   `SECTION_ID` varchar(4) DEFAULT NULL,
   `TASK_ID` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +193,7 @@ CREATE TABLE `web_user_profile_privilage` (
 
 LOCK TABLES `web_user_profile_privilage` WRITE;
 /*!40000 ALTER TABLE `web_user_profile_privilage` DISABLE KEYS */;
-INSERT INTO `web_user_profile_privilage` VALUES (1,1,'01','0101','01'),(2,1,'01','0101','02'),(3,1,'01','0101','03'),(4,1,'01','0101','04');
+INSERT INTO `web_user_profile_privilage` VALUES (1,1,'01','0101','01'),(2,1,'01','0101','02'),(3,1,'01','0101','03'),(4,1,'01','0101','04'),(5,1,'01','0102','01'),(6,1,'01','0102','02'),(7,1,'01','0102','03'),(8,1,'01','0102','04'),(9,4,'01','0101','01'),(10,4,'01','0101','02');
 /*!40000 ALTER TABLE `web_user_profile_privilage` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -206,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-18  0:00:42
+-- Dump completed on 2019-09-18  5:40:38
