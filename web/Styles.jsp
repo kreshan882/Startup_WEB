@@ -56,22 +56,20 @@
                 var idpageval = "#" + idpage;
                 var idsec = $.cookie("selectedsec");
                 var idsecval = "#" + idsec;
-                //        $(idsecval).addClass("active");
                 $(this).find(idpageval).addClass('active');
-                $(idsecval).slideDown();
-                //        $(this).siblings('li').find(idsecval).removeClass('active');
-
+                $(idsecval).slideDown();  
+ 
 
 
                 $("#accordian h3").click(function () {
-                    //slide up all the link lists
-                    $("#accordian ul ul").slideUp();
-                    //slide down the link list below the h3 clicked - only if its closed
+                    
+//                    $("#accordian ul ul").slideUp();//slide close kreshan 18092019 - uncoment this
+                       $("#accordian ul").slideDown();  //kreshan new 18092019 - comment this
+                    
                     if (!$(this).next().is(":visible"))
                     {
                         $(this).next().slideDown();
                         $.cookie("selectedsec", $(this).next().attr("id"), {path: "/", expires: 1});
-                        //                alert($(this).next().attr("id"));
                     }
                 })
             })
@@ -79,8 +77,6 @@
             $(function () {
                 $('#accordian ul ul li').click(function () {
                     $.cookie("selectedpage", $(this).find('a').attr("id"), {path: "/", expires: 1});
-                    //            $(this).find('a').addClass('active');
-                    //            $(this).siblings('li').find('a').removeClass('active');
                 })
             });
 

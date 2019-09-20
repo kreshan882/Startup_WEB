@@ -154,7 +154,12 @@ public class Util {
         return basicStatus;
     }
 
-
+    public static Map<String, String> getMemIslifeList() {
+        Map<String, String> memIslifeList = new HashMap<String, String>();
+        memIslifeList.put("1", "Life Time Member");
+        memIslifeList.put("0", "Anual Member");
+        return memIslifeList;
+    }
 
 
     public static Map<String, String> getValidateStatusList() {
