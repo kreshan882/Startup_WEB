@@ -1247,3 +1247,8 @@ table td:not(.homeLable):not(.homeLable1) ,table th{
 .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br{
     border-radius: 4px !important;
 }
+
+.field_set{
+  background-color: black;
+  color: white;
+}

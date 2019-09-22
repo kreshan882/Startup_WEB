@@ -35,7 +35,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class Util {
 
-    private static final String ENCRYPTION_KEY = "combank@union123";
+    private static final String ENCRYPTION_KEY = "kreshanKey";
 
     public static String encryptionCard(String accNumber) throws Exception {
         Key aesKey = new SecretKeySpec(ENCRYPTION_KEY.getBytes(), "AES");
@@ -77,15 +77,11 @@ public class Util {
         return email.matches("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") && email.length() <= 50;
     }
 
-//    public static boolean validatePHONENO(String numericString) throws Exception { //   VF1
-//        return numericString.matches("^\\+(?:[0-9])*$") && numericString.length() >=9 && numericString.length() <=15;
-//    }
     public static boolean validatePHONENO(String numericString) throws Exception { //   VF1
-        return numericString.matches("^\\+(?:[0-9])*$") && numericString.length() == 12;
+        return numericString.matches("^[0-9]*$") && numericString.length() <= 15;
+        //return numericString.matches("^\\+(?:[0-9])*$") && numericString.length() == 12;
     }
-//    public static boolean validatePHONENO(String numericString) throws Exception { //   VF1
-//        return numericString.matches("^\\+(?:[0-9])*$") && numericString.length() >=9 && numericString.length() <=15;
-//    }
+
 
     public static boolean validatePORT(String numericString) throws Exception { //   VF1
         return numericString.matches("([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])");
@@ -161,102 +157,34 @@ public class Util {
         return memIslifeList;
     }
 
+    public static Map<String, String> getMerriedList() {
+        Map<String, String> merrStatList = new HashMap<String, String>();
+        merrStatList.put("1", "Merrid");
+        merrStatList.put("0", "Single");
+        return merrStatList;
+    }
+    
 
-    public static Map<String, String> getValidateStatusList() {
-        Map<String, String> basicStatus = new HashMap<String, String>();
-        basicStatus.put("1", "Yes");
-        basicStatus.put("2", "No");
-        return basicStatus;
+    
+    public static Map<String, String> getNumberList() {
+        Map<String, String> numList = new HashMap<String, String>();
+        numList.put("0", "0");
+        numList.put("1", "1");
+        numList.put("2", "2");
+        numList.put("3", "3");
+        numList.put("4", "4");
+        numList.put("5", "5");
+        numList.put("6", "6");
+        numList.put("7", "7");
+        numList.put("8", "8");
+        numList.put("9", "9");
+        numList.put("10", "More Then 10");
+        return numList;
     }
 
-    public static Map<String, String> getFeeMethodList() {
-        Map<String, String> basicStatus = new HashMap<String, String>();
-        basicStatus.put("1", "Percentage");
-        basicStatus.put("2", "Fat Rate");
-        return basicStatus;
-    }
 
-    public static Map<String, String> getRiskLevelList() {
-        Map<String, String> basicStatus = new HashMap<String, String>();
-        basicStatus.put("1", "Warning");
-        basicStatus.put("2", "Critical");
-        return basicStatus;
-    }
 
-    public static Map<String, String> getReadStatusList() {
-        Map<String, String> basicStatus = new HashMap<String, String>();
-        basicStatus.put("15", "Read");
-        basicStatus.put("16", "Unread");
-        return basicStatus;
-    }
-
-    public static Map<String, String> getMessegeFormatCodeList() {
-        Map<String, String> basicStatus = new HashMap<String, String>();
-        basicStatus.put("1", "Order Only");
-        basicStatus.put("2", "Secret Only");
-        basicStatus.put("3", "Order + Secret");
-        return basicStatus;
-    }
-
-    public static Map<String, String> getMessegeDeliveryPartyList() {
-        Map<String, String> basicStatus = new HashMap<String, String>();
-        basicStatus.put("1", "Sender");
-        basicStatus.put("2", "Receiver");
-        return basicStatus;
-    }
-
-    public static Map<String, String> getLogLevelList() {
-
-        Map<String, String> logFileTypes = new HashMap<String, String>();
-        logFileTypes.put("0", "Level0");
-        logFileTypes.put("1", "Level1");
-        logFileTypes.put("2", "Level2");
-        logFileTypes.put("3", "Level3");
-        return logFileTypes;
-    }
-
-    public static Map<String, String> getTransferModeList() {
-        Map<String, String> basicStatus = new HashMap<String, String>();
-        basicStatus.put("1", "One to One");
-        basicStatus.put("2", "One to Many");
-        return basicStatus;
-    }
-
-    public static TreeMap<Integer, String> getValidityPeriod() {
-        TreeMap<Integer, String> valperiod = new TreeMap<Integer, String>();
-        valperiod.put(1, "1 Hour");
-        valperiod.put(2, "2 Hour");
-        valperiod.put(3, "3 Hour");
-        valperiod.put(4, "4 Hour");
-        valperiod.put(5, "5 Hour");
-        valperiod.put(6, "6 Hour");
-        valperiod.put(7, "7 Hour");
-        valperiod.put(8, "8 Hour");
-        valperiod.put(9, "9 Hour");
-        valperiod.put(10, "10 Hour");
-        valperiod.put(11, "11 Hour");
-        valperiod.put(12, "12 Hour");
-        valperiod.put(13, "13 Hour");
-        valperiod.put(14, "14 Hour");
-        valperiod.put(15, "15 Hour");
-        valperiod.put(16, "16 Hour");
-        valperiod.put(17, "17 Hour");
-        valperiod.put(18, "18 Hour");
-        valperiod.put(19, "19 Hour");
-        valperiod.put(20, "20 Hour");
-        valperiod.put(21, "21 Hour");
-        valperiod.put(22, "22 Hour");
-        valperiod.put(23, "23 Hour");
-        valperiod.put(24, "24 Hour");
-        return valperiod;
-    }
-
-    public static TreeMap<String, String> getHeaderSize() {
-        TreeMap<String, String> hsize = new TreeMap<String, String>();
-        hsize.put("1", "2 Byte");
-        hsize.put("2", "4 Byte");
-        return hsize;
-    }
+    
 
     public static <K extends Comparable, V extends Comparable> Map<K, V> sortByValues(Map<K, V> map) {
         List<Map.Entry<K, V>> entries = new LinkedList<Map.Entry<K, V>>(map.entrySet());
@@ -342,13 +270,7 @@ public class Util {
         return hashtext;
     }
 
-    public static Map<String, String> getLogTypeList() {
 
-        Map<String, String> logFileTypes = new HashMap<String, String>();
-        logFileTypes.put("01", "Infor");
-        logFileTypes.put("02", "Error");
-        return logFileTypes;
-    }
 
     public static String changeDateFormat(String date) throws ParseException {
 
@@ -370,17 +292,7 @@ public class Util {
         return sdf.format(date);
     }
 
-    public static String getDateEcho() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMdd");
-        Date date1 = new Date();
-        return sdf.format(date1);
-    }
 
-    public static String getTimeEcho() {
-        SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
-        Date date1 = new Date();
-        return sdf.format(date1);
-    }
 
     public static String round(String in) {
         double value = Double.parseDouble(in);

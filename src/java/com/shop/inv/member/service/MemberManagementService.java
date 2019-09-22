@@ -265,17 +265,67 @@ public class MemberManagementService {
         try {
             con = DBConnection.getConnection();
             con.setAutoCommit(false);
-            sql = "INSERT INTO dma_member"
-                    + "( MEM_NAME, MEM_DOB, MEM_TYPE_ISLIFE, MEM_EXP_DATE, STATUS) "
-                    + "VALUES ('dhar2', '2012-12-12', '0', '2010-10-10 00:00:00', '1');";
+            sql= "INSERT INTO dma_member ("
+                    + "MEM_NAME, MEM_NIC, MEM_DOB,MEM_PHONE,MEM_MOBILE,  EMAIL, "
+                    + "QUALIFICATION, PERM_ADD, TEMP_ADD, MEM_BORN_PLACE, MEM_CAST, MEM_SUB_CAST, "
+                    + "MEM_TYPE_ISLIFE,MEM_EXP_DATE, NUM_OF_BRO, NUM_OF_SIS, "
+                    + "JOB_TITLE, JOB_ADD, JOB_PHONE, "
+                    + "FAT_NAME, FAT_ADD, FAT_CAST, MOT_NAME, MOT_ADD, MOT_CAST, "
+                    + "GRAN_FAT_NAME, GRAN_FAT_ADD, GRAN_FAT_CAST, GRAN_MOT_NAME, GRAN_MOT_ADD,GRAN_MOT_CAST, "
+                    + "IS_MARRIED, WIFR_NAME, NUM_OF_SUN, NUM_OF_DOT, STATUS) "
+                    + "VALUES ("
+                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?,"
+                    + "?, ?, ?,"
+                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?, ?);";
 
             preStat = con.prepareStatement(sql);
 
             preStat.setString(1, inputBean.getMemName());
-            preStat.setString(2, inputBean.getMemDob());
-            preStat.setString(3, "1");
-            preStat.setString(4, inputBean.getMemExpdate());
-            preStat.setString(5, "1");
+            preStat.setString(2, inputBean.getMemNic());
+            preStat.setDate(3, Util.convertStringToDBDate(inputBean.getMemDob()));
+            preStat.setString(4, inputBean.getPhoneNo());
+            preStat.setString(5, inputBean.getMobileNo());
+            preStat.setString(6, inputBean.getEmail());
+            
+            preStat.setString(7, inputBean.getQualification());
+            preStat.setString(8, inputBean.getPerAddress());
+            preStat.setString(9, inputBean.getTemAddress());
+            preStat.setString(10, inputBean.getMemBornPlace());
+            preStat.setString(11, inputBean.getMemCast());
+            preStat.setString(12, inputBean.getMemSubCast());
+            
+            preStat.setString(13, inputBean.getMemIslife());
+            preStat.setDate(14, Util.convertStringToDBDate(inputBean.getMemExpdate()));
+            preStat.setInt(15, Integer.parseInt(inputBean.getNoOfBrother()));
+            preStat.setInt(16, Integer.parseInt(inputBean.getNoOfSister()));
+            
+            preStat.setString(17, inputBean.getJobTitle());
+            preStat.setString(18, inputBean.getJobAddress());
+            preStat.setString(19, inputBean.getJobPhone());
+            
+            preStat.setString(20, inputBean.getFatName());
+            preStat.setString(21, inputBean.getFatBirthPlace());
+            preStat.setString(22, inputBean.getFatCast());
+            preStat.setString(23, inputBean.getMothName());
+            preStat.setString(24, inputBean.getMothBirthPlace());
+            preStat.setString(25, inputBean.getMothCast());
+            
+            preStat.setString(26, inputBean.getGrandFatName());
+            preStat.setString(27, inputBean.getGrandFatBirthPlace());
+            preStat.setString(28, inputBean.getGrandFatCast());
+            preStat.setString(29, inputBean.getGrandMothName());
+            preStat.setString(30, inputBean.getGrandMothBirthPlace());
+            preStat.setString(31, inputBean.getGrandMothCast());
+            
+            preStat.setString(32, inputBean.getIsMerrid());
+            preStat.setString(33, inputBean.getWifeName());
+            preStat.setInt(34, Integer.parseInt(inputBean.getNoOfSuns()));
+            preStat.setInt(35, Integer.parseInt(inputBean.getNoOfDoters()));
+            preStat.setInt(36, Status.ACTIVE);
             
 
             int n = preStat.executeUpdate();

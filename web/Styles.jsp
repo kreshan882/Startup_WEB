@@ -63,8 +63,8 @@
 
                 $("#accordian h3").click(function () {
                     
-//                    $("#accordian ul ul").slideUp();//slide close kreshan 18092019 - uncoment this
-                       $("#accordian ul").slideDown();  //kreshan new 18092019 - comment this
+                    $("#accordian ul ul").slideUp();//slide close kreshan 18092019 - uncoment this
+//                       $("#accordian ul").slideDown();  //kreshan new 18092019 - comment this
                     
                     if (!$(this).next().is(":visible"))
                     {

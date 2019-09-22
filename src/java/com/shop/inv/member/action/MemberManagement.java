@@ -57,7 +57,8 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
             System.out.println("calling....2");
             service.getCastList(inputBean);
             inputBean.getMemIslifeList().putAll(inputBean.getMemIslifeList());
-                    
+            inputBean.getIsMerridList().putAll(inputBean.getIsMerridList());
+            inputBean.getNumberList().putAll(inputBean.getNumberList());        
         } catch (Exception ex) {
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
@@ -166,16 +167,16 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
             if (doValidation(inputBean)) {
 
                 if (service.addData(inputBean)) {
-                    addActionMessage(SystemMessage.USR_ADD);
-                    LogFileCreator.writeInfoToLog(SystemMessage.USR_ADD);
+                    addActionMessage(SystemMessage.MEMB_ADD);
+                    LogFileCreator.writeInfoToLog(SystemMessage.MEMB_ADD);
 
                 } else {
-                    addActionError(SystemMessage.USR_ADD_FAIL);
+                    addActionError(SystemMessage.MEMB_ADD_FAIL);
                 }
             }
 
         } catch (Exception ex) {
-            addActionError(SystemMessage.USR_ADD_FAIL);
+            addActionError(SystemMessage.MEMB_ADD_FAIL);
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
         }
@@ -188,7 +189,7 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
         System.out.println(">1:"+userBean.getMemId());
         System.out.println(">2:"+userBean.getMemName());
         System.out.println(">2:"+userBean.getMemDob());
-        System.out.println(">3:"+userBean.getMemCast());
+        System.out.println(">3:"+userBean.getEmail());
         try {
 
             if (userBean.getMemName() == null || userBean.getMemName().isEmpty()) {
@@ -198,17 +199,123 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
                 addActionError(SystemMessage.MEMB_NAME_INVALID);
                 return ok;
             } 
-//            else if (service.checkUserName(userBean.getUsername().toLowerCase())) {
-//                addActionError(SystemMessage.USR_USERNAME_ALREADY);
-//                return ok;
-//            } 
+            else if (userBean.getMemNic() == null || userBean.getMemNic().isEmpty()) {
+                addActionError(SystemMessage.MEMB_NIC_EMPTY);
+                return ok;
+            } else if (!Util.validateNIC(userBean.getMemNic())) {
+                addActionError(SystemMessage.MEMB_NIC_INVALID);
+                return ok;
+            }
             else if (userBean.getMemDob() == null || userBean.getMemDob().isEmpty()) {
                 addActionError(SystemMessage.MEMB_DOB_EMPTY);
                 return ok;
-            } else if (userBean.getMemCast().equals("-1")) {
+            }
+            else if (!Util.validatePHONENO(userBean.getPhoneNo())) {
+                addActionError(SystemMessage.MEMB_PHONE_INVALID);
+                return ok;
+            }
+            else if (!Util.validatePHONENO(userBean.getMobileNo())) {
+                addActionError(SystemMessage.MEMB_MOBILE_INVALID);
+                return ok;
+            }
+            else if (!Util.validateEMAIL(userBean.getEmail())) {
+                addActionError(SystemMessage.MEMB_EMAIL_INVALID);
+                return ok;
+            }
+            
+            
+            else if (!Util.validateDESCRIPTION(userBean.getQualification())) {
+                addActionError(SystemMessage.MEMB_QUALI_INVALID);
+                return ok;
+            }
+            else if (!Util.validateDESCRIPTION(userBean.getPerAddress())) {
+                addActionError(SystemMessage.MEMB_PAADD_INVALID);
+                return ok;
+            }
+            else if (!Util.validateDESCRIPTION(userBean.getTemAddress())) {
+                addActionError(SystemMessage.MEMB_TMADD_INVALID);
+                return ok;
+            }
+            
+            
+            else if (!Util.validateDESCRIPTION(userBean.getMemBornPlace())) {
+                addActionError(SystemMessage.MEMB_BORNPLAVE_INVALID);
+                return ok;
+            }else if (userBean.getMemCast().equals("-1")) {
                 addActionError(SystemMessage.MEMB_CAST_SELECT);
                 return ok;
-            }else {
+            } else if (!Util.validateDESCRIPTION(userBean.getMemSubCast())) {
+                addActionError(SystemMessage.MEMB_SUBCAST_INVALID);
+                return ok;
+            }
+            
+            else if (userBean.getMemIslife().equals("-1")) {
+                addActionError(SystemMessage.MEMB_TYPE_SELECT);
+                return ok;
+            }
+            
+            else if (!Util.validateDESCRIPTION(userBean.getJobTitle())) {
+                addActionError(SystemMessage.MEMB_JOBTITLE_INVALID);
+                return ok;
+            } else if (!Util.validateDESCRIPTION(userBean.getJobAddress())) {
+                addActionError(SystemMessage.MEMB_JOBADDR_INVALID);
+                return ok;
+            } else if (!Util.validatePHONENO(userBean.getJobPhone())) {
+                addActionError(SystemMessage.MEMB_JOBPHONE_INVALID);
+                return ok;
+            }
+            
+            
+            else if (!Util.validateDESCRIPTION(userBean.getFatName())) {
+                addActionError(SystemMessage.MEMB_FAT_NAME_INVALID);
+                return ok;
+            } else if (!Util.validateDESCRIPTION(userBean.getFatBirthPlace())) {
+                addActionError(SystemMessage.MEMB_FAT_BIRPLAC_INVALID);
+                return ok;
+            } else if (userBean.getFatCast().equals("-1")) {
+                addActionError(SystemMessage.MEMB_FAT_CAST_SELECT);
+                return ok;
+            }
+            
+            else if (!Util.validateDESCRIPTION(userBean.getMothName())) {
+                addActionError(SystemMessage.MEMB_MOT_NAME_INVALID);
+                return ok;
+            } else if (!Util.validateDESCRIPTION(userBean.getMothBirthPlace())) {
+                addActionError(SystemMessage.MEMB_MOT_BIRPLAC_INVALID);
+                return ok;
+            } else if (userBean.getMothCast().equals("-1")) {
+                addActionError(SystemMessage.MEMB_MOT_CAST_SELECT);
+                return ok;
+            }
+            
+            else if (!Util.validateDESCRIPTION(userBean.getGrandFatName())) {
+                addActionError(SystemMessage.MEMB_GRANDFAT_NAME_INVALID);
+                return ok;
+            } else if (!Util.validateDESCRIPTION(userBean.getGrandFatBirthPlace())) {
+                addActionError(SystemMessage.MEMB_GRANDFAT_BIRPLAC_INVALID);
+                return ok;
+            } else if (userBean.getGrandFatCast().equals("-1")) {
+                addActionError(SystemMessage.MEMB_GRANDFAT_CAST_SELECT);
+                return ok;
+            }
+            
+            else if (!Util.validateDESCRIPTION(userBean.getGrandMothName())) {
+                addActionError(SystemMessage.MEMB_GRANDMOT_NAME_INVALID);
+                return ok;
+            } else if (!Util.validateDESCRIPTION(userBean.getGrandMothBirthPlace())) {
+                addActionError(SystemMessage.MEMB_GRANDMOT_BIRPLAC_INVALID);
+                return ok;
+            } else if (userBean.getGrandMothCast().equals("-1")) {
+                addActionError(SystemMessage.MEMB_GRANDMOT_CAST_SELECT);
+                return ok;
+            }
+            
+            else if (userBean.getIsMerrid().equals("-1")) {
+                addActionError(SystemMessage.MEMB_MERIED_STATUS_SELECT);
+                return ok;
+            }
+            
+            else {
                 ok = true;
             }
 

@@ -197,6 +197,33 @@
 //                }
 //                
 //            }
+
+          function loadIsLifeMem(keyval) {
+              //alert('keyval'+keyval); //1,0
+              if(keyval==1){
+                    $('#memExpdate').hide();
+                    $('#memExpdate1').hide();
+                    $('#memExpdate2').hide();
+                    $('#memExpdate3').hide();
+              }else{
+                    $('#memExpdate').show();
+                    $('#memExpdate1').show();
+                    $('#memExpdate2').show();
+                    $('#memExpdate3').show();
+              }
+              
+             
+            }
+            function callIsMerried(keyval) {
+                //alert('keyval'+keyval); //1-merrid,0-single
+                if(keyval==1){
+                    $('#familyId').show();
+              }else{
+                  $('#familyId').hide();
+              }
+                
+            }
+            
         </script>
     </head>
 
@@ -226,35 +253,164 @@
 
 
                         <s:form  id="addForm"  theme="simple" method="post" >
+  
                             <table class="form_table">
+                                
                                 <tr>
                                     <td class="formLable">Member Name<span class="mandatory">*</span></td> <td >:</td>
                                     <td><s:textfield id="memName" name="memName" cssClass="textField" /></td>                                    
                                     <td width="25px;"></td>
-                                    <td class="formLable">Member dob<span class="mandatory">*</span></td> <td>:</td>
-                                    <td><sj:datepicker id="memDob" name="memDob" readonly="true" value="today"   changeYear="true" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>
+                                    <td class="formLable">Member Nic<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><s:textfield id="memNic" name="memNic" cssClass="textField" /></td> 
                                     <td width="25px;"></td>
-                                    <td class="formLable">Member dob<span class="mandatory">*</span></td> <td>:</td>
-                                    <td><s:textfield id="memDob" name="memDob" cssClass="textField" /></td>
+                                    <td class="formLable">Member Dob<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><sj:datepicker id="memDob" name="memDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1950" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>
                                 </tr>    
                           
+                                <tr>
+                                    <td class="formLable">Land Phone Number<span class="mandatory">*</span></td> <td >:</td>
+                                    <td><s:textfield id="phoneNo" name="phoneNo" cssClass="textField" /></td>                                    
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Mobile Number<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><s:textfield id="mobileNo" name="mobileNo" cssClass="textField" /></td>  
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Email<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><s:textfield id="email" name="email" cssClass="textField" /></td> 
+                                </tr> 
                                 
                                 <tr>
-                                    <td class="formLable">Member cast<span class="mandatory">*</span></td>  <td >:</td>
+                                    <td class="formLable">Qualification<span class="mandatory">*</span></td> <td >:</td>
+                                    <td><s:textfield id="qualification" name="qualification" cssClass="textField" /></td>                                    
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Permanent Address<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><s:textfield id="perAddress" name="perAddress" cssClass="textField" /></td>  
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Temporary Address<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><s:textfield id="temAddress" name="temAddress" cssClass="textField" /></td> 
+                                </tr> 
+                                
+                                <tr>
+                                    <td class="formLable">Born Place<span class="mandatory">*</span></td> <td >:</td>
+                                    <td><s:textfield id="memBornPlace" name="memBornPlace" cssClass="textField" /></td>                                    
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Member Cast<span class="mandatory">*</span></td>  <td >:</td>
                                     <td><s:select  name="memCast" id="memCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td>
-                                     <td width="25px;"></td>
-                                     
-                                     <td class="formLable">Is life member<span class="mandatory">*</span></td>  <td >:</td>
-                                   <td><s:select  name="memIslife" id="memIslife"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memIslifeList}"  cssClass="dropdown" /></td>
+                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Member Sub Cast<span class="mandatory">*</span></td> <td >:</td>
+                                    <td><s:textfield id="memSubCast" name="memSubCast" cssClass="textField" /></td> 
                                 </tr>
                                 
+                                <tr> 
+                                    <td class="formLable">Membership Type<span class="mandatory">*</span></td>  <td >:</td>
+                                    <td><s:select  name="memIslife" id="memIslife" list="%{memIslifeList}" 
+                                               listKey="key" listValue="value"  onchange="loadIsLifeMem(this.value)"  headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" /></td> 
+                                    <td width="25px;"></td>
+                                    <td class="formLable" id="memExpdate1" >Exp Date<span class="mandatory">*</span></td> <td id="memExpdate2">:</td>
+                                    <td id="memExpdate3"><sj:datepicker id="memExpdate" name="memExpdate" readonly="true" value="today"  minDate="today" changeYear="true" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>
+                                </tr>
+                                <tr> 
+                                    <td class="formLable">Number Of Brothers<span class="mandatory">*</span></td>  <td >:</td>
+                                    <td><s:select  name="noOfBrother" id="noOfBrother"  list="%{numberList}"  cssClass="dropdown" /></td>
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Number Of Sisters<span class="mandatory">*</span></td> <td >:</td>
+                                    <td><s:select  name="noOfSister" id="noOfSister"  list="%{numberList}"  cssClass="dropdown" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="formLable">Occupation<span class="mandatory">*</span></td> <td >:</td>
+                                    <td><s:textfield id="jobTitle" name="jobTitle" cssClass="textField" /></td>                                    
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Office Address<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><s:textfield id="jobAddress" name="jobAddress" cssClass="textField" /></td>  
+                                    <td width="25px;"></td>
+                                    <td class="formLable">Office Phone<span class="mandatory">*</span></td> <td>:</td>
+                                    <td><s:textfield id="jobPhone" name="jobPhone" cssClass="textField" /></td> 
+                                </tr>
+                                </table>
                                 
+                                <fieldset style="background-color:rgb(245,249,249)">
+                                    <legend>Parent Details</legend>
+                                    <table>
+                                    <tr>
+                                        <td class="formLable">Father Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:textfield id="fatName" name="fatName" cssClass="textField" /></td>                                    
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Father Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:textfield id="fatBirthPlace" name="fatBirthPlace" cssClass="textField" /></td>  
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Father Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:select  name="fatCast" id="fatCast"  headerKey="-1" 
+                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="formLable">Mother Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:textfield id="mothName" name="mothName" cssClass="textField" /></td>                                    
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Mother Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:textfield id="mothBirthPlace" name="mothBirthPlace" cssClass="textField" /></td>  
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Mother Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:select  name="mothCast" id="mothCast"  headerKey="-1" 
+                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="formLable">Grandfather Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:textfield id="grandFatName" name="grandFatName" cssClass="textField" /></td>                                    
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Grandfather Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:textfield id="grandFatBirthPlace" name="grandFatBirthPlace" cssClass="textField" /></td>  
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Grandfather Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:select  name="grandFatCast" id="grandFatCast"  headerKey="-1" 
+                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="formLable">Grandmother Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:textfield id="grandMothName" name="grandMothName" cssClass="textField" /></td>                                    
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Grandmother Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:textfield id="grandMothBirthPlace" name="grandMothBirthPlace" cssClass="textField" /></td>  
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Grandmother Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:select  name="grandMothCast" id="grandMothCast"  headerKey="-1" 
+                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                    </tr>
+                                    
+                                    
+                                    </table>
+                                </fieldset>
+                                
+                            <table>  
+                                <tr>
+                                        <td class="formLable">Meride Status<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:select  name="isMerrid" id="isMerrid" list="%{isMerridList}" 
+                                               listKey="key" listValue="value"  onchange="callIsMerried(this.value)"  headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" /></td> 
+                                </tr>
+                            </table>
+                                <fieldset id="familyId" style="background-color:rgb(245,249,249)">
+                                    <legend>Family Details</legend>
+                                    <table>
+                                    <tr>
+                                        <td class="formLable">Spouse Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:textfield id="wifeName" name="wifeName" cssClass="textField" /></td>                                    
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Num of Sun<span class="mandatory">*</span></td> <td>:</td> 
+                                        <td><s:select  name="noOfSuns" id="noOfSuns"  list="%{numberList}"  cssClass="dropdown" /></td>
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Num of Daughter<span class="mandatory">*</span></td> <td>:</td> 
+                                        <td><s:select  name="noOfDoters" id="noOfDoters"  list="%{numberList}"  cssClass="dropdown" /></td>
+                                    </tr>
+                                    
+                                    
+                                    </table>
+                                </fieldset>
+                            <table>
                                 <tr>
                                     <td class="content_td formLable" colspan="7"><span class="mandatory_text">Mandatory fields are marked with</span><span class="mandatory">*</span></td>
                                 </tr>
-                            </table><table class="form_table">
+                            </table>
+                            <table class="form_table">
                                 </br>
                                 <tr>                                
                                     <td> <s:url var="addurl" action="AddaddMember"/>                                   

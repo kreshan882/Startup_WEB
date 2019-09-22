@@ -24,13 +24,67 @@ public class MemberManagementInputBean {
     //Add data
     private String memId;
     private String memName;
+    private String memNic;
     private String memDob;
+    
+
+    private String phoneNo;
+    private String mobileNo;
+    private String email;
+    
+    private String qualification; 
+    private String perAddress;
+    private String temAddress;
+
+    private String memBornPlace;  //districk type
     private String memCast;
     private HashMap<String,String> memCastList = new HashMap<String,String>();
+    private String memSubCast;
+    
+    
     private String memIslife;   //1=life, 0= anual
     private Map<String,String> memIslifeList = Util.getMemIslifeList();
-
     private String memExpdate;
+    
+    private String noOfBrother;
+    private String noOfSister;
+    
+    private String jobTitle;  // occupation
+    private String jobAddress;
+    private String jobPhone;
+   
+    //parent details
+    private String fatName;
+    private String fatBirthPlace;
+    private String fatCast;
+    
+    private String mothName;
+    private String mothBirthPlace;
+    private String mothCast;
+    
+    private String grandFatName;
+    private String grandFatBirthPlace;
+    private String grandFatCast;
+    
+    private String grandMothName;
+    private String grandMothBirthPlace;
+    private String grandMothCast;
+    
+    
+    
+    
+    private String isMerrid;  //1=merrid, 0=single
+    private Map<String,String> isMerridList = Util.getMerriedList();
+    private String wifeName;
+    private String noOfSuns;
+    private String noOfDoters;
+    
+    private Map<String,String> numberList = Util.getNumberList();
+    
+
+    // sun doter details ???
+    // wife details+wife parent
+    
     
     
     //Delete Data
@@ -268,6 +322,262 @@ public class MemberManagementInputBean {
 
     public void setMemIslifeList(Map<String, String> memIslifeList) {
         this.memIslifeList = memIslifeList;
+    }
+
+    public String getMemNic() {
+        return memNic;
+    }
+
+    public void setMemNic(String memNic) {
+        this.memNic = memNic;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public String getPerAddress() {
+        return perAddress;
+    }
+
+    public void setPerAddress(String perAddress) {
+        this.perAddress = perAddress;
+    }
+
+    public String getTemAddress() {
+        return temAddress;
+    }
+
+    public void setTemAddress(String temAddress) {
+        this.temAddress = temAddress;
+    }
+
+    public String getMemBornPlace() {
+        return memBornPlace;
+    }
+
+    public void setMemBornPlace(String memBornPlace) {
+        this.memBornPlace = memBornPlace;
+    }
+
+    public String getMemSubCast() {
+        return memSubCast;
+    }
+
+    public void setMemSubCast(String memSubCast) {
+        this.memSubCast = memSubCast;
+    }
+
+    public String getFatName() {
+        return fatName;
+    }
+
+    public void setFatName(String fatName) {
+        this.fatName = fatName;
+    }
+
+    public String getFatBirthPlace() {
+        return fatBirthPlace;
+    }
+
+    public void setFatBirthPlace(String fatBirthPlace) {
+        this.fatBirthPlace = fatBirthPlace;
+    }
+
+    public String getFatCast() {
+        return fatCast;
+    }
+
+    public void setFatCast(String fatCast) {
+        this.fatCast = fatCast;
+    }
+
+    public String getMothName() {
+        return mothName;
+    }
+
+    public void setMothName(String mothName) {
+        this.mothName = mothName;
+    }
+
+    public String getMothBirthPlace() {
+        return mothBirthPlace;
+    }
+
+    public void setMothBirthPlace(String mothBirthPlace) {
+        this.mothBirthPlace = mothBirthPlace;
+    }
+
+    public String getMothCast() {
+        return mothCast;
+    }
+
+    public void setMothCast(String mothCast) {
+        this.mothCast = mothCast;
+    }
+
+    public String getGrandFatName() {
+        return grandFatName;
+    }
+
+    public void setGrandFatName(String grandFatName) {
+        this.grandFatName = grandFatName;
+    }
+
+    public String getGrandFatBirthPlace() {
+        return grandFatBirthPlace;
+    }
+
+    public void setGrandFatBirthPlace(String grandFatBirthPlace) {
+        this.grandFatBirthPlace = grandFatBirthPlace;
+    }
+
+    public String getGrandFatCast() {
+        return grandFatCast;
+    }
+
+    public void setGrandFatCast(String grandFatCast) {
+        this.grandFatCast = grandFatCast;
+    }
+
+    public String getGrandMothName() {
+        return grandMothName;
+    }
+
+    public void setGrandMothName(String grandMothName) {
+        this.grandMothName = grandMothName;
+    }
+
+    public String getGrandMothBirthPlace() {
+        return grandMothBirthPlace;
+    }
+
+    public void setGrandMothBirthPlace(String grandMothBirthPlace) {
+        this.grandMothBirthPlace = grandMothBirthPlace;
+    }
+
+    public String getGrandMothCast() {
+        return grandMothCast;
+    }
+
+    public void setGrandMothCast(String grandMothCast) {
+        this.grandMothCast = grandMothCast;
+    }
+
+    public String getNoOfBrother() {
+        return noOfBrother;
+    }
+
+    public void setNoOfBrother(String noOfBrother) {
+        this.noOfBrother = noOfBrother;
+    }
+
+    public String getNoOfSister() {
+        return noOfSister;
+    }
+
+    public void setNoOfSister(String noOfSister) {
+        this.noOfSister = noOfSister;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getJobAddress() {
+        return jobAddress;
+    }
+
+    public void setJobAddress(String jobAddress) {
+        this.jobAddress = jobAddress;
+    }
+
+    public String getJobPhone() {
+        return jobPhone;
+    }
+
+    public void setJobPhone(String jobPhone) {
+        this.jobPhone = jobPhone;
+    }
+
+    public String getIsMerrid() {
+        return isMerrid;
+    }
+
+    public void setIsMerrid(String isMerrid) {
+        this.isMerrid = isMerrid;
+    }
+
+    public String getWifeName() {
+        return wifeName;
+    }
+
+    public void setWifeName(String wifeName) {
+        this.wifeName = wifeName;
+    }
+
+    public String getNoOfSuns() {
+        return noOfSuns;
+    }
+
+    public void setNoOfSuns(String noOfSuns) {
+        this.noOfSuns = noOfSuns;
+    }
+
+    public String getNoOfDoters() {
+        return noOfDoters;
+    }
+
+    public void setNoOfDoters(String noOfDoters) {
+        this.noOfDoters = noOfDoters;
+    }
+
+    public Map<String, String> getIsMerridList() {
+        return isMerridList;
+    }
+
+    public void setIsMerridList(Map<String, String> isMerridList) {
+        this.isMerridList = isMerridList;
+    }
+
+    public Map<String, String> getNumberList() {
+        return numberList;
+    }
+
+    public void setNumberList(Map<String, String> numberList) {
+        this.numberList = numberList;
     }
 
     
