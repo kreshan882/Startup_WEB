@@ -17,9 +17,9 @@ import java.util.Map;
  */
 public class MemberManagementInputBean {
     
-//        //Search Data
-//    private String searchname ="";
-//    private boolean search;
+    //Search Data
+    private String searchname ="";
+    private boolean search;
     
     //Add data
     private String memId;
@@ -124,6 +124,25 @@ public class MemberManagementInputBean {
     private String searchString;
     private String searchOper;
 
+    public String getSearchname() {
+        return searchname;
+    }
+
+    public void setSearchname(String searchname) {
+        this.searchname = searchname;
+    }
+
+    public boolean isSearch() {
+        return search;
+    }
+
+    public void setSearch(boolean search) {
+        this.search = search;
+    }
+
+    
+    
+    
     public String getMessage() {
         return message;
     }

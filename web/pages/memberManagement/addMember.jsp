@@ -255,7 +255,12 @@
                         <s:form  id="addForm"  theme="simple" method="post" >
   
                             <table class="form_table">
-                                
+                                <tr>
+                                    <td class="formLable">Member ID<span class="mandatory">*</span></td> <td >:</td>
+                                    <td><s:textfield id="memId" name="memId" readonly="true" cssClass="textField" /></td>                                    
+                                    <td width="25px;"></td>
+                                    
+                                </tr> 
                                 <tr>
                                     <td class="formLable">Member Name<span class="mandatory">*</span></td> <td >:</td>
                                     <td><s:textfield id="memName" name="memName" cssClass="textField" /></td>                                    

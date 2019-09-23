@@ -83,6 +83,14 @@
             <result name="success">/pages/memberManagement/addMember.jsp</result>        
             <result name="add">/pages/msgFrag.jsp</result>
         </action>
+        <action name="*editViewMember"    class="com.shop.inv.member.action.EditAndViewMemberManagement"   method="{1}"> 
+            <result name="success">/pages/memberManagement/editAndViewMember.jsp</result>        
+            <result name="update">/pages/msgFrag.jsp</result>
+            <result name="list" type="json"></result>           
+            <result name="find" type="json"></result>              
+            <result name="delete"  type="json"  ></result>   
+            <result name="loaddata"  type="json"  ></result>  
+        </action>
         
         
     </package>   

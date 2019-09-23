@@ -13,9 +13,6 @@ import com.shop.init.TaskVarList;
 import com.shop.inv.member.bean.MemberBean;
 import com.shop.inv.member.bean.MemberManagementInputBean;
 import com.shop.inv.member.service.MemberManagementService;
-//import com.shop.inv.user.bean.UserBean;
-//import com.shop.inv.user.bean.UserManagementInputBean;
-//import com.shop.inv.user.service.UserManagementService;
 import com.shop.login.bean.SessionUserBean;
 import com.shop.login.bean.TaskBean;
 import com.shop.util.AccessControlService;
@@ -33,11 +30,11 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author Kreshan Rajendran
  */
-public class MemberManagement extends ActionSupport implements ModelDriven<MemberManagementInputBean>, AccessControlService {
+public class EditAndViewMemberManagement extends ActionSupport implements ModelDriven<MemberManagementInputBean>, AccessControlService {
 
     private MemberManagementService service = new MemberManagementService();
     MemberManagementInputBean inputBean = new MemberManagementInputBean();
-    PasswordValidator pwdvalidator = new PasswordValidator();
+
 
     public SessionUserBean getSub(){
         return (SessionUserBean) ServletActionContext.getRequest().getSession(false).getAttribute("SessionObject");
@@ -67,123 +64,103 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
         return inputBean;
     }
 
-//    public String List() {
-//        try {
-//            List<MemberBean> dataList = null;
-//            int rows = inputBean.getRows();
-//            int page = inputBean.getPage();
-//            int to = (rows * page);
-//            int from = to - rows;
-//            long records = 0;
-//            String orderBy = "";
-//
-//            if (!inputBean.getSidx().isEmpty()) {
-//                orderBy = " order by " + inputBean.getSidx() + " " + inputBean.getSord();
-//            }
-//
-//            dataList = service.loadData(inputBean, orderBy, from, rows);
-//
-//            if (!dataList.isEmpty()) {
-//                records = dataList.get(0).getFullCount();
-//                inputBean.setRecords(records);
-//                inputBean.setGridModel(dataList);
-//                int total = (int) Math.ceil((double) records / (double) rows);
-//                inputBean.setTotal(total);
-//            } else {
-//                inputBean.setRecords(0L);
-//                inputBean.setTotal(0);
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            LogFileCreator.writeErrorToLog(ex);
-//            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
-//        }
-//        return "list";
-//    }
-//
-//    public String Find() {
-//
-//        try {
-//            service.findData(inputBean);
-//        } catch (Exception e) {
-//            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
-//            LogFileCreator.writeErrorToLog(e);
-//        }
-//
-//        return "find";
-//    }
-//
-//    public String Update() {
-//
-//        try {
-//            if (doValidationUpdate(inputBean)) {
-//
-//                if (service.updateData(inputBean)) {
-//
-//                    addActionMessage(SystemMessage.USR_UPDATED);
-//                    LogFileCreator.writeInfoToLog(SystemMessage.USR_UPDATED);
-//
-//                } else {
-//                    addActionError(SystemMessage.USR_UPDATED_ERROR);
-//                }
-//
-//            }
-//        } catch (Exception ex) {
-//            addActionError(SystemMessage.USR_UPDATED_ERROR);
-//            ex.printStackTrace();
-//            LogFileCreator.writeErrorToLog(ex);
-//        }
-//        return "update";
-//    }
-//
-//    public String Delete() {
-//        try {
+    public String List() {
+        try {
+            List<MemberBean> dataList = null;
+            int rows = inputBean.getRows();
+            int page = inputBean.getPage();
+            int to = (rows * page);
+            int from = to - rows;
+            long records = 0;
+            String orderBy = "";
+
+            if (!inputBean.getSidx().isEmpty()) {
+                orderBy = " order by " + inputBean.getSidx() + " " + inputBean.getSord();
+            }
+
+            dataList = service.loadData(inputBean, orderBy, from, rows);
+
+            if (!dataList.isEmpty()) {
+                records = dataList.get(0).getFullCount();
+                inputBean.setRecords(records);
+                inputBean.setGridModel(dataList);
+                int total = (int) Math.ceil((double) records / (double) rows);
+                inputBean.setTotal(total);
+            } else {
+                inputBean.setRecords(0L);
+                inputBean.setTotal(0);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            LogFileCreator.writeErrorToLog(ex);
+            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
+        }
+        return "list";
+    }
+
+    public String Find() {
+
+        try {
+            service.findData(inputBean);
+        } catch (Exception e) {
+            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
+            LogFileCreator.writeErrorToLog(e);
+        }
+
+        return "find";
+    }
+
+    public String Update() {
+
+        try {
+            if (doValidationUpdate(inputBean)) {
+
+                if (service.updateData(inputBean)) {
+
+                    addActionMessage(SystemMessage.USR_UPDATED);
+                    LogFileCreator.writeInfoToLog(SystemMessage.USR_UPDATED);
+
+                } else {
+                    addActionError(SystemMessage.USR_UPDATED_ERROR);
+                }
+
+            }
+        } catch (Exception ex) {
+            addActionError(SystemMessage.USR_UPDATED_ERROR);
+            ex.printStackTrace();
+            LogFileCreator.writeErrorToLog(ex);
+        }
+        return "update";
+    }
+
+    public String Delete() {
+        try {
 //            if (getSub().getUsername().equals(inputBean.getUsername())) {
 //                inputBean.setMessage(SystemMessage.USR_DELETED_ERROR_SESSUSR);
 //                inputBean.setSuccess(false);
 //                return "delete";
 //            }
-//            if (service.deleteData(inputBean)) {
-//                LogFileCreator.writeInfoToLog(SystemMessage.USR_DELETED);
-//                inputBean.setMessage(SystemMessage.USR_DELETED);
-//                inputBean.setSuccess(true);
-//            } else {
-//                inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
-//                inputBean.setSuccess(false);
-//            }
-//
-//        } catch (Exception ex) {
-//            inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
-//            inputBean.setSuccess(false);
-//            ex.printStackTrace();
-//            LogFileCreator.writeErrorToLog(ex);
-//        }
-//
-//        return "delete";
-//    }
-
-    public String Add() {
-        try {
-            if (doValidation(inputBean)) {
-
-                if (service.addData(inputBean)) {
-                    addActionMessage(SystemMessage.MEMB_ADD);
-                    LogFileCreator.writeInfoToLog(SystemMessage.MEMB_ADD);
-
-                } else {
-                    addActionError(SystemMessage.MEMB_ADD_FAIL);
-                }
+            if (service.deleteData(inputBean)) {
+                LogFileCreator.writeInfoToLog(SystemMessage.USR_DELETED);
+                inputBean.setMessage(SystemMessage.USR_DELETED);
+                inputBean.setSuccess(true);
+            } else {
+                inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
+                inputBean.setSuccess(false);
             }
 
         } catch (Exception ex) {
-            addActionError(SystemMessage.MEMB_ADD_FAIL);
+            inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
+            inputBean.setSuccess(false);
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
         }
 
-        return "add";
+        return "delete";
     }
+
+
 
     private boolean doValidation(MemberManagementInputBean userBean) throws Exception {
         boolean ok = false;
@@ -327,11 +304,11 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 
     }
 
-//    private boolean doValidationUpdate(MemberManagementInputBean userBean) throws Exception {
-//        boolean ok = false;
-//
-//        try {
-//
+    private boolean doValidationUpdate(MemberManagementInputBean userBean) throws Exception {
+        boolean ok = false;
+
+        try {
+
 //            if (userBean.getUpname() == null || userBean.getUpname().isEmpty()) {
 //                addActionError(SystemMessage.USR_NAME_EMPTY);
 //                return ok;
@@ -361,13 +338,13 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 //            } else {
 //                ok = true;
 //            }
-//
-//        } catch (Exception e) {
-//            throw e;
-//        }
-//        return ok;
-//
-//    }
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return ok;
+
+    }
 
     private boolean applyUserPrivileges() {
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -400,7 +377,7 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
     public boolean checkAccess(String method, int userRole) {
         boolean status = false;
         applyUserPrivileges();
-        String page = PageVarList.ADD_MEMBER_MANAGEMENT;
+        String page = PageVarList.EDITVIEW_MEMBER_MANAGEMENT;
         String task = null;
         if ("View".equals(method)) {
             task = TaskVarList.VIEW;
@@ -430,3 +407,4 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
     }
 
 }
+

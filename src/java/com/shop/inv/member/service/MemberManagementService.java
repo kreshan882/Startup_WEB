@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import org.jpos.iso.ISOUtil;
 
 /**
  *
@@ -23,46 +24,47 @@ import java.util.List;
  */
 public class MemberManagementService {
     
-//    public List<MemberBean> loadData(MemberManagementInputBean bean, String orderBy, int from, int rows) throws Exception {
-//        PreparedStatement prepSt = null;
-//        ResultSet res = null;
-//        Connection con = null;
-//        String getUsersListQuery = null;
-//        List<MemberBean> dataList = null;
-//        long totalCount = 0;
-//        try {
-//
-//            con = DBConnection.getConnection();
-//            //con.setAutoCommit(true);
-//            String sqlCount = "select count(*) AS TOTAL FROM web_user where USERNAME LIKE ?";
-//            prepSt = con.prepareStatement(sqlCount);
-//            prepSt.setString(1, "%" + bean.getSearchname() + "%");
-//            res = prepSt.executeQuery();
-//            if (res.next()) {
-//                totalCount = res.getLong("TOTAL");
-//            }
-//            if (res != null) {
-//                res.close();
-//            }
-//            if (prepSt != null) {
-//                prepSt.close();
-//            }
-//
-//
-//            getUsersListQuery = "SELECT up.DESCRIPTION AS PROFILENAME,u.NAME,u.USERNAME,u.PROFILE_ID, u.EMAIL,"
-//                    + "u.MOBILE,u.STATUS,u.CREATE_DATE  "
-//                    + "FROM WEB_USER u,WEB_USER_PROFILE up  "
-//                    + "where u.PROFILE_ID=up.PROFILE_ID AND UPPER(u.USERNAME) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
-//
-//            prepSt = con.prepareStatement(getUsersListQuery);
-//            prepSt.setString(1, "%" + bean.getSearchname().toUpperCase() + "%");
-//            res = prepSt.executeQuery();
-//
-//            dataList = new ArrayList<MemberBean>();
-//
-//            while (res.next()) {
-//                MemberBean dataBean = new MemberBean();
-//
+    public List<MemberBean> loadData(MemberManagementInputBean bean, String orderBy, int from, int rows) throws Exception {
+        PreparedStatement prepSt = null;
+        ResultSet res = null;
+        Connection con = null;
+        String getUsersListQuery = null;
+        List<MemberBean> dataList = null;
+        long totalCount = 0;
+        try {
+
+            con = DBConnection.getConnection();
+            //con.setAutoCommit(true);
+            //String sqlCount = "select count(*) AS TOTAL FROM web_user where USERNAME LIKE ?";
+            String sqlCount = "select count(*) AS TOTAL FROM dma_member where MEM_ID LIKE ? or  MEM_NAME=?";
+            prepSt = con.prepareStatement(sqlCount);
+            prepSt.setString(1, "%" + bean.getSearchname() + "%");
+            res = prepSt.executeQuery();
+            if (res.next()) {
+                totalCount = res.getLong("TOTAL");
+            }
+            if (res != null) {
+                res.close();
+            }
+            if (prepSt != null) {
+                prepSt.close();
+            }
+
+
+            getUsersListQuery = "SELECT up.DESCRIPTION AS PROFILENAME,u.NAME,u.USERNAME,u.PROFILE_ID, u.EMAIL,"
+                    + "u.MOBILE,u.STATUS,u.CREATE_DATE  "
+                    + "FROM WEB_USER u,WEB_USER_PROFILE up  "
+                    + "where u.PROFILE_ID=up.PROFILE_ID AND UPPER(u.USERNAME) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
+
+            prepSt = con.prepareStatement(getUsersListQuery);
+            prepSt.setString(1, "%" + bean.getSearchname().toUpperCase() + "%");
+            res = prepSt.executeQuery();
+
+            dataList = new ArrayList<MemberBean>();
+
+            while (res.next()) {
+                MemberBean dataBean = new MemberBean();
+
 //                dataBean.setProfilename(res.getString("PROFILENAME"));
 //                dataBean.setName(res.getString("NAME"));
 //                dataBean.setUsername(res.getString("USERNAME"));
@@ -70,47 +72,47 @@ public class MemberManagementService {
 //
 //                dataBean.setEmail(res.getString("EMAIL"));
 //                dataBean.setMobile(res.getString("MOBILE"));
-//                dataBean.setStatus(res.getString("STATUS"));
-//                dataBean.setRegDate(res.getString("CREATE_DATE"));
-//                
-//                dataBean.setFullCount(totalCount);
-//                dataList.add(dataBean);
-//            }
-//        } catch (Exception e) {
-//            throw e;
-//        } finally {
-//            if (res != null) {
-//                res.close();
-//            }
-//            if (prepSt != null) {
-//                prepSt.close();
-//            }
-//            
-//            if (con != null) {
-//                con.close();
-//            }
-//
-//        }
-//        return dataList;
-//    }
-//
-//    public void findData(MemberManagementInputBean bean) throws Exception {
-//
-//        PreparedStatement prepSt = null;
-//        ResultSet res = null;
-//        Connection con = null;
-//        String getUsersListQuery = null;
-//        try {
-//
-//            con = DBConnection.getConnection();
-//            //con.setAutoCommit(true);
-//            getUsersListQuery = "SELECT USERNAME,NAME,PROFILE_ID,STATUS,EMAIL,MOBILE "
-//                    + " from WEB_USER Where USERNAME=?";
-//
-//            prepSt = con.prepareStatement(getUsersListQuery);
+                dataBean.setStatus(res.getString("STATUS"));
+                dataBean.setRegDate(res.getString("CREATE_DATE"));
+                
+                dataBean.setFullCount(totalCount);
+                dataList.add(dataBean);
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (res != null) {
+                res.close();
+            }
+            if (prepSt != null) {
+                prepSt.close();
+            }
+            
+            if (con != null) {
+                con.close();
+            }
+
+        }
+        return dataList;
+    }
+
+    public void findData(MemberManagementInputBean bean) throws Exception {
+
+        PreparedStatement prepSt = null;
+        ResultSet res = null;
+        Connection con = null;
+        String getUsersListQuery = null;
+        try {
+
+            con = DBConnection.getConnection();
+            //con.setAutoCommit(true);
+            getUsersListQuery = "SELECT USERNAME,NAME,PROFILE_ID,STATUS,EMAIL,MOBILE "
+                    + " from WEB_USER Where USERNAME=?";
+
+            prepSt = con.prepareStatement(getUsersListQuery);
 //            prepSt.setString(1, bean.getUsername());
-//            res = prepSt.executeQuery();
-//            while (res.next()) {
+            res = prepSt.executeQuery();
+            while (res.next()) {
 //                bean.setUpusername(res.getString("USERNAME"));
 //                bean.setUpusernamecopy(res.getString("USERNAME"));
 //                bean.setUpname(res.getString("NAME"));
@@ -119,40 +121,40 @@ public class MemberManagementService {
 //                bean.setUpstatus(res.getString("STATUS"));
 //                bean.setUpemail(res.getString("EMAIL"));
 //                bean.setUpmobile(res.getString("MOBILE"));
-//
-//            }
-//        } catch (Exception e) {
-//            throw e;
-//        } finally {
-//            if (res != null) {
-//                res.close();
-//            }
-//            if (prepSt != null) {
-//                prepSt.close();
-//            }
-//            if (con != null) {
-//                con.close();
-//            }
-//
-//        }
-//
-//    }
-//
-//    public boolean updateData(MemberManagementInputBean inputBean) throws Exception {
-//
-//        boolean ok = false;
-//        PreparedStatement prepSt = null;
-//        ResultSet res = null;
-//        Connection con = null;
-//        String sql = null;
-//        try {
-//
-//            con = DBConnection.getConnection();
-//            //con.setAutoCommit(true);
-//
-//            sql = "UPDATE WEB_USER SET NAME=?,USERNAME=?,PROFILE_ID=?,STATUS=?,"
-//                    + "EMAIL=?,MOBILE=? Where USERNAME=?";
-//            prepSt = con.prepareStatement(sql);
+
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (res != null) {
+                res.close();
+            }
+            if (prepSt != null) {
+                prepSt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+
+        }
+
+    }
+
+    public boolean updateData(MemberManagementInputBean inputBean) throws Exception {
+
+        boolean ok = false;
+        PreparedStatement prepSt = null;
+        ResultSet res = null;
+        Connection con = null;
+        String sql = null;
+        try {
+
+            con = DBConnection.getConnection();
+            //con.setAutoCommit(true);
+
+            sql = "UPDATE WEB_USER SET NAME=?,USERNAME=?,PROFILE_ID=?,STATUS=?,"
+                    + "EMAIL=?,MOBILE=? Where USERNAME=?";
+            prepSt = con.prepareStatement(sql);
 //            prepSt.setString(1, inputBean.getUpname());
 //            System.out.println("update="+inputBean.getUpusername().toLowerCase());
 //            prepSt.setString(2, inputBean.getUpusername().toLowerCase());
@@ -162,62 +164,62 @@ public class MemberManagementService {
 //            prepSt.setString(5, inputBean.getUpemail());
 //            prepSt.setString(6, inputBean.getUpmobile());
 //            prepSt.setString(7, inputBean.getUpusernamecopy());
-//
-//            int n = prepSt.executeUpdate();
-//            if (n > 0) {
-//                ok = true;
-//            }
-//
-//        } catch (Exception e) {
-////            con.rollback();
-//            throw e;
-//        } finally {
-//            if (res != null) {
-//                res.close();
-//            }
-//            if (prepSt != null) {
-//                prepSt.close();
-//            }
-//            
-//            if (con != null) {
-//                con.close();
-//            }
-//        }
-//        return ok;
-//    }
-//
-//    public boolean deleteData(MemberManagementInputBean bean) throws Exception {
-//
-//        PreparedStatement prepSt = null;
-//        Connection con = null;
-//        String deleteUser = null;
-//        boolean ok = false;
-//        try {
-//
-//            con = DBConnection.getConnection();
-//            con.setAutoCommit(false);
-//            deleteUser = "DELETE FROM WEB_USER  where USERNAME=? ";
-//            prepSt = con.prepareStatement(deleteUser);
-//            prepSt.setString(1, bean.getUsername());
-//            int n = prepSt.executeUpdate();
-//            if (n > 0) {
-//                ok = true;
-//            }
-//            con.commit();
-//        } catch (Exception e) {
+
+            int n = prepSt.executeUpdate();
+            if (n > 0) {
+                ok = true;
+            }
+
+        } catch (Exception e) {
 //            con.rollback();
-//            ok = false;
-//            throw e;
-//        } finally {
-//            if (prepSt != null) {
-//                prepSt.close();
-//            }
-//            if (con != null) {
-//                con.close();
-//            }
-//        }
-//        return ok;
-//    }
+            throw e;
+        } finally {
+            if (res != null) {
+                res.close();
+            }
+            if (prepSt != null) {
+                prepSt.close();
+            }
+            
+            if (con != null) {
+                con.close();
+            }
+        }
+        return ok;
+    }
+
+    public boolean deleteData(MemberManagementInputBean bean) throws Exception {
+
+        PreparedStatement prepSt = null;
+        Connection con = null;
+        String deleteUser = null;
+        boolean ok = false;
+        try {
+
+            con = DBConnection.getConnection();
+            con.setAutoCommit(false);
+            deleteUser = "DELETE FROM WEB_USER  where USERNAME=? ";
+            prepSt = con.prepareStatement(deleteUser);
+//            prepSt.setString(1, bean.getUsername());
+            int n = prepSt.executeUpdate();
+            if (n > 0) {
+                ok = true;
+            }
+            con.commit();
+        } catch (Exception e) {
+            con.rollback();
+            ok = false;
+            throw e;
+        } finally {
+            if (prepSt != null) {
+                prepSt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return ok;
+    }
 
 
 
@@ -378,5 +380,37 @@ public class MemberManagementService {
         }
 
     }
+    public String getlastMemId() throws Exception {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet result = null;
+        int lastMemId=0;
+        String lastMemIdStr="M";
+        try {
+            connection = DBConnection.getConnection();
+            connection.setAutoCommit(true);
+            String sql = " SELECT max(MEM_ID) AS LST_MEM_ID  FROM dma_member";
+            ps = connection.prepareStatement(sql);
+            result = ps.executeQuery();
 
+            if (result.next()) {
+                lastMemId = result.getInt("LST_MEM_ID");
+                lastMemId=lastMemId+1;
+                lastMemIdStr=lastMemIdStr.concat(ISOUtil.zeropad(""+lastMemId, 5));
+            }
+        } catch (Exception ex) {
+            throw ex;
+        } finally {
+            if (result != null) {
+                result.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    return lastMemIdStr;
+    }
 }
