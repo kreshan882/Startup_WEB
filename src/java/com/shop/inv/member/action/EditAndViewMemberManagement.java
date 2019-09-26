@@ -169,6 +169,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
 
                 inputBean.setReportdatalist(service.downloadData(inputBean));
 
+                inputBean.setFileName("cert_M001.pdf");
         }catch(Exception e){
             addActionError(SystemMessage.COMMON_ERROR_PROCESS);
             e.printStackTrace();

@@ -132,7 +132,18 @@ public class MemberManagementInputBean {
     //report download
     Map parameterMap = new HashMap();
     List<MemberBean> reportdatalist = null;
+    private String fileName;
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    
+    
     public Map getParameterMap() {
         return parameterMap;
     }

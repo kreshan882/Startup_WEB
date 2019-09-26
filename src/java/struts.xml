@@ -91,11 +91,12 @@
             <result name="delete"  type="json"  ></result>   
             <result name="loaddata"  type="json"  ></result> 
             <result name="txnreport" type="jasper">            
-                <param name="location">/resources/jasper/txnTable.jasper</param>
+                <param name="location">/resources/jasper/printCert2.jasper</param>
                 <param name="dataSource">reportdatalist</param>
                 <param name="format">PDF</param>
                 <param name="reportParameters">parameterMap</param>
-                <param name="contentDisposition">attachment;filename=TxnReport.pdf</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+<!--                <param name="contentDisposition">attachment;filename=CERT_My.pdf</param>-->
             </result> 
         </action>
         
