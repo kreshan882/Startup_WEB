@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ttt" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7261dc0-ff94-44ff-8b1d-cba0faf92a90">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select 'TBL_ID' AS TTT
+from dual]]>
+	</queryString>
+	<field name="TTT" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="243" y="29" width="100" height="20" uuid="9afcafe4-1a7b-45d3-8176-9697d91acc32"/>
+				<text><![CDATA[fffffffffffffffff]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="262" y="0" width="100" height="20" uuid="4fac2ecf-b3b7-4f5c-ac43-b1b43893072d"/>
+				<text><![CDATA[Static text-1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="100" height="20" uuid="57e9ec86-fdf3-44c7-9971-604b2b7be972"/>
+				<text><![CDATA[TTT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="262" y="14" width="100" height="20" uuid="4b6259cc-7196-4ecd-826d-ba0a18739e82"/>
+				<text><![CDATA[Static text-2]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="69" y="14" width="100" height="20" uuid="9ea73ffa-16b3-473f-9e99-65ab169c9a6f"/>
+				<textFieldExpression><![CDATA[$F{TTT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="262" y="25" width="100" height="20" uuid="58495b5f-c779-48cc-a2b7-c7ada5c88e26"/>
+				<text><![CDATA[Static text-3]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

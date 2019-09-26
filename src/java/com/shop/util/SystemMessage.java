@@ -134,6 +134,9 @@ public class SystemMessage {
     public static final String MEMB_ADD = "Member registration successful";
     public static final String MEMB_ADD_FAIL = "Member registration fail";
 
+    public static final String MEMB_DELETED = "Member deleted successfully";
+    public static final String MEMB_DELETED_ERROR = "Member delete failed";
+    
 //
 //    /////////////////////////////////////////////////////////////////////////////////
 //    //TRANSACTION MANAGEMENT

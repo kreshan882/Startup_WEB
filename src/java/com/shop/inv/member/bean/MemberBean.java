@@ -11,51 +11,93 @@ package com.shop.inv.member.bean;
  */
 public class MemberBean {
         
-    private String memberId;
+    private String memOriId;
     
-    private String name;
-    private String nic;
-    private String email;
+    private String memId;
+    private String memName;
+    private String memNic;
+    private String memDob;
+    private String phoneNo;
+    private String memBornPlace;
+    private String memCast;
 
 
+    //report
+    private String CUS_NAME;
     private String status;
     private String regDate;
     
     private long fullCount;
 
+    public String getMemOriId() {
+        return memOriId;
+    }
+
+    public void setMemOriId(String memOriId) {
+        this.memOriId = memOriId;
+    }
+
+    public String getMemId() {
+        return memId;
+    }
+
+    public void setMemId(String memId) {
+        this.memId = memId;
+    }
+
     
     
-    public String getMemberId() {
-        return memberId;
+
+
+    public String getMemName() {
+        return memName;
     }
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
+    public void setMemName(String memName) {
+        this.memName = memName;
     }
 
-    public String getName() {
-        return name;
+    public String getMemNic() {
+        return memNic;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMemNic(String memNic) {
+        this.memNic = memNic;
     }
 
-    public String getNic() {
-        return nic;
+    public String getMemDob() {
+        return memDob;
     }
 
-    public void setNic(String nic) {
-        this.nic = nic;
+    public void setMemDob(String memDob) {
+        this.memDob = memDob;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
+
+    public String getMemBornPlace() {
+        return memBornPlace;
+    }
+
+    public void setMemBornPlace(String memBornPlace) {
+        this.memBornPlace = memBornPlace;
+    }
+
+    public String getMemCast() {
+        return memCast;
+    }
+
+    public void setMemCast(String memCast) {
+        this.memCast = memCast;
+    }
+
+
 
     public String getStatus() {
         return status;
@@ -79,6 +121,14 @@ public class MemberBean {
 
     public void setFullCount(long fullCount) {
         this.fullCount = fullCount;
+    }
+
+    public String getCUS_NAME() {
+        return CUS_NAME;
+    }
+
+    public void setCUS_NAME(String CUS_NAME) {
+        this.CUS_NAME = CUS_NAME;
     }
     
     

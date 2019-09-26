@@ -56,7 +56,8 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
             inputBean.setMemId(service.getlastMemId());
             inputBean.getMemIslifeList().putAll(inputBean.getMemIslifeList());
             inputBean.getIsMerridList().putAll(inputBean.getIsMerridList());
-            inputBean.getNumberList().putAll(inputBean.getNumberList());        
+            inputBean.getNumberList().putAll(inputBean.getNumberList());    
+            inputBean.getStatusList().putAll(inputBean.getStatusList());
         } catch (Exception ex) {
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
@@ -136,22 +137,18 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
 
     public String Delete() {
         try {
-//            if (getSub().getUsername().equals(inputBean.getUsername())) {
-//                inputBean.setMessage(SystemMessage.USR_DELETED_ERROR_SESSUSR);
-//                inputBean.setSuccess(false);
-//                return "delete";
-//            }
+
             if (service.deleteData(inputBean)) {
-                LogFileCreator.writeInfoToLog(SystemMessage.USR_DELETED);
-                inputBean.setMessage(SystemMessage.USR_DELETED);
+                LogFileCreator.writeInfoToLog(SystemMessage.MEMB_DELETED);
+                inputBean.setMessage(SystemMessage.MEMB_DELETED);
                 inputBean.setSuccess(true);
             } else {
-                inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
+                inputBean.setMessage(SystemMessage.MEMB_DELETED_ERROR);
                 inputBean.setSuccess(false);
             }
 
         } catch (Exception ex) {
-            inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
+            inputBean.setMessage(SystemMessage.MEMB_DELETED_ERROR);
             inputBean.setSuccess(false);
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
@@ -160,7 +157,27 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
         return "delete";
     }
 
+    public String Download() throws Exception {
+        System.out.println("here 1");
 
+        try{ 
+            
+                //System.out.println("here 3");
+                inputBean.getParameterMap().put("Txn_From", "3");
+                inputBean.getParameterMap().put("Txn_To", "4");
+                inputBean.getParameterMap().put("Channel_type", "ck");
+
+                inputBean.setReportdatalist(service.downloadData(inputBean));
+
+        }catch(Exception e){
+            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
+            e.printStackTrace();
+            LogFileCreator.writeErrorToLog(e);
+        }
+        return "txnreport";
+        
+
+    }
 
     private boolean doValidation(MemberManagementInputBean userBean) throws Exception {
         boolean ok = false;
@@ -392,7 +409,10 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
         } else if ("Delete".equals(method)) {
             task = TaskVarList.DELETE;
         } else if ("Download".equals(method)) {
-            task = TaskVarList.DOWNLOAD;
+            System.out.println("downnnnnn000");
+            task = TaskVarList.UPDATE;
+            return true;
+            //task = TaskVarList.DOWNLOAD;
         } else if ("ResetPw".equals(method)) {
             task = TaskVarList.PWRESET;
         }

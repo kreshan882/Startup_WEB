@@ -22,7 +22,7 @@ public class MemberManagementInputBean {
     private boolean search;
     
     //Add data
-    private String memId;
+    private String memId; //1,2,3
     private String memName;
     private String memNic;
     private String memDob;
@@ -91,7 +91,11 @@ public class MemberManagementInputBean {
     private String message;
     private boolean success;
 
-//   //Update Data
+    
+    
+   //Update Data
+    private String status;     
+    private Map<Integer,String>  statusList=Util.getBasicStatus();
 //    private String upusername;
 //    private String upusernamecopy;
 //
@@ -124,6 +128,30 @@ public class MemberManagementInputBean {
     private String searchString;
     private String searchOper;
 
+    
+    //report download
+    Map parameterMap = new HashMap();
+    List<MemberBean> reportdatalist = null;
+
+    public Map getParameterMap() {
+        return parameterMap;
+    }
+
+    public void setParameterMap(Map parameterMap) {
+        this.parameterMap = parameterMap;
+    }
+
+    public List<MemberBean> getReportdatalist() {
+        return reportdatalist;
+    }
+
+    public void setReportdatalist(List<MemberBean> reportdatalist) {
+        this.reportdatalist = reportdatalist;
+    }
+    
+    
+    
+    
     public String getSearchname() {
         return searchname;
     }
@@ -138,6 +166,22 @@ public class MemberManagementInputBean {
 
     public void setSearch(boolean search) {
         this.search = search;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Map<Integer, String> getStatusList() {
+        return statusList;
+    }
+
+    public void setStatusList(Map<Integer, String> statusList) {
+        this.statusList = statusList;
     }
 
     

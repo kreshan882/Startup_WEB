@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.jpos.iso.ISOUtil;
@@ -36,9 +37,11 @@ public class MemberManagementService {
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
             //String sqlCount = "select count(*) AS TOTAL FROM web_user where USERNAME LIKE ?";
-            String sqlCount = "select count(*) AS TOTAL FROM dma_member where MEM_ID LIKE ? or  MEM_NAME=?";
+            String sqlCount = "select count(*) AS TOTAL FROM dma_member where MEM_ID LIKE ? or  MEM_NAME=? or MEM_NIC like ?";
             prepSt = con.prepareStatement(sqlCount);
-            prepSt.setString(1, "%" + bean.getSearchname() + "%");
+            prepSt.setString(1, "%" + bean.getSearchname().toUpperCase() + "%");
+            prepSt.setString(2, "%" + bean.getSearchname().toUpperCase() + "%");
+            prepSt.setString(3, "%" + bean.getSearchname().toUpperCase() + "%");
             res = prepSt.executeQuery();
             if (res.next()) {
                 totalCount = res.getLong("TOTAL");
@@ -49,15 +52,20 @@ public class MemberManagementService {
             if (prepSt != null) {
                 prepSt.close();
             }
+            getUsersListQuery ="SELECT M.MEM_ID,M.MEM_NAME,M.MEM_NIC, M.MEM_DOB, M.MEM_PHONE, "
+                    + "M.MEM_BORN_PLACE, M.MEM_CAST, MC.CAST_NAME, M.CREATE_DATE,M.STATUS "
+                    + "FROM dma_member M, dma_cast MC where M.MEM_CAST=MC.CAST_ID "
+                    + "and (M.MEM_ID like ? or M.MEM_NAME like ? or M.MEM_NIC like ? )";
 
-
-            getUsersListQuery = "SELECT up.DESCRIPTION AS PROFILENAME,u.NAME,u.USERNAME,u.PROFILE_ID, u.EMAIL,"
-                    + "u.MOBILE,u.STATUS,u.CREATE_DATE  "
-                    + "FROM WEB_USER u,WEB_USER_PROFILE up  "
-                    + "where u.PROFILE_ID=up.PROFILE_ID AND UPPER(u.USERNAME) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
+//            getUsersListQuery = "SELECT up.DESCRIPTION AS PROFILENAME,u.NAME,u.USERNAME,u.PROFILE_ID, u.EMAIL,"
+//                    + "u.MOBILE,u.STATUS,u.CREATE_DATE  "
+//                    + "FROM WEB_USER u,WEB_USER_PROFILE up  "
+//                    + "where u.PROFILE_ID=up.PROFILE_ID AND UPPER(u.USERNAME) LIKE ? " + orderBy + " LIMIT " + from + "," + rows;
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, "%" + bean.getSearchname().toUpperCase() + "%");
+            prepSt.setString(2, "%" + bean.getSearchname().toUpperCase() + "%");
+            prepSt.setString(3, "%" + bean.getSearchname().toUpperCase() + "%");
             res = prepSt.executeQuery();
 
             dataList = new ArrayList<MemberBean>();
@@ -65,13 +73,16 @@ public class MemberManagementService {
             while (res.next()) {
                 MemberBean dataBean = new MemberBean();
 
-//                dataBean.setProfilename(res.getString("PROFILENAME"));
-//                dataBean.setName(res.getString("NAME"));
-//                dataBean.setUsername(res.getString("USERNAME"));
-//                dataBean.setProfileId(res.getString("PROFILE_ID"));
-//
-//                dataBean.setEmail(res.getString("EMAIL"));
-//                dataBean.setMobile(res.getString("MOBILE"));
+                dataBean.setMemOriId(res.getString("MEM_ID"));
+                dataBean.setMemId("M"+ISOUtil.zeropad(res.getString("MEM_ID"),4));
+                dataBean.setMemName(res.getString("MEM_NAME"));
+                dataBean.setMemNic(res.getString("MEM_NIC"));
+                
+                dataBean.setMemDob(res.getString("MEM_DOB"));
+                dataBean.setPhoneNo(res.getString("MEM_PHONE"));
+                dataBean.setMemBornPlace(res.getString("MEM_BORN_PLACE"));
+                dataBean.setMemCast(res.getString("CAST_NAME"));
+
                 dataBean.setStatus(res.getString("STATUS"));
                 dataBean.setRegDate(res.getString("CREATE_DATE"));
                 
@@ -102,25 +113,27 @@ public class MemberManagementService {
         ResultSet res = null;
         Connection con = null;
         String getUsersListQuery = null;
+        System.out.println("getMemId:"+bean.getMemId());
         try {
 
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
-            getUsersListQuery = "SELECT USERNAME,NAME,PROFILE_ID,STATUS,EMAIL,MOBILE "
-                    + " from WEB_USER Where USERNAME=?";
+            getUsersListQuery = "SELECT MEM_ID,MEM_NAME,EMAIL, "
+                    + "MEM_PHONE,MEM_CAST,STATUS "
+                    + "FROM dma_member where MEM_ID=?";
 
             prepSt = con.prepareStatement(getUsersListQuery);
-//            prepSt.setString(1, bean.getUsername());
+            prepSt.setString(1, bean.getMemId());
             res = prepSt.executeQuery();
             while (res.next()) {
 //                bean.setUpusername(res.getString("USERNAME"));
-//                bean.setUpusernamecopy(res.getString("USERNAME"));
-//                bean.setUpname(res.getString("NAME"));
-//                bean.setUpuserPro(res.getString("PROFILE_ID"));
-//
-//                bean.setUpstatus(res.getString("STATUS"));
-//                bean.setUpemail(res.getString("EMAIL"));
-//                bean.setUpmobile(res.getString("MOBILE"));
+                bean.setMemId(res.getString("MEM_ID"));
+                bean.setMemName(res.getString("MEM_NAME"));
+                bean.setEmail(res.getString("EMAIL"));
+                
+                bean.setPhoneNo(res.getString("MEM_PHONE"));
+                bean.setMemCast(res.getString("MEM_CAST"));
+                bean.setStatus(res.getString("STATUS"));
 
             }
         } catch (Exception e) {
@@ -189,7 +202,7 @@ public class MemberManagementService {
     }
 
     public boolean deleteData(MemberManagementInputBean bean) throws Exception {
-
+        System.out.println("del mem id:"+bean.getMemId());
         PreparedStatement prepSt = null;
         Connection con = null;
         String deleteUser = null;
@@ -198,9 +211,9 @@ public class MemberManagementService {
 
             con = DBConnection.getConnection();
             con.setAutoCommit(false);
-            deleteUser = "DELETE FROM WEB_USER  where USERNAME=? ";
+            deleteUser = "DELETE FROM dma_member  where MEM_ID=? ";
             prepSt = con.prepareStatement(deleteUser);
-//            prepSt.setString(1, bean.getUsername());
+            prepSt.setString(1, bean.getMemId());
             int n = prepSt.executeUpdate();
             if (n > 0) {
                 ok = true;
@@ -412,5 +425,83 @@ public class MemberManagementService {
             }
         }
     return lastMemIdStr;
+    }
+    
+    public List<MemberBean> downloadData(MemberManagementInputBean bean) throws SQLException, Exception {
+        //System.out.println("here 4");
+        PreparedStatement prepSt = null;
+        ResultSet res = null;
+        Connection con = null;
+        String getHistoryRecordsQuery = null;
+        List<MemberBean> dataList = null;
+        long totalCount = 0;
+
+
+        try {
+
+//            con = DBConnection.getConnection();
+//            //con.setAutoCommit(true);
+//
+//            getHistoryRecordsQuery = "SELECT  * FROM (select t.TXN_ID AS ID,tt.DESCRIPTION as TXN_TYPE, T.CUSTOMER_ID,\n"
+//                    + "T.RECEPIENT_MOBILE AS RECEPIENT_MOBILE,\n"
+//                    + "t.CHANNEL_TYPE,T.AMOUNT AS AMOUNT,T.ORD_ID AS ORD_ID,T.CUSTOMER_ACCOUNT_NUMBER AS CUSTOMER_ACCOUNT_NUMBER,\n"
+//                    + "T.CUSTOMER_MOBILE AS CUSTOMER_MOBILE,T.TRACE_NO AS REF_NO,T.BATCH_NO,T.SERVICE_CHARGE AS SERVICE_CHARGE  ,\n"
+//                    + "T.TXN_DATE_TIME AS TXN_DATE,T.TIMESTAMP,T.RESPONSE_CODE,S.DESCRIPTION AS STATUS\n"
+//                    + "from CLA_TRANSACTION t,CLA_MT_TXN_TYPE tt,\n"
+//                    + "CLA_MT_STATUS S \n"
+//                    + "where " + where + " and tt.CODE = t.TXN_TYPE AND T.STATUS=S.CODE)t\n"
+//                    + "LEFT OUTER JOIN (select DESCRIPTION AS CH_TYPE ,CODE FROM CLA_MT_LISTENER_TYPE)  t2\n"
+//                    + "ON t.CHANNEL_TYPE = t2.CODE \n"
+//                    + "LEFT  OUTER JOIN (select name AS CUSTOMER_NAME,CUSTOMER_ID FROM CLA_CUSTOMER)  t3\n"
+//                    + "ON t.CUSTOMER_ID = t3.CUSTOMER_ID";
+//
+//            prepSt = con.prepareStatement(getHistoryRecordsQuery);
+//
+//            res = prepSt.executeQuery();
+
+            dataList = new ArrayList<MemberBean>();
+
+            MemberBean dataBean = null;
+
+            dataBean = new MemberBean();
+                dataBean.setCUS_NAME("kkkk");
+                //dataBean.setFullCount(2);
+                dataList.add(dataBean);
+//            while (res.next()) {
+//
+//                dataBean = new MemberManagementInputBean();
+//                dataBean.setTXN_TYPE(res.getString("TXN_TYPE"));
+//                dataBean.setCUS_NAME(res.getString("CUSTOMER_NAME"));
+//                dataBean.setREC_MOBILE(res.getString("RECEPIENT_MOBILE"));
+//                dataBean.setAMOUNT("Rs " + Util.round(res.getString("AMOUNT")));
+//                dataBean.setORDER_ID(res.getString("ORD_ID"));
+//                dataBean.setCUS_ACOUNT(res.getString("CUSTOMER_ACCOUNT_NUMBER"));
+//                dataBean.setChannel(res.getString("CH_TYPE"));
+//                dataBean.setCUS_MOBILE(res.getString("CUSTOMER_MOBILE"));
+//                dataBean.setSERVICE_FEE(Util.round(res.getString("SERVICE_CHARGE")));
+//                dataBean.setDATETIME(Util.formatTimestamp(res.getTimestamp("TIMESTAMP")).toString());
+//                dataBean.setFullCount(totalCount);
+//                dataList.add(dataBean);
+//
+//            }
+
+        } catch (Exception e) {
+            throw e;
+
+        } finally {
+            if (res != null) {
+                res.close();
+            }
+            if (prepSt != null) {
+                prepSt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+
+        }
+
+        return dataList;
+
     }
 }

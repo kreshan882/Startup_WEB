@@ -6,7 +6,7 @@
 <struts>
     <!--<constant name="struts.action.extension" value="blb" />-->
     <!--<constant name="struts.devMode" value="true"/>-->
-    <package name="pglobal" namespace="/" extends="struts-default,json-default">
+    <package name="pglobal" namespace="/" extends="struts-default,json-default,jasperreports-default">
         
         <interceptors>
             <interceptor name="EpicAccesControl" class="com.shop.interceptor.AccessControlInterceptor" />              
@@ -89,7 +89,14 @@
             <result name="list" type="json"></result>           
             <result name="find" type="json"></result>              
             <result name="delete"  type="json"  ></result>   
-            <result name="loaddata"  type="json"  ></result>  
+            <result name="loaddata"  type="json"  ></result> 
+            <result name="txnreport" type="jasper">            
+                <param name="location">/resources/jasper/txnTable.jasper</param>
+                <param name="dataSource">reportdatalist</param>
+                <param name="format">PDF</param>
+                <param name="reportParameters">parameterMap</param>
+                <param name="contentDisposition">attachment;filename=TxnReport.pdf</param>
+            </result> 
         </action>
         
         
