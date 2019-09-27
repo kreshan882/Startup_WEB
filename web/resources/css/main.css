@@ -228,10 +228,10 @@ html,body {
     position: absolute;
     background-image: url(../images/left.png);
     background-repeat: no-repeat;
-    margin-top: 0px;
+    margin-top: 3px;
     margin-left: 0px;
     height: 35px;
-    width: 590px;
+    width: 620px;
 }
 .rightimg{
     position: absolute;

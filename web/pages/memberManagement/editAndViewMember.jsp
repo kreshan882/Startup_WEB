@@ -54,7 +54,7 @@
             }
             
             function downloadformatter(cellvalue, options, rowObject) {
-                return "<a href='#' onClick='javascript:downloadNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/iconEdit.png' /></a>";
+                return "<a href='#' onClick='javascript:downloadNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/download.png' /></a>";
             }
 //            function pdchangeformatter(cellvalue, options, rowObject) {
 //                return "<a href='#' onClick='javascript:pdchangeNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/iconEdit.png' /></a>";

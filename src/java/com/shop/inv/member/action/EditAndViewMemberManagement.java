@@ -25,6 +25,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
+import org.jpos.iso.ISOUtil;
 
 /**
  *
@@ -158,18 +159,19 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
     }
 
     public String Download() throws Exception {
-        System.out.println("here 1");
-
+        System.out.println("here 1"+inputBean.getMemId());
+        inputBean.setMemId("4");
         try{ 
-            
-                //System.out.println("here 3");
-                inputBean.getParameterMap().put("Txn_From", "3");
-                inputBean.getParameterMap().put("Txn_To", "4");
-                inputBean.getParameterMap().put("Channel_type", "ck");
+                service.loadReportData(inputBean);
 
-                inputBean.setReportdatalist(service.downloadData(inputBean));
-
-                inputBean.setFileName("cert_M001.pdf");
+                
+//                inputBean.getParameterMap().put("Txn_From", "3");
+//                inputBean.getParameterMap().put("Txn_To", "4");
+//                inputBean.getParameterMap().put("Channel_type", "ck");
+//                inputBean.setReportdatalist(service.downloadData(inputBean)); // sun list
+                
+                String Cert_Name="cert_M"+ISOUtil.zeropad(inputBean.getMemId(), 4)+".pdf";
+                inputBean.setFileName(Cert_Name);
         }catch(Exception e){
             addActionError(SystemMessage.COMMON_ERROR_PROCESS);
             e.printStackTrace();

@@ -2,9 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="txnTable" pageWidth="595" pageHeight="842" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="10" uuid="66519d71-4f27-4833-9a1d-c9b72e811f0c">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.2100000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="79"/>
+	<property name="ireport.y" value="498"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -166,7 +166,7 @@
 			<staticText>
 				<reportElement x="2" y="180" width="90" height="20" uuid="c42b24ae-f0ab-43aa-8ea9-aff8f28f1fd9"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Nic]]></text>
+				<text><![CDATA[NIC]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="2" y="200" width="90" height="20" uuid="65cd9eac-6f01-4b6e-a793-9998ee7094bf"/>
@@ -286,12 +286,12 @@
 			<staticText>
 				<reportElement x="363" y="221" width="73" height="20" uuid="49e6eafa-185c-4d53-a506-832341f6ff9c"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Dob]]></text>
+				<text><![CDATA[DOB]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="363" y="241" width="73" height="20" uuid="6791594b-a970-444f-983b-0283428e2087"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Married Status]]></text>
+				<text><![CDATA[Civil Status]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="92" y="240" width="5" height="20" uuid="a2196eb0-5e3c-4163-ab69-7183989a1103"/>
@@ -555,6 +555,10 @@
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{GRA_MOT_CAST}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="66" y="161" width="400" height="560" uuid="b09a311c-16ca-4bad-a73e-5f7ee86ff1d1"/>
+				<imageExpression><![CDATA["C:\\Users\\Kreshan Rajendran\\Desktop\\myLogo\\blackandwhite10.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnFooter>
@@ -565,16 +569,16 @@
 			<frame>
 				<reportElement mode="Opaque" x="-22" y="-17" width="598" height="17" forecolor="#D0B48E" backcolor="#99CCFF" uuid="f2324113-3563-4f48-b688-ed82b3098434"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" mode="Transparent" x="536" y="1" width="40" height="15" forecolor="#000000" uuid="9f676d3f-1486-4a48-96ce-fa0a2b7a1577"/>
+					<reportElement style="Column header" mode="Transparent" x="536" y="1" width="40" height="15" forecolor="#333333" uuid="9f676d3f-1486-4a48-96ce-fa0a2b7a1577"/>
 					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
+						<font size="7" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" mode="Transparent" x="456" y="1" width="80" height="15" forecolor="#000000" uuid="7415bd49-92ea-42ab-bbad-d370dba3cd03"/>
+					<reportElement style="Column header" mode="Transparent" x="456" y="1" width="80" height="15" forecolor="#333333" uuid="7415bd49-92ea-42ab-bbad-d370dba3cd03"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
+						<font size="7" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
@@ -582,6 +586,13 @@
 					<reportElement mode="Transparent" x="173" y="1" width="251" height="15" forecolor="#000000" uuid="03d83d44-b73b-4861-96d9-cff07c84b9e7"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<text><![CDATA[No-90, Kovil road, Mugathuvaram, Colombo-15]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="24" y="0" width="159" height="16" forecolor="#333333" uuid="fab9d685-be60-473c-9138-86a33be7e273"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Developed by MyWeb.lk [0777418581]]]></text>
 				</staticText>
 			</frame>
 		</band>

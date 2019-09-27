@@ -6,7 +6,7 @@
 
 <div class="foot_note">
     <br>
-    © Inv Syatem (Pvt) Ltd V1.00 [BN:22022019]
+    © kma System V1.00 [BN:26092019]
 </div>
 
 

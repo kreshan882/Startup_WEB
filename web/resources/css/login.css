@@ -36,10 +36,10 @@ box-shadow:         0px 6px 20px 0px rgba(157, 145, 223, 0.69);*/
     position: absolute;
     background-image: url(../images/left.png);
     background-repeat: no-repeat;
-    margin-top: 0px;
+    margin-top: 20px;
     margin-left: 0px;
     height: 67px;
-    width: 590px;
+    width: 620px;
 }
 
 .rightimg{
