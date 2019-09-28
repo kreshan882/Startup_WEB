@@ -9,9 +9,9 @@
     <package name="pglobal" namespace="/" extends="struts-default,json-default,jasperreports-default">
         
         <interceptors>
-            <interceptor name="EpicAccesControl" class="com.shop.interceptor.AccessControlInterceptor" />              
-            <interceptor-stack name="EpicStack">
-                <interceptor-ref name="EpicAccesControl"/> 
+            <interceptor name="WebKAccesControl" class="com.shop.interceptor.AccessControlInterceptor" />              
+            <interceptor-stack name="WebKStack">
+                <interceptor-ref name="WebKAccesControl"/> 
                 <interceptor-ref name="workflow"/>
                 <interceptor-ref name="defaultStack"/>
                 <interceptor-ref name="fileUpload"/>
@@ -21,7 +21,7 @@
             </interceptor-stack>
         </interceptors>
         
-        <default-interceptor-ref name="EpicStack"/> 
+        <default-interceptor-ref name="WebKStack"/> 
                    
         <global-results>
             <result name="noaccessPage" type="chain" >LogoutloginCall</result>
@@ -34,7 +34,7 @@
         
     </package>
 
-    <package name="Epic_Login_DEFAULT" namespace="/" extends="struts-default">
+    <package name="KMA_Login_DEFAULT" namespace="/" extends="struts-default">
         <default-action-ref name="DefLogin"/>
         <action name="DefLogin" class="com.shop.login.action.UserLogin" >
             <result>/pages/login/Login.jsp</result>
@@ -42,7 +42,7 @@
     </package>
      
      
-    <package name="Epic_login_manage" namespace="/" extends="pglobal">           
+    <package name="KMA_login_manage" namespace="/" extends="pglobal">           
         <action name="*loginCall" class="com.shop.login.action.UserLogin" method="{1}">
             <result name="success">/pages/login/Home.jsp</result>
             <result name="login">/pages/login/Login.jsp</result>              
@@ -58,7 +58,7 @@
     </package>
         
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start User Management ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->       
-    <package name="Epic_user_manage" namespace="/" extends="pglobal">
+    <package name="KMA_user_manage" namespace="/" extends="pglobal">
                   
         <action name="*usrMng"    class="com.shop.inv.user.action.UserManagement"   method="{1}"> 
             <result name="success">/pages/userManagement/userManagement.jsp</result>        
@@ -98,10 +98,16 @@
                 <param name="contentDisposition">attachment;filename="${fileName}"</param>
 <!--                <param name="contentDisposition">attachment;filename=CERT_My.pdf</param>-->
             </result> 
-        </action>
-        
-        
+        </action> 
     </package>   
+    
+    <package name="KMA_member_report" namespace="/" extends="pglobal">
+                  
+        <action name="*totMemReport"    class="com.shop.inv.report.action.MemberReport"   method="{1}"> 
+            <result name="success">/pages/reportManagement/memberDetailReport.jsp</result>        
+            <result name="list" type="json"></result>                 
+        </action>
+    </package>  
 </struts>
     
     

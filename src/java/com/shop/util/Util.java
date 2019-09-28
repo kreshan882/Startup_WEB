@@ -4,11 +4,16 @@
  */
 package com.shop.util;
 
+import com.shop.db.DBConnection;
 import com.shop.init.Status;
+import com.shop.inv.member.bean.MemberManagementInputBean;
 import com.shop.login.bean.SessionUserBean;
 import java.math.BigInteger;
 import java.security.Key;
 import java.security.MessageDigest;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -312,5 +317,20 @@ public class Util {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(date);
     }
+   
+   public static String changeDateFormatyyyyMMdd(String date) throws ParseException {
 
+        Date tradeDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
+        String krwtrDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(tradeDate);
+        return krwtrDate;
+    }
+
+
+       public static Map<String, String> getCastList() {
+        Map<String, String> memCastList = new HashMap<String, String>();
+        memCastList.put("01", "Kalar");
+        memCastList.put("02", "Maraver");
+        memCastList.put("03", "Agamudiyar");
+        return memCastList;
+    }
 }
