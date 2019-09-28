@@ -105,7 +105,15 @@
                   
         <action name="*totMemReport"    class="com.shop.inv.report.action.MemberReport"   method="{1}"> 
             <result name="success">/pages/reportManagement/memberDetailReport.jsp</result>        
-            <result name="list" type="json"></result>                 
+            <result name="list" type="json"></result>  
+            <result name="memberreport" type="jasper">            
+                <param name="location">/resources/jasper/memberList2.jasper</param>
+                <param name="dataSource">reportdatalist</param>
+                <param name="format">PDF</param>
+                <param name="reportParameters">parameterMap</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+<!--                <param name="contentDisposition">attachment;filename=CERT_My.pdf</param>-->
+            </result>               
         </action>
     </package>  
 </struts>

@@ -112,14 +112,14 @@ public class MemberReport extends ActionSupport implements ModelDriven<MemberRep
 //                inputBean.getParameterMap().put("Channel_type", "ck");
 //                inputBean.setReportdatalist(service.downloadData(inputBean)); // sun list
                 
-                String Cert_Name="cert_M"+ISOUtil.zeropad(inputBean.getMemId(), 4)+".pdf";
+                String Cert_Name="MemberList_"+Util.getDateNow()+".pdf";
                 inputBean.setFileName(Cert_Name);
         }catch(Exception e){
             addActionError(SystemMessage.COMMON_ERROR_PROCESS);
             e.printStackTrace();
             LogFileCreator.writeErrorToLog(e);
         }
-        return "txnreport";
+        return "memberreport";
         
 
     }

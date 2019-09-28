@@ -128,7 +128,7 @@ public class MemberReportService {
             res = prepSt.executeQuery();
              
             
-            inputBean.getParameterMap().put("CERT_DATE", Util.getDateNow());
+            inputBean.getParameterMap().put("CREATE_DATE", Util.getDateNow());
             
             dataList = new ArrayList<MemberReportBean>();
             MemberReportBean dataBean = null;

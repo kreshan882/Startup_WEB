@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="1.2100000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="498"/>
+	<property name="ireport.y" value="114"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -557,7 +557,7 @@
 			</textField>
 			<image>
 				<reportElement x="66" y="161" width="400" height="560" uuid="b09a311c-16ca-4bad-a73e-5f7ee86ff1d1"/>
-				<imageExpression><![CDATA["C:\\Users\\Kreshan Rajendran\\Desktop\\myLogo\\blackandwhite10.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\my_sys_k\\conf\\logo\\blackandwhite10.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
