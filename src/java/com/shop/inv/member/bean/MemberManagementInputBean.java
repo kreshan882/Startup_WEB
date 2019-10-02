@@ -6,6 +6,7 @@
 package com.shop.inv.member.bean;
 
 import com.shop.util.Util;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -132,8 +133,40 @@ public class MemberManagementInputBean {
     //report download
     Map parameterMap = new HashMap();
     List<MemberBean> reportdatalist = null;
-    private String fileName;
+    private String fileName;   // pdf download file
+    
+    
+    private File   upfile;  // image file upload
+    private String upfileContentType;
+    private String upfileFileName;
 
+    public File getUpfile() {
+        return upfile;
+    }
+
+    public void setUpfile(File upfile) {
+        this.upfile = upfile;
+    }
+
+    public String getUpfileContentType() {
+        return upfileContentType;
+    }
+
+    public void setUpfileContentType(String upfileContentType) {
+        this.upfileContentType = upfileContentType;
+    }
+
+    public String getUpfileFileName() {
+        return upfileFileName;
+    }
+
+    public void setUpfileFileName(String upfileFileName) {
+        this.upfileFileName = upfileFileName;
+    }
+
+    
+    
+    
     public String getFileName() {
         return fileName;
     }

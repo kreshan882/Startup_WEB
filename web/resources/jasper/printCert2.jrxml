@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="1.2100000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="114"/>
+	<property name="ireport.y" value="498"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -559,6 +559,16 @@
 				<reportElement x="66" y="161" width="400" height="560" uuid="b09a311c-16ca-4bad-a73e-5f7ee86ff1d1"/>
 				<imageExpression><![CDATA["C:\\my_sys_k\\conf\\logo\\blackandwhite10.png"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="38" y="739" width="100" height="41" uuid="94eaac29-1c06-4bbc-8ed6-3e9db1122a56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[---------------------------Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="739" width="100" height="41" uuid="820b4665-f89e-4238-987b-4e49a2e8e2c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[---------------------------Signature]]></text>
+			</staticText>
 		</band>
 	</title>
 	<columnFooter>

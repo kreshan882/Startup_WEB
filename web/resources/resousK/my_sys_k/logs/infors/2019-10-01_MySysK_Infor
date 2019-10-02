@@ -1,0 +1,165 @@
+
+Tue Oct 01 11:27:54 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 11:27:59 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 11:28:14 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 11:28:55 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:23:09 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 12:23:15 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:23:24 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:38:22 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 12:38:22 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:38:28 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:38:42 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:Add   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:46:06 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:Add   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:47:18 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:Add   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:54:45 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 12:54:49 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:55:00 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:56:12 IST 2019
+Member registration successful
+
+Tue Oct 01 12:56:14 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:Add   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:56:24 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:56:26 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:List   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:56:42 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:59:38 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 12:59:38 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:59:41 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:59:42 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:List   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 12:59:57 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:Download   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 13:03:32 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 13:03:33 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:List   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 13:03:36 IST 2019
+Class:com.shop.inv.member.action.EditAndViewMemberManagement    Method:Download   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 13:04:34 IST 2019
+Class:com.shop.inv.report.action.MemberReport    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 13:04:35 IST 2019
+Class:com.shop.inv.report.action.MemberReport    Method:List   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 13:04:41 IST 2019
+Class:com.shop.inv.report.action.MemberReport    Method:Download   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 13:04:55 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:53:32 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 15:53:43 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:53:57 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:54:32 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:UploadFile   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:54:36 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:56:28 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 15:56:28 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:56:36 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:56:48 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:UploadFile   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 15:56:48 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:03:01 IST 2019
+Class:com.shop.inv.report.action.MemberReport    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:03:02 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:03:05 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 16:03:05 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:03:10 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:13:48 IST 2019
+User login successful  User:admin
+
+Tue Oct 01 16:13:53 IST 2019
+Class:com.shop.login.action.UserLogin    Method:loginCheck   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:14:05 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:execute   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:14:16 IST 2019
+Class:com.shop.inv.member.action.MemberManagement    Method:UploadFile   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:14:17 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:33:12 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0
+
+Tue Oct 01 16:44:06 IST 2019
+Class:com.shop.login.action.UserLogin    Method:Logout   Msg:Database pool status : free connections : 1  Active connections : 0

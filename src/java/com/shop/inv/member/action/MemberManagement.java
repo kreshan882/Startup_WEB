@@ -24,6 +24,7 @@ import com.shop.util.LogFileCreator;
 import com.shop.util.PasswordValidator;
 import com.shop.util.SystemMessage;
 import com.shop.util.Util;
+import java.io.File;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -184,7 +185,64 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 
         return "add";
     }
+    public String UploadFile() {
+        System.out.println("ddddddddddddddddddddddddddd");
+        try {
+        System.out.println("upload file name ...........0:"+inputBean.getUpfileFileName());
+        File file = inputBean.getUpfile();
+        System.out.println("fole"+file);
+        
+        if (doValidationFile(inputBean)) {
 
+                List<String> ll;
+//               File file = inputBean.getUpfile();
+//               Workbook wb = WorkbookFactory.create(file);
+//               Sheet sheet = wb.getSheetAt(0);
+//               Iterator<Row> rowIterator = sheet.iterator();
+//               while (rowIterator.hasNext()) {
+//                    Row row = rowIterator.next();
+//                    Iterator<Cell> cellIterator = row.cellIterator();
+//
+//                    if (cellIterator.hasNext()) {
+//                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
+//                    }   
+//                    if (cellIterator.hasNext()) {
+//                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
+//                    } 
+//                                                    
+//                }
+                    System.out.println("upload file name ...........1:"+inputBean.getUpfileFileName());
+   
+            }
+
+        } catch (Exception e) {
+            addActionError("builk senf fail...");
+            e.printStackTrace();
+        }
+        return "add";
+    }
+    
+        private boolean doValidationFile(MemberManagementInputBean bean) throws Exception {
+
+        boolean ok = false;
+        String filename = "" + bean.getUpfileFileName();
+        String extension = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
+        String filetypeCheck = "xlsx";
+
+        try {
+
+            if (bean.getUpfileFileName() != null && !extension.equals(filetypeCheck)) {
+                addActionError("wrong file trype..");
+                return ok;
+            } else {
+                ok = true;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+
+        return ok;
+    }
     private boolean doValidation(MemberManagementInputBean userBean) throws Exception {
         boolean ok = false;
         System.out.println(">1:"+userBean.getMemId());
