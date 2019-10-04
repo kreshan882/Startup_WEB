@@ -24,8 +24,10 @@ import com.shop.util.LogFileCreator;
 import com.shop.util.PasswordValidator;
 import com.shop.util.SystemMessage;
 import com.shop.util.Util;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
@@ -186,34 +188,48 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
         return "add";
     }
     public String UploadFile() {
-        System.out.println("ddddddddddddddddddddddddddd");
+        System.out.println("ddddddddddddddddddddddddddd"+inputBean.getMemId());
+        int width = 350;    //width of the image 
+        int height = 350;   //height of the image 
+        BufferedImage image = null; 
+        
         try {
         System.out.println("upload file name ...........0:"+inputBean.getUpfileFileName());
-        File file = inputBean.getUpfile();
-        System.out.println("fole"+file);
+        File input_file = inputBean.getUpfile();
+        System.out.println("fole"+input_file);
         
-        if (doValidationFile(inputBean)) {
+        
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB); 
+            image = ImageIO.read(input_file);  
+            System.out.println("Reading complete."); 
 
-                List<String> ll;
-//               File file = inputBean.getUpfile();
-//               Workbook wb = WorkbookFactory.create(file);
-//               Sheet sheet = wb.getSheetAt(0);
-//               Iterator<Row> rowIterator = sheet.iterator();
-//               while (rowIterator.hasNext()) {
-//                    Row row = rowIterator.next();
-//                    Iterator<Cell> cellIterator = row.cellIterator();
+            
+            
+            File output_file = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\MEM_"+inputBean.getMemId()+".png"); 
+            ImageIO.write(image, "jpg", output_file); 
+            System.out.println("Writing complete.");
+//        if (doValidationFile(inputBean)) {
 //
-//                    if (cellIterator.hasNext()) {
-//                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
-//                    }   
-//                    if (cellIterator.hasNext()) {
-//                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
-//                    } 
-//                                                    
-//                }
-                    System.out.println("upload file name ...........1:"+inputBean.getUpfileFileName());
-   
-            }
+//                List<String> ll;
+////               File file = inputBean.getUpfile();
+////               Workbook wb = WorkbookFactory.create(file);
+////               Sheet sheet = wb.getSheetAt(0);
+////               Iterator<Row> rowIterator = sheet.iterator();
+////               while (rowIterator.hasNext()) {
+////                    Row row = rowIterator.next();
+////                    Iterator<Cell> cellIterator = row.cellIterator();
+////
+////                    if (cellIterator.hasNext()) {
+////                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
+////                    }   
+////                    if (cellIterator.hasNext()) {
+////                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
+////                    } 
+////                                                    
+////                }
+//                    System.out.println("upload file name ...........1:"+inputBean.getUpfileFileName());
+//   
+//            }
 
         } catch (Exception e) {
             addActionError("builk senf fail...");
@@ -480,7 +496,9 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 
         if ("execute".equals(method)) {
             status = true;
-        } else {
+        } else if ("UploadFile".equals(method)) {
+            status = true;
+        }else {
             HttpSession session = ServletActionContext.getRequest().getSession(false);
             status = new Common().checkMethodAccess(task, page, session);
         }

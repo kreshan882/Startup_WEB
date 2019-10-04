@@ -510,12 +510,14 @@
 			<s:form id="addFile" action="UploadFilebulkMsgMng-remove"  theme="simple" enctype="multipart/form-data"  method="post" >         
                             <table class="form_table" style="margin-top: 5px;" border="0px"> 
                                 <tr style=" height: 19px;">
-                                    
+                                    <s:textfield id="memId" name="memId" readonly="true" cssClass="textField" hidden="true" />
                                 </tr>
                                 <tr>
                                     <td class="content_td formLable" width="100px;">Upload File k</td> 
                                     <td class="content_td formLable" width="5px">:</td>
                                     <td colspan="2" width="300px"><s:file  id = "upfile" name="upfile" label="File" cssClass="fileField"  /></td>
+                                    <td style="height: 200px; width:200px"><img src="/imagesK/members/MEM_M00007.png"/></td>
+                                    <!--C:\Users\Kreshan Rajendran\AppData\Roaming\NetBeans\8.2\config\GF_4.1.1\domain1\docroot-->
                                 </tr>
                                 <tr style="height: 73px;">
                                     
