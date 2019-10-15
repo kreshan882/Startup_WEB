@@ -252,7 +252,7 @@
                         <div class="contentcenter">
 
 
-                        <s:form  id="addForm"  theme="simple" method="post" >
+                        <s:form  id="addForm"  theme="simple" enctype="multipart/form-data" method="post" >
   
                             <table class="form_table">
                                 <tr>
@@ -369,6 +369,7 @@
                                         <td class="formLable">Grandfather Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:select  name="grandFatCast" id="grandFatCast"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+
                                     </tr>
                                     <tr>
                                         <td class="formLable">Grandmother Name<span class="mandatory">*</span></td> <td >:</td>
@@ -380,6 +381,7 @@
                                         <td class="formLable">Grandmother Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:select  name="grandMothCast" id="grandMothCast"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        
                                     </tr>
                                     
                                     
@@ -408,66 +410,68 @@
                                     </tr>
                                     <tr>
                                         <td class="formLable">DOB<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:textfield id="wifeName" name="wifeName" cssClass="textField" /></td>                                    
+                                        <td><sj:datepicker id="wifeDob" name="wifeDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1950" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>                                  
                                         <td width="25px;"></td>
                                         <td class="formLable">Address<span class="mandatory">*</span></td> <td>:</td> 
-                                        <td><s:textfield id="wifeName" name="wifeName" cssClass="textField" /></td> 
-                                        <td width="25px;"></td>
-                                        <td class="formLable">Phone<span class="mandatory">*</span></td> <td>:</td> 
-                                        <td><s:textfield id="wifeName" name="wifeName" cssClass="textField" /></td> 
-                                    </tr>
-									<tr>
-                                        <td class="formLable">Mobile<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:textfield id="wifeName" name="wifeName" cssClass="textField" /></td>                                    
+                                        <td><s:textfield id="wifeAdd" name="wifeAdd" cssClass="textField" /></td> 
                                         <td width="25px;"></td>
                                         <td class="formLable">Email<span class="mandatory">*</span></td> <td>:</td> 
-                                        <td><s:textfield id="wifeName" name="wifeName" cssClass="textField" /></td> 
+                                        <td><s:textfield id="wifeEmail" name="wifeEmail" cssClass="textField" /></td> 
+                                    </tr>
+                                    <tr>
+                                        <td class="formLable">Mobile<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:textfield id="wifeMobile" name="wifeMobile" cssClass="textField" /></td>                                     
                                         <td width="25px;"></td>
-
+                                        <td class="formLable">Wife Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:textfield id="wifeBirPlace" name="wifeBirPlace" cssClass="textField" /></td>  
+                                        <td width="25px;"></td>
+                                        <td class="formLable">Wife Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td><s:select  name="wifeCast" id="wifeCast"  headerKey="-1" 
+                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Wife Father Name<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:textfield id="wfatName" name="wfatName" cssClass="textField" /></td>                                    
+                                        <td><s:textfield id="wifeFatName" name="wifeFatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Father Birth Place<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:textfield id="wfatBirthPlace" name="wfatBirthPlace" cssClass="textField" /></td>  
+                                        <td><s:textfield id="wifeFatBirthPlace" name="wifeFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Father Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wfatCast" id="wfatCast"  headerKey="-1" 
+                                        <td><s:select  name="wifeFatCast" id="wifeFatCast"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Wife Mother Name<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:textfield id="wmothName" name="wmothName" cssClass="textField" /></td>                                    
+                                        <td><s:textfield id="wifeMothName" name="wifeMothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Mother Birth Place<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:textfield id="wmothBirthPlace" name="wmothBirthPlace" cssClass="textField" /></td>  
+                                        <td><s:textfield id="wifeMothBirthPlace" name="wifeMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Mother Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wmothCast" id="wmothCast"  headerKey="-1" 
+                                        <td><s:select  name="wifeMothCast" id="wifeMothCast"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
                                     </tr>
                                     
                                     <tr>
                                         <td class="formLable">Wife Grandfather Name<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:textfield id="wgrandFatName" name="wgrandFatName" cssClass="textField" /></td>                                    
+                                        <td><s:textfield id="wifeGrandFatName" name="wifeGrandFatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Grandfather Birth Place<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:textfield id="wgrandFatBirthPlace" name="wgrandFatBirthPlace" cssClass="textField" /></td>  
+                                        <td><s:textfield id="wifeGrandFatBirthPlace" name="wifeGrandFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Grandfather Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wgrandFatCast" id="wgrandFatCast"  headerKey="-1" 
+                                        <td><s:select  name="wifeGrandFatCast" id="wifeGrandFatCast"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Wife Grandmother Name<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:textfield id="wgrandMothName" name="wgrandMothName" cssClass="textField" /></td>                                    
+                                        <td><s:textfield id="wifeGrandMothName" name="wifeGrandMothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Grandmother Birth Place<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:textfield id="wgrandMothBirthPlace" name="wgrandMothBirthPlace" cssClass="textField" /></td>  
+                                        <td><s:textfield id="wifeGrandMothBirthPlace" name="wifeGrandMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Grandmother Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wgrandMothCast" id="wgrandMothCast"  headerKey="-1" 
+                                        <td><s:select  name="wifeGrandMothCast" id="wifeGrandMothCast"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
                                     </tr>
                                     </table>
@@ -478,12 +482,12 @@
                                     <table>
                                     <tr>
                                         <td class="formLable">Member Photo<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:file  id = "upfile" name="upfile" label="File" cssClass="fileField"  /></td>                                    
+                                        <td><s:file  id = "memImgFile" name="memImgFile" label="File" cssClass="fileField"  /></td>                                    
                                         <td width="25px;"></td>
                                     </tr>
-									<tr>
-                                        <td class="formLable">Member Femaly Photo<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><s:file  id = "upfile" name="upfile" label="File" cssClass="fileField"  /></td>                                    
+                                    <tr>
+                                        <td class="formLable">Member Family Photo<span class="mandatory">*</span></td> <td >:</td>
+                                        <td><s:file  id = "famImgFile" name="famImgFile" label="File" cssClass="fileField"  /></td>                                    
                                         <td width="25px;"></td>
                                     </tr>
 
@@ -506,11 +510,11 @@
                                 </tr>
                             </table>
                         </s:form>
-
+<%--
 			<s:form id="addFile" action="UploadFilebulkMsgMng-remove"  theme="simple" enctype="multipart/form-data"  method="post" >         
                             <table class="form_table" style="margin-top: 5px;" border="0px"> 
                                 <tr style=" height: 19px;">
-                                    <s:textfield id="memId" name="memId" readonly="true" cssClass="textField" hidden="true" />
+                                    <s:textfield id="memId" name="memId"  cssClass="textField" />
                                 </tr>
                                 <tr>
                                     <td class="content_td formLable" width="100px;">Upload File k</td> 
@@ -534,7 +538,7 @@
                             </table>
                         </s:form>
 
-  
+  --%>
                     </div>
 
 

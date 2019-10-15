@@ -24,6 +24,8 @@ import com.shop.util.LogFileCreator;
 import com.shop.util.PasswordValidator;
 import com.shop.util.SystemMessage;
 import com.shop.util.Util;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
@@ -31,6 +33,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
+import org.jpos.iso.ISOUtil;
 
 /**
  *
@@ -169,7 +172,9 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
     public String Add() {
         try {
             if (doValidation(inputBean)) {
-
+               boolean rek=MemberManagement.imageUpload(inputBean);
+                System.out.println("image loaded:"+rek);
+                
                 if (service.addData(inputBean)) {
                     addActionMessage(SystemMessage.MEMB_ADD);
                     LogFileCreator.writeInfoToLog(SystemMessage.MEMB_ADD);
@@ -187,49 +192,77 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 
         return "add";
     }
-    public String UploadFile() {
-        System.out.println("ddddddddddddddddddddddddddd"+inputBean.getMemId());
-        int width = 350;    //width of the image 
-        int height = 350;   //height of the image 
-        BufferedImage image = null; 
+    public static boolean imageUpload(MemberManagementInputBean inputBean) {
+        System.out.println("ddddddddddddddddddddddddddd44"+inputBean.getMemId());
+
         
         try {
-        System.out.println("upload file name ...........0:"+inputBean.getUpfileFileName());
-        File input_file = inputBean.getUpfile();
-        System.out.println("fole"+input_file);
-        
-        
-        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB); 
-            image = ImageIO.read(input_file);  
-            System.out.println("Reading complete."); 
+        int width = 600;    //width of the image 
+        int height = 600;   //height of the image 
+            
+        File input_file = inputBean.getMemImgFile();
+        BufferedImage image = ImageIO.read(input_file);
 
-            
-            
-            File output_file = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\MEM_"+inputBean.getMemId()+".png"); 
-            ImageIO.write(image, "jpg", output_file); 
-            System.out.println("Writing complete.");
-//        if (doValidationFile(inputBean)) {
+
+        Image tmp = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = resized.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        
+        
+        
+        File output = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\PRO"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".png");
+        ImageIO.write(resized, "png", output);
+//        if (doValidationFile(bean.getUpfileFileName())) {}
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+    public String UploadFile() {
+        System.out.println("ddddddddddddddddddddddddddd"+inputBean.getMemId());
+
+        
+        try {
+        int width = 600;    //width of the image 
+        int height = 600;   //height of the image 
+//        BufferedImage image = null; 
+//        System.out.println("upload file name ...........0:"+inputBean.getUpfileFileName());
+//        File input_file = inputBean.getUpfile();
+//        System.out.println("fole"+input_file);
+//        
+//        
+//        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB); 
+//            image = ImageIO.read(input_file);  
+//            System.out.println("Reading complete."); 
 //
-//                List<String> ll;
-////               File file = inputBean.getUpfile();
-////               Workbook wb = WorkbookFactory.create(file);
-////               Sheet sheet = wb.getSheetAt(0);
-////               Iterator<Row> rowIterator = sheet.iterator();
-////               while (rowIterator.hasNext()) {
-////                    Row row = rowIterator.next();
-////                    Iterator<Cell> cellIterator = row.cellIterator();
-////
-////                    if (cellIterator.hasNext()) {
-////                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
-////                    }   
-////                    if (cellIterator.hasNext()) {
-////                          System.out.println(">>>nnn"+cellIterator.next().getStringCellValue());
-////                    } 
-////                                                    
-////                }
-//                    System.out.println("upload file name ...........1:"+inputBean.getUpfileFileName());
-//   
-//            }
+//            
+//            
+//            File output_file = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\MEM_"+inputBean.getMemId()+".png"); 
+//            ImageIO.write(image, "jpg", output_file); 
+//            System.out.println("Writing complete.");
+            
+        File input_file = inputBean.getUpfile();
+        BufferedImage image = ImageIO.read(input_file);
+
+
+        Image tmp = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = resized.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        
+        
+        
+        File output = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\MEM_"+inputBean.getMemId()+".png");
+        ImageIO.write(resized, "png", output);
+//        if (doValidationFile(bean.getUpfileFileName())) {}
+
 
         } catch (Exception e) {
             addActionError("builk senf fail...");
@@ -238,16 +271,16 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
         return "add";
     }
     
-        private boolean doValidationFile(MemberManagementInputBean bean) throws Exception {
+        private boolean doValidationFile(String filenamei) throws Exception {
 
         boolean ok = false;
-        String filename = "" + bean.getUpfileFileName();
+        String filename = "" + filenamei;
         String extension = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
-        String filetypeCheck = "xlsx";
+        String filetypeCheck = "jsp";
 
         try {
 
-            if (bean.getUpfileFileName() != null && !extension.equals(filetypeCheck)) {
+            if (filenamei != null && !extension.equals(filetypeCheck)) {
                 addActionError("wrong file trype..");
                 return ok;
             } else {
@@ -385,11 +418,17 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
                 return ok;
             }
             
-            else if (userBean.getIsMerrid().equals("-1")) {
+            else if (userBean.getIsMerrid().equals("-1")) { //1=merried, 0=single
                 addActionError(SystemMessage.MEMB_MERIED_STATUS_SELECT);
                 return ok;
             }
-            
+            else if (userBean.getIsMerrid().equals("1") && !Util.validateDESCRIPTION(userBean.getWifeAdd()) ) { 
+                addActionError("wife address invalid");
+                return ok;
+            }else if (userBean.getIsMerrid().equals("1") &&(userBean.getMemDob() == null || userBean.getMemDob().isEmpty())) {
+                addActionError("wife date of birth empty");
+                return ok;
+            }
             else {
                 ok = true;
             }
@@ -401,47 +440,7 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 
     }
 
-//    private boolean doValidationUpdate(MemberManagementInputBean userBean) throws Exception {
-//        boolean ok = false;
-//
-//        try {
-//
-//            if (userBean.getUpname() == null || userBean.getUpname().isEmpty()) {
-//                addActionError(SystemMessage.USR_NAME_EMPTY);
-//                return ok;
-//            } else if (userBean.getUpusername() == null || userBean.getUpusername().isEmpty()) {
-//                addActionError(SystemMessage.USR_USERNAME_EMPTY);
-//                return ok;
-//            } else if (!Util.validateSTRING(userBean.getUpusername())) {
-//                addActionError(SystemMessage.USR_USERNAME_INVALID);
-//                return ok;
-//            }else if (userBean.getUpuserPro().equals("-1")) {
-//                addActionError(SystemMessage.USR_PROFILE_SELECT);
-//                return ok;
-//            } 
-//            else if (userBean.getUpemail() == null || userBean.getUpemail().isEmpty()) {
-//                addActionError(SystemMessage.USR_EMAIL_EMPTY);
-//                return ok;
-//            } else if (!Util.validateEMAIL(userBean.getUpemail())) {
-//                addActionError(SystemMessage.USR_EMAIL_INVALID);
-//                return ok;
-//            }  else if (!(userBean.getUpmobile().isEmpty() || userBean.getUpmobile() == null) && !Util.validatePHONENO(userBean.getUpmobile())) {
-//                addActionError(SystemMessage.USR_PHONE_INVALID);
-//                return ok;
-//
-//            } else if (userBean.getUpstatus().equals("-1")) {
-//                addActionError(SystemMessage.USR_STATUS_SELECT);
-//                return ok;
-//            } else {
-//                ok = true;
-//            }
-//
-//        } catch (Exception e) {
-//            throw e;
-//        }
-//        return ok;
-//
-//    }
+
 
     private boolean applyUserPrivileges() {
         HttpServletRequest request = ServletActionContext.getRequest();

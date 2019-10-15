@@ -20,18 +20,6 @@
                 $('#name').val("");
                 $('#username').val("");
                 $('#password').val("");
-                $('#repassword').val("");
-                $('#email').val("");
-                $('#mobile').val("");
-                $('#userPro').val("-1");
-
-                $('#upname').val("");
-                $('#upusername').val("");
-                $('#upstatus').val("-1");
-                $('#upuserPro').val("-1");
-                $('#upemail').val("");
-                $('#upmobile').val("");
-
                 jQuery("#gridtable").trigger("reloadGrid");
             }
 
@@ -46,41 +34,7 @@
 
 
             
-            function downloadformatter(cellvalue, options, rowObject) {
-                return "<a href='#' onClick='javascript:downloadNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/download.png' /></a>";
-            }
-
-            
-            function downloadNow(keyval) {
-                $('#divmsg').empty();
-                $.ajax({
-                    url: '${pageContext.request.contextPath}/DownloadeditViewMember',
-                    data: {memId: keyval},
-                    dataType: "json",
-                    type: "POST",
-                    success: function (data) {
-
-                        $('#editForm').show();
-                        $('#searchForm').hide();
-
-                        $('#upusernamecopy').val(data.upusernamecopy);
-                        $('#upusername').val(data.upusername);
-                        $('#upusername').attr('readOnly', true).val();
-                        
-                        $('#upname').val(data.upname);
-                        $('#upuserPro').val(data.upuserPro);
-                        $('#upstatus').val(data.upstatus);
-                        $('#upemail').val(data.upemail);
-                        $('#upaddress').val(data.upaddress);
-                        $('#upmobile').val(data.upmobile);
-                        $('#upnic').val(data.upnic);
-
-                    },
-                    error: function (data) {
-                        window.location = "${pageContext.request.contextPath}/LogoutloginCall.blb?";
-                    }
-                });
-            }
+           
 
 
             function backToMain() {
@@ -105,12 +59,7 @@
                 jQuery("#gridtable").trigger("reloadGrid");
             });
 
-            $.subscribe('loadAddForm', function (event, data) {
-                $('#editForm').hide();
-                $('#pwresetForm').hide();
-                $('#searchForm').hide();
-                $('#addForm').show();
-            });
+
 
             //reset Datas
             function ResetSearchForm() {
@@ -123,13 +72,7 @@
                 $('#divmsg').empty();
             }
 
-            function resetUpdateForm() {
-                var upusername = $('#upusername').val();
-                editNow(upusername);
-                $('#divmsg').empty();
-                jQuery("#gridtable").trigger("reloadGrid");
 
-            }
 
             $.subscribe('grideReload', function (event, data) {
                 $('#searchname').val("");
@@ -220,19 +163,14 @@
                                 <sjg:gridColumn name="memId" index="MEM_ID" title="MemberId"  frozen="false" hidden="true"/>
                                 
                                 <sjg:gridColumn name="memIdDes" index="MEM_ID" title="Member ID" align="left" width="100" frozen="false" sortable="true"/>
-                                <sjg:gridColumn name="memName" index="MEM_NAME" title="Name" align="left" width="100" sortable="true"/>                    
-                                <sjg:gridColumn name="perAddr" index="PERM_ADD" title="Permenant Add" align="left"  width="150"  sortable="true"/>
-                                <sjg:gridColumn name="temAddr" index="TEMP_ADD" title="Tempoary Add" align="left"  width="150"  sortable="true"/>
-                                <sjg:gridColumn name="offAddr" index="JOB_ADD" title="Office Add" align="left" width="150" sortable="true"/>
+                                <sjg:gridColumn name="memName" index="MEM_NAME" title="Name" align="left" width="200" sortable="true"/>                    
+                                <sjg:gridColumn name="perAddr" index="PERM_ADD" title="Permenant Add" align="left"  width="450"  sortable="true"/>
                                 <sjg:gridColumn name="tpNum" index="MEM_PHONE" title="TP Number" align="left" width="100" sortable="true"/>
                                 <sjg:gridColumn name="mobileNum" index="MEM_MOBILE" title="Mobile Number" align="left" width="100" sortable="true"/>
-                                <sjg:gridColumn name="offPhnNum" index="JOB_PHONE" title="Office Number" align="left" width="100" sortable="true"/>
                                 <sjg:gridColumn name="memCast" index="CAST_NAME" title="Cast" align="left" width="100" sortable="true"/>
                                 <sjg:gridColumn name="regDate" index="CREATE_DATE" title="Reg Date" align="center"  width="100"  sortable="true"/>
                                 
-                                <sjg:gridColumn name="memId" index="MEM_ID" title="Download" align="center" width="80" align="center"   formatter="downloadformatter" sortable="false" hidden="#vupdate"/>
-
-                            </sjg:grid> 
+                          </sjg:grid> 
 
                         </div> 
 

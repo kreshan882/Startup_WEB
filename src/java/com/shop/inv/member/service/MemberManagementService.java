@@ -287,12 +287,22 @@ public class MemberManagementService {
                     + "JOB_TITLE, JOB_ADD, JOB_PHONE, "
                     + "FAT_NAME, FAT_ADD, FAT_CAST, MOT_NAME, MOT_ADD, MOT_CAST, "
                     + "GRAN_FAT_NAME, GRAN_FAT_ADD, GRAN_FAT_CAST, GRAN_MOT_NAME, GRAN_MOT_ADD,GRAN_MOT_CAST, "
-                    + "IS_MARRIED, WIFR_NAME, NUM_OF_SUN, NUM_OF_DOT, STATUS) "
+                    + "IS_MARRIED, WI_NAME, NUM_OF_SUN, NUM_OF_DOT, STATUS,"
+                    
+                    + "WI_DOB,WI_ADD,WI_EMAIL,WI_MOBILE,WI_BORN_PLACE,"
+                    + "WI_CAST,WI_FAT_NAME,WI_FAT_BORN_PLACE,WI_FAT_CAST,WI_MOT_NAME,"
+                    + "WI_MOT_BORN_PLACE,WI_MOT_CAST,WI_GRAN_FAT_NAME,WI_GRAN_FAT_BORN_PLACE,WI_GRAN_FAT_CAST,"
+                    + "WI_GRAN_MOT_NAME,WI_GRAN_MOT_BORN_PLACE,WI_GRAN_MOT_CAST,IMG_MEMBER,IMG_FAMILY) "
                     + "VALUES ("
                     + "?, ?, ?, ?, ?, ?,"
                     + "?, ?, ?, ?, ?, ?,"
                     + "?, ?, ?, ?,"
                     + "?, ?, ?,"
+                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?, ?, ?,"
+                    
+                    + "?, ?, ?, ?, ?, ?,"
                     + "?, ?, ?, ?, ?, ?,"
                     + "?, ?, ?, ?, ?, ?,"
                     + "?, ?, ?, ?, ?);";
@@ -341,6 +351,33 @@ public class MemberManagementService {
             preStat.setInt(34, Integer.parseInt(inputBean.getNoOfSuns()));
             preStat.setInt(35, Integer.parseInt(inputBean.getNoOfDoters()));
             preStat.setInt(36, Status.ACTIVE);
+            
+            //wife details
+            preStat.setDate(37, Util.convertStringToDBDate(inputBean.getWifeDob()));
+            preStat.setString(38, inputBean.getWifeAdd());
+            preStat.setString(39, inputBean.getWifeEmail());
+            preStat.setString(40, inputBean.getWifeMobile());
+            preStat.setString(41, inputBean.getWifeBirPlace());
+            
+            preStat.setString(42, inputBean.getWifeCast());
+            preStat.setString(43, inputBean.getWifeFatName());
+            preStat.setString(44, inputBean.getWifeFatBirthPlace());
+            preStat.setString(45, inputBean.getWifeFatCast());
+            preStat.setString(46, inputBean.getWifeMothName());
+            
+            preStat.setString(47, inputBean.getWifeMothBirthPlace());
+            preStat.setString(48, inputBean.getWifeMothCast());
+            preStat.setString(49, inputBean.getWifeGrandFatName());
+            preStat.setString(50, inputBean.getWifeGrandFatBirthPlace());
+            preStat.setString(51, inputBean.getWifeGrandFatCast());
+            
+            preStat.setString(52, inputBean.getWifeGrandMothName());
+            preStat.setString(53, inputBean.getWifeGrandMothBirthPlace());
+            preStat.setString(54, inputBean.getWifeGrandMothCast());
+            preStat.setString(55, "PRO"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".jsp"); //PRO00011.jsp
+            preStat.setString(56, "FAM"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".jsp"); //FAM00011.jsp
+            
+            
             
 
             int n = preStat.executeUpdate();

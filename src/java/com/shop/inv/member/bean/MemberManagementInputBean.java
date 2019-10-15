@@ -80,9 +80,41 @@ public class MemberManagementInputBean {
     private String noOfSuns;
     private String noOfDoters;
     
-    private Map<String,String> numberList = Util.getNumberList();
+    private Map<String,String> numberList = Util.getNumberList();// 0- morethen 10
     
+    private String wifeDob;
+    private String wifeAdd;
+    private String wifeEmail;
 
+    private String wifeMobile;
+    private String wifeBirPlace;
+    private String wifeCast;
+
+    private String wifeFatName;
+    private String wifeFatBirthPlace;
+    private String wifeFatCast;
+
+    private String wifeMothName;
+    private String wifeMothBirthPlace;
+    private String wifeMothCast;
+
+    private String wifeGrandFatName;
+    private String wifeGrandFatBirthPlace;
+    private String wifeGrandFatCast;
+
+    private String wifeGrandMothName;
+    private String wifeGrandMothBirthPlace;
+    private String wifeGrandMothCast;
+
+    //profile image
+    private File   memImgFile;
+    private String memImgFileContentType;
+    private String memImgFileFileName;
+    
+    //femaly image
+    private File   famImgFile;
+    private String famImgFileContentType;
+    private String famImgFileFileName;
     // sun doter details ???
     // wife details+wife parent
     
@@ -137,9 +169,9 @@ public class MemberManagementInputBean {
     
     
     private File   upfile;  // image file upload
-    private String upfileContentType;
-    private String upfileFileName;
-
+//    private String upfileContentType;
+//    private String upfileFileName;
+//
     public File getUpfile() {
         return upfile;
     }
@@ -147,21 +179,214 @@ public class MemberManagementInputBean {
     public void setUpfile(File upfile) {
         this.upfile = upfile;
     }
+//
+//    public String getUpfileContentType() {
+//        return upfileContentType;
+//    }
+//
+//    public void setUpfileContentType(String upfileContentType) {
+//        this.upfileContentType = upfileContentType;
+//    }
+//
+//    public String getUpfileFileName() {
+//        return upfileFileName;
+//    }
+//
+//    public void setUpfileFileName(String upfileFileName) {
+//        this.upfileFileName = upfileFileName;
+//    }
 
-    public String getUpfileContentType() {
-        return upfileContentType;
+    public String getMemImgFileContentType() {
+        return memImgFileContentType;
     }
 
-    public void setUpfileContentType(String upfileContentType) {
-        this.upfileContentType = upfileContentType;
+    public void setMemImgFileContentType(String memImgFileContentType) {
+        this.memImgFileContentType = memImgFileContentType;
     }
 
-    public String getUpfileFileName() {
-        return upfileFileName;
+    public String getMemImgFileFileName() {
+        return memImgFileFileName;
     }
 
-    public void setUpfileFileName(String upfileFileName) {
-        this.upfileFileName = upfileFileName;
+    public void setMemImgFileFileName(String memImgFileFileName) {
+        this.memImgFileFileName = memImgFileFileName;
+    }
+
+    public String getFamImgFileContentType() {
+        return famImgFileContentType;
+    }
+
+    public void setFamImgFileContentType(String famImgFileContentType) {
+        this.famImgFileContentType = famImgFileContentType;
+    }
+
+    public String getFamImgFileFileName() {
+        return famImgFileFileName;
+    }
+
+    public void setFamImgFileFileName(String famImgFileFileName) {
+        this.famImgFileFileName = famImgFileFileName;
+    }
+
+    
+    public String getWifeDob() {
+        return wifeDob;
+    }
+
+    public void setWifeDob(String wifeDob) {
+        this.wifeDob = wifeDob;
+    }
+
+    public String getWifeAdd() {
+        return wifeAdd;
+    }
+
+    public void setWifeAdd(String wifeAdd) {
+        this.wifeAdd = wifeAdd;
+    }
+
+    public String getWifeEmail() {
+        return wifeEmail;
+    }
+
+    public void setWifeEmail(String wifeEmail) {
+        this.wifeEmail = wifeEmail;
+    }
+
+    public String getWifeMobile() {
+        return wifeMobile;
+    }
+
+    public void setWifeMobile(String wifeMobile) {
+        this.wifeMobile = wifeMobile;
+    }
+
+    public String getWifeBirPlace() {
+        return wifeBirPlace;
+    }
+
+    public void setWifeBirPlace(String wifeBirPlace) {
+        this.wifeBirPlace = wifeBirPlace;
+    }
+
+    public String getWifeCast() {
+        return wifeCast;
+    }
+
+    public void setWifeCast(String wifeCast) {
+        this.wifeCast = wifeCast;
+    }
+
+    public String getWifeFatName() {
+        return wifeFatName;
+    }
+
+    public void setWifeFatName(String wifeFatName) {
+        this.wifeFatName = wifeFatName;
+    }
+
+    public String getWifeFatBirthPlace() {
+        return wifeFatBirthPlace;
+    }
+
+    public void setWifeFatBirthPlace(String wifeFatBirthPlace) {
+        this.wifeFatBirthPlace = wifeFatBirthPlace;
+    }
+
+    public String getWifeFatCast() {
+        return wifeFatCast;
+    }
+
+    public void setWifeFatCast(String wifeFatCast) {
+        this.wifeFatCast = wifeFatCast;
+    }
+
+    public String getWifeMothName() {
+        return wifeMothName;
+    }
+
+    public void setWifeMothName(String wifeMothName) {
+        this.wifeMothName = wifeMothName;
+    }
+
+    public String getWifeMothBirthPlace() {
+        return wifeMothBirthPlace;
+    }
+
+    public void setWifeMothBirthPlace(String wifeMothBirthPlace) {
+        this.wifeMothBirthPlace = wifeMothBirthPlace;
+    }
+
+    public String getWifeMothCast() {
+        return wifeMothCast;
+    }
+
+    public void setWifeMothCast(String wifeMothCast) {
+        this.wifeMothCast = wifeMothCast;
+    }
+
+    public String getWifeGrandFatName() {
+        return wifeGrandFatName;
+    }
+
+    public void setWifeGrandFatName(String wifeGrandFatName) {
+        this.wifeGrandFatName = wifeGrandFatName;
+    }
+
+    public String getWifeGrandFatBirthPlace() {
+        return wifeGrandFatBirthPlace;
+    }
+
+    public void setWifeGrandFatBirthPlace(String wifeGrandFatBirthPlace) {
+        this.wifeGrandFatBirthPlace = wifeGrandFatBirthPlace;
+    }
+
+    public String getWifeGrandFatCast() {
+        return wifeGrandFatCast;
+    }
+
+    public void setWifeGrandFatCast(String wifeGrandFatCast) {
+        this.wifeGrandFatCast = wifeGrandFatCast;
+    }
+
+    public String getWifeGrandMothName() {
+        return wifeGrandMothName;
+    }
+
+    public void setWifeGrandMothName(String wifeGrandMothName) {
+        this.wifeGrandMothName = wifeGrandMothName;
+    }
+
+    public String getWifeGrandMothBirthPlace() {
+        return wifeGrandMothBirthPlace;
+    }
+
+    public void setWifeGrandMothBirthPlace(String wifeGrandMothBirthPlace) {
+        this.wifeGrandMothBirthPlace = wifeGrandMothBirthPlace;
+    }
+
+    public String getWifeGrandMothCast() {
+        return wifeGrandMothCast;
+    }
+
+    public void setWifeGrandMothCast(String wifeGrandMothCast) {
+        this.wifeGrandMothCast = wifeGrandMothCast;
+    }
+
+    public File getMemImgFile() {
+        return memImgFile;
+    }
+
+    public void setMemImgFile(File memImgFile) {
+        this.memImgFile = memImgFile;
+    }
+
+    public File getFamImgFile() {
+        return famImgFile;
+    }
+
+    public void setFamImgFile(File famImgFile) {
+        this.famImgFile = famImgFile;
     }
 
     
