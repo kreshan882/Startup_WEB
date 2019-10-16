@@ -68,7 +68,7 @@
 
 
             function deleteformatter(cellvalue, options, rowObject) {
-                return "<a href='#' onClick='deleteInit(&#34;" + rowObject.memOriId + "&#34;,&#34;" + rowObject.memId + "&#34;)'><img src='${pageContext.request.contextPath}/resources/images/iconDelete.png'  /></a>";
+                return "<a href='#' onClick='deleteInit(&#34;" + rowObject.memId + "&#34;,&#34;" + rowObject.memIdDes + "&#34;)'><img src='${pageContext.request.contextPath}/resources/images/iconDelete.png'  /></a>";
             }
 
             function editformatter(cellvalue, options, rowObject) {
@@ -76,9 +76,14 @@
             }
             
             function downloadformatter(cellvalue, options, rowObject) {
-                return "<a href='#' onClick='javascript:downloadNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/download.png' /></a>";
+                return "<a href='#' onClick='javascript:downloadInit(&#34;" + rowObject.memId + "&#34;,&#34;" + rowObject.memIdDes + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/download.png' /></a>";
             }
 
+            function downloadInit(keyval,keyvaldes) {
+                $("#confirmdialogboxDownload").data('keyval', keyval).dialog('open');
+                $("#confirmdialogboxDownload").html('<br><b><font size="3" color="red"><center>Please confirm to download member id : ' + keyvaldes + '');
+                return false;
+            }
 
             function deleteInit(keyval,keyvaldes) {
                 $("#confirmdialogbox").data('keyval', keyval).dialog('open');
@@ -86,15 +91,7 @@
                 return false;
             }
 
-//             function pdchangeNow(keyval){
-//                $('#message').empty();
-//
-//                $('#pwresetForm').show();
-//                $('#editForm').hide();
-//                $('#searchForm').hide();
-//                
-//                $('#rusername').val(keyval);
-//            }
+
 
             function deleteNow(keyval) {
                 $.ajax({
@@ -154,43 +151,17 @@
             }
             
             function downloadNow(keyval) {
-            alert("download:"+keyval)
-                $('#divmsg').empty();
-                $.ajax({
-                    url: '${pageContext.request.contextPath}/DownloadeditViewMember',
-                    data: {memId: keyval},
-                    dataType: "json",
-                    type: "POST",
-                    success: function (data) {
+                //alert("download:"+keyval)
+                
+                $('#memId').val(keyval);
+                document.getElementById("searchForm").submit();
 
-                        $('#editForm').show();
-                        $('#searchForm').hide();
-
-                        $('#upusernamecopy').val(data.upusernamecopy);
-                        $('#upusername').val(data.upusername);
-                        $('#upusername').attr('readOnly', true).val();
-                        
-                        $('#upname').val(data.upname);
-                        $('#upuserPro').val(data.upuserPro);
-                        $('#upstatus').val(data.upstatus);
-                        $('#upemail').val(data.upemail);
-                        $('#upaddress').val(data.upaddress);
-                        $('#upmobile').val(data.upmobile);
-                        $('#upnic').val(data.upnic);
-
-                    },
-                    error: function (data) {
-                        window.location = "${pageContext.request.contextPath}/LogoutloginCall.blb?";
-                    }
-                });
             }
 
 
             function backToMain() {
                 $('#editForm').hide();
-                $('#pwresetForm').hide();
                 $('#searchForm').show();
-                $('#addForm').hide();
 
                 $('#divmsg').empty();
                 jQuery("#gridtable").trigger("reloadGrid");
@@ -207,12 +178,7 @@
                 jQuery("#gridtable").trigger("reloadGrid");
             });
 
-            $.subscribe('loadAddForm', function (event, data) {
-                $('#editForm').hide();
-                $('#pwresetForm').hide();
-                $('#searchForm').hide();
-                $('#addForm').show();
-            });
+
 
             //reset Datas
             function ResetSearchForm() {
@@ -220,10 +186,7 @@
                 $('#divmsg').empty();
                 jQuery("#gridtable").trigger("reloadGrid");
             }
-            function ResetAddForm() {
-                resetData();
-                $('#divmsg').empty();
-            }
+
 
             function resetUpdateForm() {
                 var upusername = $('#upusername').val();
@@ -270,7 +233,7 @@
                                     <td>:</td>
                                     <td colspan="2"><s:textfield name="searchname"  id="searchname" cssClass="textField" /> </td>
                                     <td class="content_td formLable">
-
+                                        <s:textfield name="memId"  id="memId" cssClass="textField" hidden="true"/>
                                     </td>
                                 </tr>
                             </table><table class="form_table">
@@ -280,7 +243,7 @@
 
                                         <sj:a id="searchid"  button="true"    onClickTopics="onclicksearch"  cssClass="button_asave"  role="button" aria-disabled="false" >Search</sj:a>
                                         <sj:a id="refreshbut"  button="true"  onClickTopics="grideReload"  cssClass="button_asave">Refresh</sj:a>  
-                                        <sj:submit button="true" cssStyle="font-size:12px;padding: 5px 5px;height:27; width:106px;" cssClass="button_asave" value="Print PDF" />  
+                                       <%-- <sj:submit button="true" cssStyle="font-size:12px;padding: 5px 5px;height:27; width:106px;" cssClass="button_asave" value="Print PDF" />  --%>
                                     </td>
                                 </tr>
                             </table>
@@ -362,6 +325,19 @@
                                 height="150"
                                 position="center"
                                 />
+                            <sj:dialog 
+                                id="confirmdialogboxDownload" 
+                                buttons="{ 
+                                'OK':function() { downloadNow($(this).data('keyval'));$( this ).dialog( 'close' ); },
+                                'Cancel':function() { $( this ).dialog( 'close' );} 
+                                }" 
+                                autoOpen="false" 
+                                modal="true" 
+                                title="Download Certificate"
+                                width="400"
+                                height="150"
+                                position="center"
+                                />
                             <!-- End delete dialog box -->
 
                             <s:url var="listurl" action="ListeditViewMember"/>
@@ -382,10 +358,10 @@
                                 viewrecords="true"
                                 >
                                 
-                                <sjg:gridColumn name="memOriId" index="MEM_ID" title="ProfileId"  frozen="false" hidden="true"/>
+                                <sjg:gridColumn name="memId" index="MEM_ID" title="ProfileId"  frozen="false" hidden="true"/>
                                 
-                                <sjg:gridColumn name="memId" index="MEM_ID" title="Member ID" align="left" width="150" frozen="false" sortable="true"/>
-                                <sjg:gridColumn name="memName" index="MEM_NAME" title="Name" align="left" width="150" sortable="true"/>                    
+                                <sjg:gridColumn name="memIdDes" index="MEM_ID" title="Member ID" align="left" width="150" frozen="true" sortable="true"/>
+                                <sjg:gridColumn name="memName" index="MEM_NAME" title="Name" align="left" width="150" sortable="true" frozen="true" />                    
                                 <sjg:gridColumn name="memNic" index="MEM_NIC" title="Nic" align="left"  width="150"  sortable="true"/>
                                 <sjg:gridColumn name="memDob" index="MEM_DOB" title="Dob" align="left"  width="100"  sortable="true"/>
                                 <sjg:gridColumn name="phoneNo" index="MEM_PHONE" title="Phone" align="left" width="100" sortable="true"/>
@@ -397,9 +373,9 @@
                                 <sjg:gridColumn name="status" index="STATUS" title="Status" align="center" width="80" formatter="statusformatter" sortable="true"/>  
                        
                                 <%--<sjg:gridColumn name="username" index="USERNAME" title="Reset Pw" align="center" width="7" align="center"  formatter="pdchangeformatter" sortable="false" hidden="#vresetpass"/>--%>
-                                <sjg:gridColumn name="memOriId" index="MEM_ID" title="Edit" align="center" width="80" align="center"  formatter="editformatter" sortable="false" hidden="#vupdate"/>
-                                <sjg:gridColumn name="memOriId" index="MEM_ID" title="Delete" align="center" width="80" align="center"   formatter="deleteformatter" sortable="false" hidden="#vdelete"/>
-                                <sjg:gridColumn name="memOriId" index="MEM_ID" title="Download" align="center" width="80" align="center"   formatter="downloadformatter" sortable="false" hidden="#vupdate"/>
+                                <sjg:gridColumn name="memId" index="MEM_ID" title="Edit" align="center" width="80" align="center"  formatter="editformatter" sortable="false" hidden="#vupdate"/>
+                                <sjg:gridColumn name="memId" index="MEM_ID" title="Delete" align="center" width="80" align="center"   formatter="deleteformatter" sortable="false" hidden="#vdelete"/>
+                                <sjg:gridColumn name="memId" index="MEM_ID" title="Download" align="center" width="80" align="center"   formatter="downloadformatter" sortable="false" hidden="#vupdate"/>
 
                             </sjg:grid> 
 

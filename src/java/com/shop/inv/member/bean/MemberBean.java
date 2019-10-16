@@ -11,9 +11,9 @@ package com.shop.inv.member.bean;
  */
 public class MemberBean {
         
-    private String memOriId;
-    
     private String memId;
+    
+    private String memIdDes;
     private String memName;
     private String memNic;
     private String memDob;
@@ -29,13 +29,6 @@ public class MemberBean {
     
     private long fullCount;
 
-    public String getMemOriId() {
-        return memOriId;
-    }
-
-    public void setMemOriId(String memOriId) {
-        this.memOriId = memOriId;
-    }
 
     public String getMemId() {
         return memId;
@@ -43,6 +36,14 @@ public class MemberBean {
 
     public void setMemId(String memId) {
         this.memId = memId;
+    }
+
+    public String getMemIdDes() {
+        return memIdDes;
+    }
+
+    public void setMemIdDes(String memIdDes) {
+        this.memIdDes = memIdDes;
     }
 
     

@@ -6,6 +6,7 @@
 package com.shop.inv.member.service;
 
 import com.shop.db.DBConnection;
+import com.shop.init.InitConfigValue;
 import com.shop.init.Status;
 import com.shop.inv.member.bean.MemberBean;
 import com.shop.inv.member.bean.MemberManagementInputBean;
@@ -73,8 +74,8 @@ public class MemberManagementService {
             while (res.next()) {
                 MemberBean dataBean = new MemberBean();
 
-                dataBean.setMemOriId(res.getString("MEM_ID"));
-                dataBean.setMemId("M"+ISOUtil.zeropad(res.getString("MEM_ID"),4));
+                dataBean.setMemId(res.getString("MEM_ID"));
+                dataBean.setMemIdDes("M"+ISOUtil.zeropad(res.getString("MEM_ID"),5));
                 dataBean.setMemName(res.getString("MEM_NAME"));
                 dataBean.setMemNic(res.getString("MEM_NIC"));
                 
@@ -271,7 +272,7 @@ public class MemberManagementService {
     }
 
 
-    public boolean addData(MemberManagementInputBean inputBean) throws Exception {
+    public boolean addData(MemberManagementInputBean inputBean,boolean mem_img,boolean fam_img) throws Exception {
         Connection con = null;
         String sql;
         PreparedStatement preStat = null;
@@ -374,8 +375,17 @@ public class MemberManagementService {
             preStat.setString(52, inputBean.getWifeGrandMothName());
             preStat.setString(53, inputBean.getWifeGrandMothBirthPlace());
             preStat.setString(54, inputBean.getWifeGrandMothCast());
-            preStat.setString(55, "PRO_"+inputBean.getMemIdDes()+".png"); //PRO_M00011.jsp
-            preStat.setString(56, "FAM_"+inputBean.getMemIdDes()+".png"); //FAM_M00011.jsp
+            if(mem_img){
+                preStat.setString(55, "PRO_"+inputBean.getMemIdDes()+".png"); //PRO_M00011.jsp
+            }else{
+                preStat.setString(55, null);
+            }
+            if(fam_img){
+                preStat.setString(56, "FAM_"+inputBean.getMemIdDes()+".png"); //FAM_M00011.jsp
+            }else{
+                preStat.setString(56, null);
+            }
+            
             
             
             
@@ -555,15 +565,11 @@ public class MemberManagementService {
             con = DBConnection.getConnection();
             getUsersListQuery = "SELECT M.MEM_ID,M.MEM_TYPE_ISLIFE,M.MEM_NAME,M.MEM_NIC, M.MEM_PHONE, "
                     + "M.MEM_MOBILE, M.EMAIL,MC.CAST_NAME AS MEM_CAST,M.MEM_SUB_CAST,M.MEM_BORN_PLACE,"
-                    + "M.MEM_DOB ,M.IS_MARRIED ,M.FAT_NAME ,M.FAT_ADD ,FAC.CAST_NAME AS FAT_CAST ,"
-                    + "M.MOT_NAME,M.MOT_ADD,MOC.CAST_NAME AS MOT_CAST,M.GRAN_FAT_NAME,M.GRAN_FAT_ADD,"
-                    + "GFAC.CAST_NAME AS GRAN_FAT_CAST,M.GRAN_MOT_NAME,M.GRAN_MOT_ADD,GMOC.CAST_NAME AS GRAN_MOT_CAST "
-                    + "FROM dma_member M, dma_cast MC ,  dma_cast FAC,dma_cast MOC,  dma_cast GFAC,dma_cast GMOC "
-                    + "where M.MEM_CAST=MC.CAST_ID "
-                    + "and M.FAT_CAST=FAC.CAST_ID "
-                    + "and M.MOT_CAST=MOC.CAST_ID "
-                    + "and M.GRAN_FAT_CAST=GFAC.CAST_ID "
-                    + "and M.GRAN_MOT_CAST=GMOC.CAST_ID and M.MEM_ID = ? ";
+                    + "M.MEM_DOB ,M.IS_MARRIED ,M.FAT_NAME ,M.FAT_ADD ,M.FAT_CAST ,"
+                    + "M.MOT_NAME,M.MOT_ADD,M.MOT_CAST,M.GRAN_FAT_NAME,M.GRAN_FAT_ADD,"
+                    + "M.GRAN_FAT_CAST,M.GRAN_MOT_NAME,M.GRAN_MOT_ADD,M.GRAN_MOT_CAST ,M.IMG_MEMBER "
+                    + "FROM dma_member M, dma_cast MC  "
+                    + "where M.MEM_CAST=MC.CAST_ID  and M.MEM_ID = ? ";
 
             prepSt = con.prepareStatement(getUsersListQuery);
             prepSt.setString(1, inputBean.getMemId());
@@ -601,6 +607,11 @@ public class MemberManagementService {
                 inputBean.getParameterMap().put("GRA_MOT_NAME", res.getString("GRAN_MOT_NAME"));
                 inputBean.getParameterMap().put("GRA_MOT_PLACE", res.getString("GRAN_MOT_ADD"));
                 inputBean.getParameterMap().put("GRA_MOT_CAST", res.getString("GRAN_MOT_CAST"));
+                
+                String imagePath=InitConfigValue.IMAGE_UPLOAD_PATH+res.getString("IMG_MEMBER");
+                if(res.getString("IMG_MEMBER")!=null){
+                inputBean.getParameterMap().put("MEM_IMAGE", imagePath);
+                }
 
             }
         } catch (Exception e) {

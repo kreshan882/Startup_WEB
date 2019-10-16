@@ -5,38 +5,32 @@
  */
 package com.shop.inv.report.action;
 
-import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.shop.init.PageVarList;
 import com.shop.init.TaskVarList;
-//import com.shop.inv.member.bean.MemberBean;
-//import com.shop.inv.member.bean.MemberManagementInputBean;
-//import com.shop.inv.member.service.MemberManagementService;
-import com.shop.inv.report.bean.MemberReportBean;
-import com.shop.inv.report.bean.MemberReportInputBean;
-import com.shop.inv.report.service.MemberReportService;
+import com.shop.inv.report.bean.MemberSummaryBean;
+import com.shop.inv.report.bean.MemberSummaryInputBean;
+import com.shop.inv.report.service.MemberSummaryService;
 import com.shop.login.bean.SessionUserBean;
 import com.shop.login.bean.TaskBean;
 import com.shop.util.AccessControlService;
 import com.shop.util.Common;
 import com.shop.util.LogFileCreator;
 import com.shop.util.SystemMessage;
-import com.shop.util.Util;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
-import org.jpos.iso.ISOUtil;
+import java.util.List;
 
 /**
  *
  * @author Kreshan Rajendran
  */
-public class MemberReport extends ActionSupport implements ModelDriven<MemberReportInputBean>, AccessControlService {
+public class MemberSummary extends ActionSupport implements ModelDriven<MemberSummaryInputBean>, AccessControlService {
 
-    private MemberReportService service = new MemberReportService();
-    MemberReportInputBean inputBean = new MemberReportInputBean();
+    private MemberSummaryService service = new MemberSummaryService();
+    MemberSummaryInputBean inputBean = new MemberSummaryInputBean();
 
 
     public SessionUserBean getSub(){
@@ -52,10 +46,9 @@ public class MemberReport extends ActionSupport implements ModelDriven<MemberRep
     }
 
     @Override
-    public MemberReportInputBean getModel() {
+    public MemberSummaryInputBean getModel() {
         try {
             System.out.println("calling....2");
-            inputBean.getMemCastList().putAll(inputBean.getMemCastList());
         } catch (Exception ex) {
             ex.printStackTrace();
             LogFileCreator.writeErrorToLog(ex);
@@ -65,7 +58,7 @@ public class MemberReport extends ActionSupport implements ModelDriven<MemberRep
 
     public String List() {
         try {
-            List<MemberReportBean> dataList = null;
+            List<MemberSummaryBean> dataList = null;
             int rows = inputBean.getRows();
             int page = inputBean.getPage();
             int to = (rows * page);
@@ -100,33 +93,10 @@ public class MemberReport extends ActionSupport implements ModelDriven<MemberRep
 
    
 
-    public String Download() throws Exception {
-        System.out.println("getMemId:"+inputBean.getMemId());
-        System.out.println("getMemCastID:"+inputBean.getMemCastID());
-        try{ 
-                service.loadReportData(inputBean);
-
-                
-//                inputBean.getParameterMap().put("Txn_From", "3");
-//                inputBean.getParameterMap().put("Txn_To", "4");
-//                inputBean.getParameterMap().put("Channel_type", "ck");
-//                inputBean.setReportdatalist(service.downloadData(inputBean)); // sun list
-                
-                String Cert_Name="MemberList_"+Util.getDateNow()+".pdf";
-                inputBean.setFileName(Cert_Name);
-        }catch(Exception e){
-            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
-            e.printStackTrace();
-            LogFileCreator.writeErrorToLog(e);
-        }
-        return "memberreport";
-        
-
-    }
-
+   
     private boolean applyUserPrivileges() {
         HttpServletRequest request = ServletActionContext.getRequest();
-        List<TaskBean> tasklist = new Common().getUserTaskListByPage(PageVarList.MEMBER_REPORT_DETAIL, request);
+        List<TaskBean> tasklist = new Common().getUserTaskListByPage(PageVarList.MEMBER_SUMMARY, request);
         inputBean.setVadd(true);
         inputBean.setVupdate(true);
         inputBean.setVdelete(true);
@@ -155,7 +125,7 @@ public class MemberReport extends ActionSupport implements ModelDriven<MemberRep
     public boolean checkAccess(String method, int userRole) {
         boolean status = false;
         applyUserPrivileges();
-        String page = PageVarList.MEMBER_REPORT_DETAIL;
+        String page = PageVarList.MEMBER_SUMMARY;
         String task = null;
         if ("View".equals(method)) {
             task = TaskVarList.VIEW;
@@ -188,4 +158,6 @@ public class MemberReport extends ActionSupport implements ModelDriven<MemberRep
     }
 
 }
+
+
 

@@ -160,7 +160,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
 
     public String Download() throws Exception {
         System.out.println("here 1"+inputBean.getMemId());
-        inputBean.setMemId("4");
+        inputBean.setMemId(inputBean.getMemId());
         try{ 
                 service.loadReportData(inputBean);
 
@@ -170,10 +170,10 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
 //                inputBean.getParameterMap().put("Channel_type", "ck");
 //                inputBean.setReportdatalist(service.downloadData(inputBean)); // sun list
                 
-                String Cert_Name="cert_M"+ISOUtil.zeropad(inputBean.getMemId(), 4)+".pdf";
+                String Cert_Name="cert_M"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".pdf";
                 inputBean.setFileName(Cert_Name);
         }catch(Exception e){
-            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
+            addActionError("error in report generate");
             e.printStackTrace();
             LogFileCreator.writeErrorToLog(e);
         }
@@ -368,7 +368,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
 
     private boolean applyUserPrivileges() {
         HttpServletRequest request = ServletActionContext.getRequest();
-        List<TaskBean> tasklist = new Common().getUserTaskListByPage(PageVarList.USER_MANAGEMENT, request);
+        List<TaskBean> tasklist = new Common().getUserTaskListByPage(PageVarList.EDITVIEW_MEMBER_MANAGEMENT, request);
         inputBean.setVadd(true);
         inputBean.setVupdate(true);
         inputBean.setVdelete(true);
