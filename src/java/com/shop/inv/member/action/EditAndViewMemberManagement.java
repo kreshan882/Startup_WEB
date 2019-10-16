@@ -271,7 +271,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
                 addActionError(SystemMessage.MEMB_FAT_BIRPLAC_INVALID);
                 return ok;
             } else if (userBean.getFatCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_FAT_CAST_SELECT);
+                addActionError(SystemMessage.MEMB_FAT_CAST_INVALID);
                 return ok;
             }
             
@@ -282,7 +282,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
                 addActionError(SystemMessage.MEMB_MOT_BIRPLAC_INVALID);
                 return ok;
             } else if (userBean.getMothCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_MOT_CAST_SELECT);
+                addActionError(SystemMessage.MEMB_MOT_CAST_INVALID);
                 return ok;
             }
             
@@ -293,7 +293,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
                 addActionError(SystemMessage.MEMB_GRANDFAT_BIRPLAC_INVALID);
                 return ok;
             } else if (userBean.getGrandFatCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_GRANDFAT_CAST_SELECT);
+                addActionError(SystemMessage.MEMB_GRANDFAT_CAST_INVALID);
                 return ok;
             }
             
@@ -304,7 +304,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
                 addActionError(SystemMessage.MEMB_GRANDMOT_BIRPLAC_INVALID);
                 return ok;
             } else if (userBean.getGrandMothCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_GRANDMOT_CAST_SELECT);
+                addActionError(SystemMessage.MEMB_GRANDMOT_CAST_Invalid);
                 return ok;
             }
             

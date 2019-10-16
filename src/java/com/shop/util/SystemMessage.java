@@ -115,21 +115,26 @@ public class SystemMessage {
     
     public static final String MEMB_FAT_NAME_INVALID = "Invalid Father Name";
     public static final String MEMB_FAT_BIRPLAC_INVALID ="Invalid Father Birth place"; 
-    public static final String MEMB_FAT_CAST_SELECT = "Select Father cast ";
+    public static final String MEMB_FAT_CAST_INVALID = "Invalid Father cast ";
     
     public static final String MEMB_MOT_NAME_INVALID = "Invalid Mother Name";
     public static final String MEMB_MOT_BIRPLAC_INVALID ="Invalid Mother Birth place"; 
-    public static final String MEMB_MOT_CAST_SELECT = "Select Mother cast ";
+    public static final String MEMB_MOT_CAST_INVALID = "Invalid Mother cast ";
     
     public static final String MEMB_GRANDFAT_NAME_INVALID = "Invalid Grand Father Name";
     public static final String MEMB_GRANDFAT_BIRPLAC_INVALID ="Invalid Grand Father Birth place"; 
-    public static final String MEMB_GRANDFAT_CAST_SELECT = "Select Grand Father cast ";
+    public static final String MEMB_GRANDFAT_CAST_INVALID = "Invalid Grand Father cast ";
     
     public static final String MEMB_GRANDMOT_NAME_INVALID = "Invalid Grand Mother Name";
     public static final String MEMB_GRANDMOT_BIRPLAC_INVALID ="Invalid Grand Mother Birth place"; 
-    public static final String MEMB_GRANDMOT_CAST_SELECT = "Select Grand Mother cast ";
+    public static final String MEMB_GRANDMOT_CAST_Invalid = "Invalid Grand Mother cast ";
     
     public static final String MEMB_MERIED_STATUS_SELECT = "Select Merried Status ";
+    
+    
+    public static final String MEMB_IMAGE_PROFILE_INVALID = "Invalid Profile Image(JPG & PNG)";
+    public static final String MEMB_IMAGE_FAMILY_INVALID = "Invalid Family Image(JPG & PNG)";
+    
     
     public static final String MEMB_ADD = "Member registration successful";
     public static final String MEMB_ADD_FAIL = "Member registration fail";

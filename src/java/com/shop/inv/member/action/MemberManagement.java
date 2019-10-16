@@ -8,6 +8,7 @@ package com.shop.inv.member.action;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.shop.init.InitConfigValue;
 import com.shop.init.PageVarList;
 import com.shop.init.TaskVarList;
 import com.shop.inv.member.bean.MemberBean;
@@ -62,7 +63,7 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
         try {
             System.out.println("calling....2");
             service.getCastList(inputBean);
-            inputBean.setMemId(service.getlastMemId());
+            inputBean.setMemIdDes(service.getlastMemId());
             inputBean.getMemIslifeList().putAll(inputBean.getMemIslifeList());
             inputBean.getIsMerridList().putAll(inputBean.getIsMerridList());
             inputBean.getNumberList().putAll(inputBean.getNumberList());        
@@ -73,107 +74,20 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
         return inputBean;
     }
 
-//    public String List() {
-//        try {
-//            List<MemberBean> dataList = null;
-//            int rows = inputBean.getRows();
-//            int page = inputBean.getPage();
-//            int to = (rows * page);
-//            int from = to - rows;
-//            long records = 0;
-//            String orderBy = "";
-//
-//            if (!inputBean.getSidx().isEmpty()) {
-//                orderBy = " order by " + inputBean.getSidx() + " " + inputBean.getSord();
-//            }
-//
-//            dataList = service.loadData(inputBean, orderBy, from, rows);
-//
-//            if (!dataList.isEmpty()) {
-//                records = dataList.get(0).getFullCount();
-//                inputBean.setRecords(records);
-//                inputBean.setGridModel(dataList);
-//                int total = (int) Math.ceil((double) records / (double) rows);
-//                inputBean.setTotal(total);
-//            } else {
-//                inputBean.setRecords(0L);
-//                inputBean.setTotal(0);
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            LogFileCreator.writeErrorToLog(ex);
-//            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
-//        }
-//        return "list";
-//    }
-//
-//    public String Find() {
-//
-//        try {
-//            service.findData(inputBean);
-//        } catch (Exception e) {
-//            addActionError(SystemMessage.COMMON_ERROR_PROCESS);
-//            LogFileCreator.writeErrorToLog(e);
-//        }
-//
-//        return "find";
-//    }
-//
-//    public String Update() {
-//
-//        try {
-//            if (doValidationUpdate(inputBean)) {
-//
-//                if (service.updateData(inputBean)) {
-//
-//                    addActionMessage(SystemMessage.USR_UPDATED);
-//                    LogFileCreator.writeInfoToLog(SystemMessage.USR_UPDATED);
-//
-//                } else {
-//                    addActionError(SystemMessage.USR_UPDATED_ERROR);
-//                }
-//
-//            }
-//        } catch (Exception ex) {
-//            addActionError(SystemMessage.USR_UPDATED_ERROR);
-//            ex.printStackTrace();
-//            LogFileCreator.writeErrorToLog(ex);
-//        }
-//        return "update";
-//    }
-//
-//    public String Delete() {
-//        try {
-//            if (getSub().getUsername().equals(inputBean.getUsername())) {
-//                inputBean.setMessage(SystemMessage.USR_DELETED_ERROR_SESSUSR);
-//                inputBean.setSuccess(false);
-//                return "delete";
-//            }
-//            if (service.deleteData(inputBean)) {
-//                LogFileCreator.writeInfoToLog(SystemMessage.USR_DELETED);
-//                inputBean.setMessage(SystemMessage.USR_DELETED);
-//                inputBean.setSuccess(true);
-//            } else {
-//                inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
-//                inputBean.setSuccess(false);
-//            }
-//
-//        } catch (Exception ex) {
-//            inputBean.setMessage(SystemMessage.USR_DELETED_ERROR);
-//            inputBean.setSuccess(false);
-//            ex.printStackTrace();
-//            LogFileCreator.writeErrorToLog(ex);
-//        }
-//
-//        return "delete";
-//    }
+
 
     public String Add() {
         try {
+                System.out.println("getMemIdDes:"+inputBean.getMemIdDes());
+                System.out.println("getMemImgFileFileName:"+inputBean.getMemImgFileFileName());
+                System.out.println("getFamImgFileFileName:"+inputBean.getFamImgFileFileName());
+                
             if (doValidation(inputBean)) {
-               boolean rek=MemberManagement.imageUpload(inputBean);
-                System.out.println("image loaded:"+rek);
+                System.out.println("validation sucess");
+               boolean me_img=MemberManagement.imageUpload(inputBean.getMemImgFile() ,"PRO_"+inputBean.getMemIdDes()+".png");
+               boolean fam_img=MemberManagement.imageUpload(inputBean.getFamImgFile(),"FAM_"+inputBean.getMemIdDes()+".png");
+                System.out.println("me_img:"+me_img);
+                System.out.println("fam_img:"+fam_img);
                 
                 if (service.addData(inputBean)) {
                     addActionMessage(SystemMessage.MEMB_ADD);
@@ -192,106 +106,30 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 
         return "add";
     }
-    public static boolean imageUpload(MemberManagementInputBean inputBean) {
-        System.out.println("ddddddddddddddddddddddddddd44"+inputBean.getMemId());
-
+    public static boolean imageUpload(File Img_file,String outFile) {
         
         try {
-        int width = 600;    //width of the image 
-        int height = 600;   //height of the image 
+        int width = 600, height = 600;   
             
-        File input_file = inputBean.getMemImgFile();
-        BufferedImage image = ImageIO.read(input_file);
-
-
-        Image tmp = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        File memImg_file = Img_file;
+        BufferedImage mem_image = ImageIO.read(memImg_file);
+        Image tmp = mem_image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = resized.createGraphics();
         g2d.drawImage(tmp, 0, 0, null);
         g2d.dispose();
-
-        
-        
-        
-        File output = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\PRO"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".png");
+        File output = new File(InitConfigValue.IMAGE_UPLOAD_PATH+outFile);
         ImageIO.write(resized, "png", output);
-//        if (doValidationFile(bean.getUpfileFileName())) {}
-
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
         return true;
     }
-    public String UploadFile() {
-        System.out.println("ddddddddddddddddddddddddddd"+inputBean.getMemId());
 
-        
-        try {
-        int width = 600;    //width of the image 
-        int height = 600;   //height of the image 
-//        BufferedImage image = null; 
-//        System.out.println("upload file name ...........0:"+inputBean.getUpfileFileName());
-//        File input_file = inputBean.getUpfile();
-//        System.out.println("fole"+input_file);
-//        
-//        
-//        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB); 
-//            image = ImageIO.read(input_file);  
-//            System.out.println("Reading complete."); 
-//
-//            
-//            
-//            File output_file = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\MEM_"+inputBean.getMemId()+".png"); 
-//            ImageIO.write(image, "jpg", output_file); 
-//            System.out.println("Writing complete.");
-            
-        File input_file = inputBean.getUpfile();
-        BufferedImage image = ImageIO.read(input_file);
-
-
-        Image tmp = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = resized.createGraphics();
-        g2d.drawImage(tmp, 0, 0, null);
-        g2d.dispose();
-
-        
-        
-        
-        File output = new File("C:\\Program Files\\glassfish-4.1.1\\glassfish\\domains\\domain1\\docroot\\imagesK\\members\\MEM_"+inputBean.getMemId()+".png");
-        ImageIO.write(resized, "png", output);
-//        if (doValidationFile(bean.getUpfileFileName())) {}
-
-
-        } catch (Exception e) {
-            addActionError("builk senf fail...");
-            e.printStackTrace();
-        }
-        return "add";
-    }
     
-        private boolean doValidationFile(String filenamei) throws Exception {
-
-        boolean ok = false;
-        String filename = "" + filenamei;
-        String extension = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
-        String filetypeCheck = "jsp";
-
-        try {
-
-            if (filenamei != null && !extension.equals(filetypeCheck)) {
-                addActionError("wrong file trype..");
-                return ok;
-            } else {
-                ok = true;
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-
-        return ok;
-    }
+        
     private boolean doValidation(MemberManagementInputBean userBean) throws Exception {
         boolean ok = false;
         System.out.println(">1:"+userBean.getMemId());
@@ -310,10 +148,11 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
             else if (userBean.getMemNic() == null || userBean.getMemNic().isEmpty()) {
                 addActionError(SystemMessage.MEMB_NIC_EMPTY);
                 return ok;
-            } else if (!Util.validateNIC(userBean.getMemNic())) {
-                addActionError(SystemMessage.MEMB_NIC_INVALID);
-                return ok;
-            }
+            } 
+//            else if (!Util.validateNIC(userBean.getMemNic())) {
+//                addActionError(SystemMessage.MEMB_NIC_INVALID);
+//                return ok;
+//            }
             else if (userBean.getMemDob() == null || userBean.getMemDob().isEmpty()) {
                 addActionError(SystemMessage.MEMB_DOB_EMPTY);
                 return ok;
@@ -326,7 +165,7 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
                 addActionError(SystemMessage.MEMB_MOBILE_INVALID);
                 return ok;
             }
-            else if (!Util.validateEMAIL(userBean.getEmail())) {
+            else if (!userBean.getEmail().isEmpty() && !Util.validateEMAIL(userBean.getEmail())) {
                 addActionError(SystemMessage.MEMB_EMAIL_INVALID);
                 return ok;
             }
@@ -380,41 +219,41 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
             } else if (!Util.validateDESCRIPTION(userBean.getFatBirthPlace())) {
                 addActionError(SystemMessage.MEMB_FAT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getFatCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_FAT_CAST_SELECT);
+            } else if (!Util.validateNAME(userBean.getFatCast())) {
+                addActionError(SystemMessage.MEMB_FAT_CAST_INVALID);
                 return ok;
             }
             
-            else if (!Util.validateDESCRIPTION(userBean.getMothName())) {
+            else if (!Util.validateNAME(userBean.getMothName())) {
                 addActionError(SystemMessage.MEMB_MOT_NAME_INVALID);
                 return ok;
-            } else if (!Util.validateDESCRIPTION(userBean.getMothBirthPlace())) {
+            } else if (!Util.validateNAME(userBean.getMothBirthPlace())) {
                 addActionError(SystemMessage.MEMB_MOT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getMothCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_MOT_CAST_SELECT);
+            } else if (!Util.validateNAME(userBean.getMothCast())) {
+                addActionError(SystemMessage.MEMB_MOT_CAST_INVALID);
                 return ok;
             }
             
-            else if (!Util.validateDESCRIPTION(userBean.getGrandFatName())) {
+            else if (!Util.validateNAME(userBean.getGrandFatName())) {
                 addActionError(SystemMessage.MEMB_GRANDFAT_NAME_INVALID);
                 return ok;
-            } else if (!Util.validateDESCRIPTION(userBean.getGrandFatBirthPlace())) {
+            } else if (!Util.validateNAME(userBean.getGrandFatBirthPlace())) {
                 addActionError(SystemMessage.MEMB_GRANDFAT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getGrandFatCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_GRANDFAT_CAST_SELECT);
+            } else if (!userBean.getGrandFatCast().isEmpty() && !Util.validateNAME(userBean.getGrandFatCast())) {
+                addActionError(SystemMessage.MEMB_GRANDFAT_CAST_INVALID);
                 return ok;
             }
             
-            else if (!Util.validateDESCRIPTION(userBean.getGrandMothName())) {
+            else if (!Util.validateNAME(userBean.getGrandMothName())) {
                 addActionError(SystemMessage.MEMB_GRANDMOT_NAME_INVALID);
                 return ok;
-            } else if (!Util.validateDESCRIPTION(userBean.getGrandMothBirthPlace())) {
+            } else if (!Util.validateNAME(userBean.getGrandMothBirthPlace())) {
                 addActionError(SystemMessage.MEMB_GRANDMOT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getGrandMothCast().equals("-1")) {
-                addActionError(SystemMessage.MEMB_GRANDMOT_CAST_SELECT);
+            } else if (!userBean.getGrandMothCast().isEmpty() && !Util.validateNAME(userBean.getGrandMothCast())) {
+                addActionError(SystemMessage.MEMB_GRANDMOT_CAST_Invalid);
                 return ok;
             }
             
@@ -427,6 +266,15 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
                 return ok;
             }else if (userBean.getIsMerrid().equals("1") &&(userBean.getMemDob() == null || userBean.getMemDob().isEmpty())) {
                 addActionError("wife date of birth empty");
+                return ok;
+            }
+            
+            else if (!Util.validateImageFileName(inputBean.getMemImgFileFileName())) {
+                addActionError(SystemMessage.MEMB_IMAGE_PROFILE_INVALID);
+                return ok;
+            }
+            else if (!Util.validateImageFileName(inputBean.getFamImgFileFileName())) {
+                addActionError(SystemMessage.MEMB_IMAGE_FAMILY_INVALID);
                 return ok;
             }
             else {

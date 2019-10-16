@@ -26,9 +26,7 @@ public class InitConfigValue {
 
         
         public static String                    SCONFIGPATH = "C:/my_sys_k/conf/";
-        public static String                    WS_URL = "http://127.0.0.1:8080/webservice";
         public static String                    LOGPATH = "/opt/my_sys_k/logs/";
-        public static String                    QR_IMG_PATH ="C:\\my_sys_k\\conf\\";
-
+        public static String 			IMAGE_UPLOAD_PATH="C:/Program Files/glassfish-4.1.1/glassfish/domains/domain1/docroot/imagesK/members/";
         
 }

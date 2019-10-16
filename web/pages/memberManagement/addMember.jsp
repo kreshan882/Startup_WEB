@@ -21,182 +21,66 @@
                     $('#addid').hide();
                 }
             }
-
-            function resetData() {
-                $('#name').val("");
-                $('#username').val("");
-                $('#password').val("");
-                $('#repassword').val("");
-                $('#email').val("");
-                $('#mobile').val("");
-                $('#userPro').val("-1");
-
-                $('#upname').val("");
-                $('#upusername').val("");
-                $('#upstatus').val("-1");
-                $('#upuserPro').val("-1");
-                $('#upemail').val("");
-                $('#upmobile').val("");
-
-                jQuery("#gridtable").trigger("reloadGrid");
-            }
-
-            function statusformatter(cellvalue, options, rowObject) {
-                if (cellvalue == '1') {
-                    var html = "<img src='${pageContext.request.contextPath}/resources/images/iconActive.png' />";
-                } else {
-                    var html = "<img src= '${pageContext.request.contextPath}/resources/images/iconInactive.png' />";
-                }
-                return html;
-            }
-
-
-            function deleteformatter(cellvalue, options, rowObject) {
-                return "<a href='#' onClick='deleteInit(&#34;" + cellvalue + "&#34;)'><img src='${pageContext.request.contextPath}/resources/images/iconDelete.png'  /></a>";
-            }
-
-            function editformatter(cellvalue, options, rowObject) {
-                return "<a href='#' onClick='javascript:editNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/iconEdit.png' /></a>";
-            }
-//            function pdchangeformatter(cellvalue, options, rowObject) {
-//                return "<a href='#' onClick='javascript:pdchangeNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/iconEdit.png' /></a>";
-//            }
-
-            function deleteInit(keyval) {
-                $("#confirmdialogbox").data('keyval', keyval).dialog('open');
-                $("#confirmdialogbox").html('<br><b><font size="3" color="red"><center>Please confirm to delete user : ' + keyval + '');
-                return false;
-            }
-
-//             function pdchangeNow(keyval){
-//                $('#message').empty();
-//
-//                $('#pwresetForm').show();
-//                $('#editForm').hide();
-//                $('#searchForm').hide();
-//                
-//                $('#rusername').val(keyval);
-//            }
-
-            function deleteNow(keyval) {
-                $.ajax({
-                    url: '${pageContext.request.contextPath}/DeleteusrMng',
-                    data: {username: keyval},
-                    dataType: "json",
-                    type: "POST",
-                    success: function (data) {
-                        if (data.success) {
-                            resetData();
-                            backToMain();
-                            $("#dialogbox").dialog('open');
-                            $("#dialogbox").html('<br><b><font size="3" color="green"><center>' + data.message + ' ');
-                        } else {
-                            $("#dialogbox").dialog('open');
-                            $("#dialogbox").html('<br><b><font size="3" color="red"><center>' + data.message + ' ');
-                        }
-                        jQuery("#gridtable").trigger("reloadGrid");
-                    },
-                    error: function (data) {
-                        window.location = "${pageContext.request.contextPath}/LogoutloginCall.blb?";
-                    }
-                });
-
-            }
-
-
-            function editNow(keyval) {
-                $('#divmsg').empty();
-                $.ajax({
-                    url: '${pageContext.request.contextPath}/FindusrMng',
-                    data: {username: keyval},
-                    dataType: "json",
-                    type: "POST",
-                    success: function (data) {
-
-                        $('#editForm').show();
-                        $('#pwresetForm').hide();
-                        $('#searchForm').hide();
-                        $('#addForm').hide();
-
-                        $('#upusernamecopy').val(data.upusernamecopy);
-                        $('#upusername').val(data.upusername);
-                        $('#upusername').attr('readOnly', true).val();
-                        
-                        $('#upname').val(data.upname);
-                        $('#upuserPro').val(data.upuserPro);
-                        $('#upstatus').val(data.upstatus);
-                        $('#upemail').val(data.upemail);
-                        $('#upaddress').val(data.upaddress);
-                        $('#upmobile').val(data.upmobile);
-                        $('#upnic').val(data.upnic);
-
-                    },
-                    error: function (data) {
-                        window.location = "${pageContext.request.contextPath}/LogoutloginCall.blb?";
-                    }
-                });
-            }
-
-
-            function backToMain() {
-                $('#editForm').hide();
-                $('#pwresetForm').hide();
-                $('#searchForm').show();
-                $('#addForm').hide();
-
-                $('#divmsg').empty();
-                jQuery("#gridtable").trigger("reloadGrid");
-
-            }
-
-
-
-
-            $.subscribe('onclicksearch', function (event, data) {
-                var searchname = $('#searchname').val();
-                $("#gridtable").jqGrid('setGridParam', {postData: {searchname: searchname, search: true}});
-                $("#gridtable").jqGrid('setGridParam', {page: 1});
-                jQuery("#gridtable").trigger("reloadGrid");
-            });
-
-            $.subscribe('loadAddForm', function (event, data) {
-                $('#editForm').hide();
-                $('#pwresetForm').hide();
-                $('#searchForm').hide();
-                $('#addForm').show();
-            });
-
-            //reset Datas
-            function ResetSearchForm() {
-                $('#searchname').val("");
-                $('#divmsg').empty();
-                jQuery("#gridtable").trigger("reloadGrid");
-            }
+            
             function ResetAddForm() {
                 resetData();
                 $('#divmsg').empty();
             }
+            function resetData() {
+                $('#memName').val("");
+                $('#memNic').val("");
+                $('#memDob').val("");
+                $('#phoneNo').val("");
+                $('#mobileNo').val("");
+                $('#email').val("");
+                
+                $('#qualification').val("");
+                $('#perAddress').val("");
+                $('#temAddress').val("");
+                
+                $('#memBornPlace').val("");
+                $('#memCast').val("-1");
+                $('#memSubCast').val("");
 
-            function resetUpdateForm() {
-                var upusername = $('#upusername').val();
-                editNow(upusername);
+                $('#memIslife').val("-1");
+                $('#noOfBrother').val("0");
+                $('#noOfSister').val("");
+
+                $('#jobTitle').val("");
+                $('#jobAddress').val("");
+                $('#jobPhone').val("");
+                
+                $('#fatName').val("");
+                $('#fatBirthPlace').val("");
+                $('#fatCast').val("");
+                $('#mothName').val("");
+                $('#mothBirthPlace').val("");
+                $('#mothCast').val("");
+                
+                $('#grandFatName').val("");
+                $('#grandFatBirthPlace').val("");
+                $('#grandFatCast').val("");
+                $('#grandMothName').val("");
+                $('#grandMothBirthPlace').val("");
+                $('#grandMothCast').val("");
+                
+                jQuery("#gridtable").trigger("reloadGrid");
+            }
+
+            
+
+
+
+            function backToMain() {
+                $('#addForm').hide();
+                
                 $('#divmsg').empty();
                 jQuery("#gridtable").trigger("reloadGrid");
 
             }
 
-//            function loadAuthType(keyval){ 
-//                if(keyval=='1'){
-//                    $('#imei').hide();
-//                    $('#password').show();
-//                    $('#repassword').show();
-//                }else{ //2
-//                    $('#imei').show()
-//                    $('#password').hide();
-//                    $('#repassword').hide();
-//                }
-//                
-//            }
+
+
 
           function loadIsLifeMem(keyval) {
               //alert('keyval'+keyval); //1,0
@@ -257,7 +141,7 @@
                             <table class="form_table">
                                 <tr>
                                     <td class="formLable">Member ID<span class="mandatory">*</span></td> <td >:</td>
-                                    <td><s:textfield id="memId" name="memId" readonly="true" cssClass="textField" /></td>                                    
+                                    <td><s:textfield id="memIdDes" name="memIdDes" readonly="true" cssClass="textField" /></td>                                    
                                     <td width="25px;"></td>
                                     
                                 </tr> 
@@ -279,7 +163,7 @@
                                     <td class="formLable">Mobile Number<span class="mandatory">*</span></td> <td>:</td>
                                     <td><s:textfield id="mobileNo" name="mobileNo" cssClass="textField" /></td>  
                                     <td width="25px;"></td>
-                                    <td class="formLable">Email<span class="mandatory">*</span></td> <td>:</td>
+                                    <td class="formLable">Email</td> <td>:</td>
                                     <td><s:textfield id="email" name="email" cssClass="textField" /></td> 
                                 </tr> 
                                 
@@ -290,7 +174,7 @@
                                     <td class="formLable">Permanent Address<span class="mandatory">*</span></td> <td>:</td>
                                     <td><s:textfield id="perAddress" name="perAddress" cssClass="textField" /></td>  
                                     <td width="25px;"></td>
-                                    <td class="formLable">Temporary Address<span class="mandatory">*</span></td> <td>:</td>
+                                    <td class="formLable">Temporary Address</td> <td>:</td>
                                     <td><s:textfield id="temAddress" name="temAddress" cssClass="textField" /></td> 
                                 </tr> 
                                 
@@ -311,7 +195,7 @@
                                     <td><s:select  name="memIslife" id="memIslife" list="%{memIslifeList}" 
                                                listKey="key" listValue="value"  onchange="loadIsLifeMem(this.value)"  headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" /></td> 
                                     <td width="25px;"></td>
-                                    <td class="formLable" id="memExpdate1" >Exp Date<span class="mandatory">*</span></td> <td id="memExpdate2">:</td>
+                                    <td class="formLable" id="memExpdate1" >Exp Date</td> <td id="memExpdate2">:</td>
                                     <td id="memExpdate3"><sj:datepicker id="memExpdate" name="memExpdate" readonly="true" value="today"  minDate="today" changeYear="true" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>
                                 </tr>
                                 <tr> 
@@ -322,13 +206,13 @@
                                     <td><s:select  name="noOfSister" id="noOfSister"  list="%{numberList}"  cssClass="dropdown" /></td>
                                 </tr>
                                 <tr>
-                                    <td class="formLable">Occupation<span class="mandatory">*</span></td> <td >:</td>
+                                    <td class="formLable">Occupation</td> <td >:</td>
                                     <td><s:textfield id="jobTitle" name="jobTitle" cssClass="textField" /></td>                                    
                                     <td width="25px;"></td>
-                                    <td class="formLable">Office Address<span class="mandatory">*</span></td> <td>:</td>
+                                    <td class="formLable">Office Address</td> <td>:</td>
                                     <td><s:textfield id="jobAddress" name="jobAddress" cssClass="textField" /></td>  
                                     <td width="25px;"></td>
-                                    <td class="formLable">Office Phone<span class="mandatory">*</span></td> <td>:</td>
+                                    <td class="formLable">Office Phone</td> <td>:</td>
                                     <td><s:textfield id="jobPhone" name="jobPhone" cssClass="textField" /></td> 
                                 </tr>
                                 </table>
@@ -340,47 +224,43 @@
                                         <td class="formLable">Father Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="fatName" name="fatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Father Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Father Birth Place</td> <td>:</td>
                                         <td><s:textfield id="fatBirthPlace" name="fatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Father Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="fatCast" id="fatCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="fatCast" id="fatCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Mother Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="mothName" name="mothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Mother Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Mother Birth Place</td> <td>:</td>
                                         <td><s:textfield id="mothBirthPlace" name="mothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Mother Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="mothCast" id="mothCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="mothCast" id="mothCast"  cssClass="textField" /></td> 
                                     </tr>
                                     
                                     <tr>
                                         <td class="formLable">Grandfather Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="grandFatName" name="grandFatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Grandfather Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Grandfather Birth Place</td> <td>:</td>
                                         <td><s:textfield id="grandFatBirthPlace" name="grandFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Grandfather Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="grandFatCast" id="grandFatCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="grandFatCast" id="grandFatCast"  cssClass="textField" /></td> 
 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Grandmother Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="grandMothName" name="grandMothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Grandmother Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Grandmother Birth Place</td> <td>:</td>
                                         <td><s:textfield id="grandMothBirthPlace" name="grandMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Grandmother Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="grandMothCast" id="grandMothCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="grandMothCast" id="grandMothCast"  cssClass="textField" /></td> 
                                         
                                     </tr>
                                     
@@ -412,10 +292,10 @@
                                         <td class="formLable">DOB<span class="mandatory">*</span></td> <td >:</td>
                                         <td><sj:datepicker id="wifeDob" name="wifeDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1950" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>                                  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Address<span class="mandatory">*</span></td> <td>:</td> 
+                                        <td class="formLable">Address</td> <td>:</td> 
                                         <td><s:textfield id="wifeAdd" name="wifeAdd" cssClass="textField" /></td> 
                                         <td width="25px;"></td>
-                                        <td class="formLable">Email<span class="mandatory">*</span></td> <td>:</td> 
+                                        <td class="formLable">Email</td> <td>:</td> 
                                         <td><s:textfield id="wifeEmail" name="wifeEmail" cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
@@ -426,8 +306,7 @@
                                         <td><s:textfield id="wifeBirPlace" name="wifeBirPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wifeCast" id="wifeCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="wifeCast" id="wifeCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Wife Father Name<span class="mandatory">*</span></td> <td >:</td>
@@ -437,8 +316,7 @@
                                         <td><s:textfield id="wifeFatBirthPlace" name="wifeFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Father Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wifeFatCast" id="wifeFatCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="wifeFatCast" id="wifeFatCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Wife Mother Name<span class="mandatory">*</span></td> <td >:</td>
@@ -448,8 +326,7 @@
                                         <td><s:textfield id="wifeMothBirthPlace" name="wifeMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Mother Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wifeMothCast" id="wifeMothCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="wifeMothCast" id="wifeMothCast"  cssClass="textField" /></td> 
                                     </tr>
                                     
                                     <tr>
@@ -460,8 +337,7 @@
                                         <td><s:textfield id="wifeGrandFatBirthPlace" name="wifeGrandFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Grandfather Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wifeGrandFatCast" id="wifeGrandFatCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="wifeGrandFatCast" id="wifeGrandFatCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
                                         <td class="formLable">Wife Grandmother Name<span class="mandatory">*</span></td> <td >:</td>
@@ -471,8 +347,7 @@
                                         <td><s:textfield id="wifeGrandMothBirthPlace" name="wifeGrandMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Grandmother Cast<span class="mandatory">*</span></td> <td>:</td>
-                                        <td><s:select  name="wifeGrandMothCast" id="wifeGrandMothCast"  headerKey="-1" 
-                                               headerValue="---Select---"  list="%{memCastList}"  cssClass="dropdown" /></td> 
+                                        <td><s:textfield  name="wifeGrandMothCast" id="wifeGrandMothCast"  cssClass="textField" /></td> 
                                     </tr>
                                     </table>
                                 </fieldset>

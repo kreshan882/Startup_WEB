@@ -24,6 +24,7 @@ public class MemberManagementInputBean {
     
     //Add data
     private String memId; //1,2,3
+    private String memIdDes;
     private String memName;
     private String memNic;
     private String memDob;
@@ -195,6 +196,14 @@ public class MemberManagementInputBean {
 //    public void setUpfileFileName(String upfileFileName) {
 //        this.upfileFileName = upfileFileName;
 //    }
+
+    public String getMemIdDes() {
+        return memIdDes;
+    }
+
+    public void setMemIdDes(String memIdDes) {
+        this.memIdDes = memIdDes;
+    }
 
     public String getMemImgFileContentType() {
         return memImgFileContentType;

@@ -300,11 +300,11 @@ public class MemberManagementService {
                     + "?, ?, ?,"
                     + "?, ?, ?, ?, ?, ?,"
                     + "?, ?, ?, ?, ?, ?,"
-                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?, ?, "
                     
-                    + "?, ?, ?, ?, ?, ?,"
-                    + "?, ?, ?, ?, ?, ?,"
-                    + "?, ?, ?, ?, ?, ?,"
+                    + "?, ?, ?, ?, ?, "
+                    + "?, ?, ?, ?, ?, "
+                    + "?, ?, ?, ?, ?, "
                     + "?, ?, ?, ?, ?);";
 
             preStat = con.prepareStatement(sql);
@@ -374,8 +374,8 @@ public class MemberManagementService {
             preStat.setString(52, inputBean.getWifeGrandMothName());
             preStat.setString(53, inputBean.getWifeGrandMothBirthPlace());
             preStat.setString(54, inputBean.getWifeGrandMothCast());
-            preStat.setString(55, "PRO"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".jsp"); //PRO00011.jsp
-            preStat.setString(56, "FAM"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".jsp"); //FAM00011.jsp
+            preStat.setString(55, "PRO_"+inputBean.getMemIdDes()+".png"); //PRO_M00011.jsp
+            preStat.setString(56, "FAM_"+inputBean.getMemIdDes()+".png"); //FAM_M00011.jsp
             
             
             

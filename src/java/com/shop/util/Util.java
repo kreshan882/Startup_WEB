@@ -133,6 +133,26 @@ public class Util {
         return text.matches("^[a-zA-Z0-9]+$") && text.length() <= 200;
     }
 
+     public static boolean validateImageFileName(String filenamei) throws Exception {
+
+        boolean ok = false;
+        String filename = "" + filenamei;
+        String extension = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
+
+        try {
+
+            if (filenamei != null && !extension.toUpperCase().equals("JPG") && !extension.toUpperCase().equals("PNG")) {
+                return ok;
+            } else {
+                ok = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ok;
+        }
+
+        return ok;
+    }
     public static Date convertStringToDate(String dateString) throws Exception {
 
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm");

@@ -14,7 +14,6 @@ import com.shop.login.bean.TaskBean;
 import com.shop.login.bean.UserLoginBean;
 import com.shop.login.service.LoginService;
 import com.shop.init.InitConfigValue;
-import com.shop.util.QRHelper;
 import com.shop.util.SessionVarlist;
 import com.shop.util.SystemMessage;
 import com.shop.util.Util;

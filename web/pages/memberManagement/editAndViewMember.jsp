@@ -17,20 +17,42 @@
             }
 
             function resetData() {
-                $('#name').val("");
-                $('#username').val("");
-                $('#password').val("");
-                $('#repassword').val("");
+                $('#memName').val("");
+                $('#memNic').val("");
+                $('#memDob').val("");
+                $('#phoneNo').val("");
+                $('#mobileNo').val("");
                 $('#email').val("");
-                $('#mobile').val("");
-                $('#userPro').val("-1");
+                
+                $('#qualification').val("");
+                $('#perAddress').val("");
+                $('#temAddress').val("");
+                
+                $('#memBornPlace').val("");
+                $('#memCast').val("-1");
+                $('#memSubCast').val("");
 
-                $('#upname').val("");
-                $('#upusername').val("");
-                $('#upstatus').val("-1");
-                $('#upuserPro').val("-1");
-                $('#upemail').val("");
-                $('#upmobile').val("");
+                $('#memIslife').val("-1");
+                $('#noOfBrother').val("0");
+                $('#noOfSister').val("");
+
+                $('#jobTitle').val("");
+                $('#jobAddress').val("");
+                $('#jobPhone').val("");
+                
+                $('#fatName').val("");
+                $('#fatBirthPlace').val("");
+                $('#fatCast').val("");
+                $('#mothName').val("");
+                $('#mothBirthPlace').val("");
+                $('#mothCast').val("");
+                
+                $('#grandFatName').val("");
+                $('#grandFatBirthPlace').val("");
+                $('#grandFatCast').val("");
+                $('#grandMothName').val("");
+                $('#grandMothBirthPlace').val("");
+                $('#grandMothCast').val("");
 
                 jQuery("#gridtable").trigger("reloadGrid");
             }
@@ -56,9 +78,7 @@
             function downloadformatter(cellvalue, options, rowObject) {
                 return "<a href='#' onClick='javascript:downloadNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/download.png' /></a>";
             }
-//            function pdchangeformatter(cellvalue, options, rowObject) {
-//                return "<a href='#' onClick='javascript:pdchangeNow(&#34;" + cellvalue + "&#34;)'><img src ='${pageContext.request.contextPath}/resources/images/iconEdit.png' /></a>";
-//            }
+
 
             function deleteInit(keyval,keyvaldes) {
                 $("#confirmdialogbox").data('keyval', keyval).dialog('open');
@@ -134,6 +154,7 @@
             }
             
             function downloadNow(keyval) {
+            alert("download:"+keyval)
                 $('#divmsg').empty();
                 $.ajax({
                     url: '${pageContext.request.contextPath}/DownloadeditViewMember',
