@@ -127,15 +127,22 @@
                     dataType: "json",
                     type: "POST",
                     success: function (data) {
-
+                        //alert("data.memId"+data.memId);
+                        //alert("data.memIdDes"+data.memIdDes);
                         $('#editForm').show();
                         $('#searchForm').hide();
 
                         $('#upusername').val(data.upusername);
                         $('#upusername').attr('readOnly', true).val();
                         
-                        $('#memId').val(data.memId);
-                        $('#memIdDes').val(data.memIdDes);
+                        $('#memId').val(data.memId); //5
+                        $('#memIdUp').val(data.memId); 
+                        $('#status').val(data.status);
+                        
+                        
+                        
+                        
+                        $('#memIdDes').val(data.memIdDes); //M00005
                         $('#memName').val(data.memName);
                         $('#memNic').val(data.memNic);
                         $('#memDob').val(data.memDob);
@@ -329,7 +336,12 @@
                                     <td class="formLable">Member ID<span class="mandatory">*</span></td> <td >:</td>
                                     <td><s:textfield id="memIdDes" name="memIdDes" readonly="true" cssClass="textField" /></td>                                    
                                     <td width="25px;"></td>
-                                    <s:textfield name="memId"  id="memId" cssClass="textField" hidden="true"/>
+                                    <s:textfield name="memIdUp"  id="memIdUp" cssClass="textField" hidden="true"/>
+                                    <td class="formLable">Status<span class="mandatory">*</span></td><td>:</td>
+                                    <td ><s:select  name="status" id="status" list="%{statusList}" 
+                                               listKey="key" listValue="value"    headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" />
+                                    </td>
+                                    <td width="25px"></td>
                                 </tr> 
                                 <tr>
                                     <td class="formLable">Member Name<span class="mandatory">*</span></td> <td >:</td>

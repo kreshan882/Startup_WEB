@@ -27,7 +27,6 @@ public class InitConfigValue {
         
         public static String                    SCONFIGPATH = "C:/my_sys_k/conf/";
         public static String                    LOGPATH = "/opt/my_sys_k/logs/";
-        public static String 			IMAGE_UPLOAD_PATH="C:/Users/Kreshan Rajendran/AppData/Roaming/NetBeans/8.2/config/GF_4.1.1/domain1/docroot/imagesK/members/";
-        //public static String 			IMAGE_UPLOAD_PATH="C:/Program Files/glassfish-4.1.1/glassfish/domains/domain1/docroot/imagesK/members/";
-        
+        //public static String 			IMAGE_UPLOAD_PATH="C:/Users/Kreshan Rajendran/AppData/Roaming/NetBeans/8.2/config/GF_4.1.1/domain1/docroot/imagesK/members/";
+        public static String 			IMAGE_UPLOAD_PATH;
 }

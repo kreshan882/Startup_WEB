@@ -33,6 +33,7 @@ import java.util.TreeMap;
 import java.util.regex.Pattern;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import org.jpos.iso.ISOUtil;
 
 /**
  *
@@ -40,22 +41,22 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class Util {
 
-    private static final String ENCRYPTION_KEY = "kreshanKey";
+    private static final String ENCRYPTION_KEY = "kreshanKey111111";
 
-    public static String encryptionCard(String accNumber) throws Exception {
+    public static String encryptionPass(String accNumber) throws Exception {
         Key aesKey = new SecretKeySpec(ENCRYPTION_KEY.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, aesKey);
         byte[] encrypted = cipher.doFinal(accNumber.getBytes());
-        return new String(encrypted);
+        return ISOUtil.hexString(encrypted);
     }
 
-    public static String decryptionCard(String encrypted) throws Exception {
+    public static String decryptionPass(String encrypted) throws Exception {
         System.out.println(encrypted);
         Key aesKey = new SecretKeySpec(ENCRYPTION_KEY.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, aesKey);
-        String decrypted = new String(cipher.doFinal(encrypted.getBytes()));
+        String decrypted = ISOUtil.hexString(cipher.doFinal(encrypted.getBytes()));
         return decrypted;
 
     }

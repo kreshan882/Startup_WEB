@@ -114,11 +114,17 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
     }
 
     public String Update() {
-        System.out.println("Update...");
+        System.out.println("Update...getMemId:"+inputBean.getMemId());
+        System.out.println("Update...getMemIdDes:"+inputBean.getMemIdDes());
+        System.out.println("Update...getMemIdUp:"+inputBean.getMemIdUp());
         try {
-            if (doValidationUpdate(inputBean)) {
-
-                if (service.updateData(inputBean)) {
+            if (doValidation(inputBean)) {
+                System.out.println("update validation sucess");
+                boolean me_img=MemberManagement.imageUpload(inputBean.getMemImgFile() ,"PRO_"+inputBean.getMemIdDes()+".png");
+               boolean fam_img=MemberManagement.imageUpload(inputBean.getFamImgFile(),"FAM_"+inputBean.getMemIdDes()+".png");
+                System.out.println("me_img  :"+me_img);
+                System.out.println("fam_img :"+fam_img);
+               if (service.updateData(inputBean,me_img,fam_img)) {
 
                     addActionMessage(SystemMessage.USR_UPDATED);
                     LogFileCreator.writeInfoToLog(SystemMessage.USR_UPDATED);
@@ -193,17 +199,18 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
             if (userBean.getMemName() == null || userBean.getMemName().isEmpty()) {
                 addActionError(SystemMessage.MEMB_NAME_EMPTY);
                 return ok;
-            } else if (!Util.validateSTRING(userBean.getMemName())) {
+            } else if (!Util.validateNAME(userBean.getMemName())) {
                 addActionError(SystemMessage.MEMB_NAME_INVALID);
                 return ok;
             } 
             else if (userBean.getMemNic() == null || userBean.getMemNic().isEmpty()) {
                 addActionError(SystemMessage.MEMB_NIC_EMPTY);
                 return ok;
-            } else if (!Util.validateNIC(userBean.getMemNic())) {
-                addActionError(SystemMessage.MEMB_NIC_INVALID);
-                return ok;
-            }
+            } 
+//            else if (!Util.validateNIC(userBean.getMemNic())) {
+//                addActionError(SystemMessage.MEMB_NIC_INVALID);
+//                return ok;
+//            }
             else if (userBean.getMemDob() == null || userBean.getMemDob().isEmpty()) {
                 addActionError(SystemMessage.MEMB_DOB_EMPTY);
                 return ok;
@@ -216,7 +223,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
                 addActionError(SystemMessage.MEMB_MOBILE_INVALID);
                 return ok;
             }
-            else if (!Util.validateEMAIL(userBean.getEmail())) {
+            else if (!userBean.getEmail().isEmpty() && !Util.validateEMAIL(userBean.getEmail())) {
                 addActionError(SystemMessage.MEMB_EMAIL_INVALID);
                 return ok;
             }
@@ -270,7 +277,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
             } else if (!Util.validateDESCRIPTION(userBean.getFatBirthPlace())) {
                 addActionError(SystemMessage.MEMB_FAT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getFatCast().equals("-1")) {
+            } else if (!Util.validateDESCRIPTION(userBean.getFatCast())) {
                 addActionError(SystemMessage.MEMB_FAT_CAST_INVALID);
                 return ok;
             }
@@ -281,7 +288,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
             } else if (!Util.validateDESCRIPTION(userBean.getMothBirthPlace())) {
                 addActionError(SystemMessage.MEMB_MOT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getMothCast().equals("-1")) {
+            } else if (!Util.validateDESCRIPTION(userBean.getMothCast())) {
                 addActionError(SystemMessage.MEMB_MOT_CAST_INVALID);
                 return ok;
             }
@@ -292,7 +299,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
             } else if (!Util.validateDESCRIPTION(userBean.getGrandFatBirthPlace())) {
                 addActionError(SystemMessage.MEMB_GRANDFAT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getGrandFatCast().equals("-1")) {
+            } else if (!userBean.getGrandFatCast().isEmpty() && !Util.validateDESCRIPTION(userBean.getGrandFatCast())) {
                 addActionError(SystemMessage.MEMB_GRANDFAT_CAST_INVALID);
                 return ok;
             }
@@ -303,16 +310,31 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
             } else if (!Util.validateDESCRIPTION(userBean.getGrandMothBirthPlace())) {
                 addActionError(SystemMessage.MEMB_GRANDMOT_BIRPLAC_INVALID);
                 return ok;
-            } else if (userBean.getGrandMothCast().equals("-1")) {
+            } else if (!userBean.getGrandMothCast().isEmpty() && !Util.validateNAME(userBean.getGrandMothCast())) {
                 addActionError(SystemMessage.MEMB_GRANDMOT_CAST_Invalid);
                 return ok;
             }
             
-            else if (userBean.getIsMerrid().equals("-1")) {
+            else if (userBean.getIsMerrid().equals("-1")) { //1=merried, 0=single
                 addActionError(SystemMessage.MEMB_MERIED_STATUS_SELECT);
                 return ok;
             }
+            else if (userBean.getIsMerrid().equals("1") && !Util.validateDESCRIPTION(userBean.getWifeAdd()) ) { 
+                addActionError("wife address invalid");
+                return ok;
+            }else if (userBean.getIsMerrid().equals("1") &&(userBean.getMemDob() == null || userBean.getMemDob().isEmpty())) {
+                addActionError("wife date of birth empty");
+                return ok;
+            }
             
+//            else if (!Util.validateImageFileName(inputBean.getMemImgFileFileName())) {
+//                addActionError(SystemMessage.MEMB_IMAGE_PROFILE_INVALID);
+//                return ok;
+//            }
+//            else if (!Util.validateImageFileName(inputBean.getFamImgFileFileName())) {
+//                addActionError(SystemMessage.MEMB_IMAGE_FAMILY_INVALID);
+//                return ok;
+//            }
             else {
                 ok = true;
             }
@@ -324,47 +346,18 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
 
     }
 
-    private boolean doValidationUpdate(MemberManagementInputBean userBean) throws Exception {
-        boolean ok = false;
 
-        try {
-
-//            if (userBean.getUpname() == null || userBean.getUpname().isEmpty()) {
-//                addActionError(SystemMessage.USR_NAME_EMPTY);
-//                return ok;
-//            } else if (userBean.getUpusername() == null || userBean.getUpusername().isEmpty()) {
-//                addActionError(SystemMessage.USR_USERNAME_EMPTY);
-//                return ok;
-//            } else if (!Util.validateSTRING(userBean.getUpusername())) {
-//                addActionError(SystemMessage.USR_USERNAME_INVALID);
-//                return ok;
-//            }else if (userBean.getUpuserPro().equals("-1")) {
-//                addActionError(SystemMessage.USR_PROFILE_SELECT);
-//                return ok;
-//            } 
-//            else if (userBean.getUpemail() == null || userBean.getUpemail().isEmpty()) {
-//                addActionError(SystemMessage.USR_EMAIL_EMPTY);
-//                return ok;
-//            } else if (!Util.validateEMAIL(userBean.getUpemail())) {
-//                addActionError(SystemMessage.USR_EMAIL_INVALID);
-//                return ok;
-//            }  else if (!(userBean.getUpmobile().isEmpty() || userBean.getUpmobile() == null) && !Util.validatePHONENO(userBean.getUpmobile())) {
-//                addActionError(SystemMessage.USR_PHONE_INVALID);
-//                return ok;
+//    private boolean doValidationUpdate(MemberManagementInputBean userBean) throws Exception {
+//        boolean ok = false;
 //
-//            } else if (userBean.getUpstatus().equals("-1")) {
-//                addActionError(SystemMessage.USR_STATUS_SELECT);
-//                return ok;
-//            } else {
-//                ok = true;
-//            }
-
-        } catch (Exception e) {
-            throw e;
-        }
-        return ok;
-
-    }
+//        try {
+//
+//        } catch (Exception e) {
+//            throw e;
+//        }
+//        return ok;
+//
+//    }
 
     private boolean applyUserPrivileges() {
         HttpServletRequest request = ServletActionContext.getRequest();

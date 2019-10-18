@@ -19,6 +19,8 @@ public class InitConfigValueReader {
             InitConfigValue.DBCONNECTIONTIMEOUT                 = Integer.parseInt(cfg.get("DB_CONNECTION_TIMEOUT").trim());
             InitConfigValue.DBCONEXPIRTIMEOUT                   = Integer.parseInt(cfg.get("DB_CON_EXPIR_TIMEOUT").trim());
            
+            
+            InitConfigValue.IMAGE_UPLOAD_PATH                               = cfg.get("IMAGE_UPLOAD_PATH").trim();
         }
     
 		

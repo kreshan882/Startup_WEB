@@ -22,6 +22,8 @@ public class MemberManagementInputBean {
     private String searchname ="";
     private boolean search;
     
+    //update data
+    private String memIdUp;
     //Add data
     private String memId; //1,2,3
     private String memIdDes;
@@ -180,6 +182,15 @@ public class MemberManagementInputBean {
     public void setUpfile(File upfile) {
         this.upfile = upfile;
     }
+
+    public String getMemIdUp() {
+        return memIdUp;
+    }
+
+    public void setMemIdUp(String memIdUp) {
+        this.memIdUp = memIdUp;
+    }
+    
 //
 //    public String getUpfileContentType() {
 //        return upfileContentType;

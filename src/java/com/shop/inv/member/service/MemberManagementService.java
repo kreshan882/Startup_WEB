@@ -239,7 +239,7 @@ public class MemberManagementService {
 
     }
 
-    public boolean updateData(MemberManagementInputBean inputBean) throws Exception {
+    public boolean updateData(MemberManagementInputBean inputBean,boolean mem_img,boolean fam_img) throws Exception {
 
         boolean ok = false;
         PreparedStatement prepSt = null;
@@ -247,7 +247,7 @@ public class MemberManagementService {
         Connection con = null;
         String sql = null;
         try {
-
+            System.out.println("getMemId:"+inputBean.getMemId());
             con = DBConnection.getConnection();
             //con.setAutoCommit(true);
 
@@ -257,98 +257,113 @@ public class MemberManagementService {
                     + "MEM_TYPE_ISLIFE=?,MEM_EXP_DATE=?, NUM_OF_BRO=?, NUM_OF_SIS=?, "
                     + "JOB_TITLE=?, JOB_ADD=?, JOB_PHONE=?, "
                     + "FAT_NAME=?, FAT_ADD=?, FAT_CAST=?, MOT_NAME=?, MOT_ADD=?, MOT_CAST=?, "
-                    + "GRAN_FAT_NAME=?, GRAN_FAT_ADD=?, GRAN_FAT_CAST=?, GRAN_MOT_NAME=?, GRAN_MOT_ADD,GRAN_MOT_CAST=?, "
+                    + "GRAN_FAT_NAME=?, GRAN_FAT_ADD=?, GRAN_FAT_CAST=?, GRAN_MOT_NAME=?, GRAN_MOT_ADD=?,GRAN_MOT_CAST=?, "
                     + "IS_MARRIED=?, WI_NAME=?, NUM_OF_SUN=?, NUM_OF_DOT=?, STATUS=?,"
                     
                     + "WI_DOB=?,WI_ADD=?,WI_EMAIL=?,WI_MOBILE=?,WI_BORN_PLACE=?,"
                     + "WI_CAST=?,WI_FAT_NAME=?,WI_FAT_BORN_PLACE=?,WI_FAT_CAST=?,WI_MOT_NAME=?,"
                     + "WI_MOT_BORN_PLACE=?,WI_MOT_CAST=?,WI_GRAN_FAT_NAME=?,WI_GRAN_FAT_BORN_PLACE=?,WI_GRAN_FAT_CAST=?,"
-                    + "WI_GRAN_MOT_NAME=?,WI_GRAN_MOT_BORN_PLACE=?,WI_GRAN_MOT_CAST=?,IMG_MEMBER,IMG_FAMILY=?  "
+                    + "WI_GRAN_MOT_NAME=?,WI_GRAN_MOT_BORN_PLACE=?,WI_GRAN_MOT_CAST=?,IMG_MEMBER=?,IMG_FAMILY=?  "
                     + "Where MEM_ID=?";
             prepSt = con.prepareStatement(sql);
-            prepSt.setString( 1 ,res.getString("MEM_NAME"));
-            prepSt.setString( 2 ,res.getString("MEM_NIC"));
-            prepSt.setString( 3 ,res.getString("MEM_DOB"));
-            prepSt.setString( 4 ,res.getString("MEM_PHONE"));
-            prepSt.setString( 5 ,res.getString("MEM_MOBILE"));
-            prepSt.setString( 6 ,res.getString("EMAIL"));
+            prepSt.setString( 1 ,inputBean.getMemName());
+            prepSt.setString( 2 ,inputBean.getMemNic());
+            prepSt.setString( 3 ,inputBean.getMemDob());
+            prepSt.setString( 4 ,inputBean.getPhoneNo());
+            prepSt.setString( 5 ,inputBean.getMobileNo());
+            prepSt.setString( 6 ,inputBean.getEmail());
 
-            prepSt.setString( 7 ,res.getString("QUALIFICATION"));
-            prepSt.setString( 8 ,res.getString("PERM_ADD"));
-            prepSt.setString( 9 ,res.getString("TEMP_ADD"));
-            prepSt.setString( 10 ,res.getString("MEM_BORN_PLACE"));
-            prepSt.setString( 11 ,res.getString("MEM_CAST"));
-            prepSt.setString( 12 ,res.getString("MEM_SUB_CAST"));
+            prepSt.setString( 7 ,inputBean.getQualification());
+            prepSt.setString( 8 ,inputBean.getPerAddress());
+            prepSt.setString( 9 ,inputBean.getTemAddress());
+            prepSt.setString( 10 ,inputBean.getMemBornPlace());
+            prepSt.setString( 11 ,inputBean.getMemCast());
+            prepSt.setString( 12 ,inputBean.getMemSubCast());
 
-            prepSt.setString( 13 ,res.getString("MEM_TYPE_ISLIFE"));
-            prepSt.setString( 14 ,res.getString("MEM_EXP_DATE"));
-            prepSt.setString( 15 ,res.getString("NUM_OF_BRO"));
-            prepSt.setString( 16 ,res.getString("NUM_OF_SIS"));
+            prepSt.setString( 13 ,inputBean.getMemIslife());
+            prepSt.setString( 14 ,inputBean.getMemExpdate());
+            prepSt.setString( 15 ,inputBean.getNoOfBrother());
+            prepSt.setString( 16 ,inputBean.getNoOfSister());
 
-            prepSt.setString( 17 ,res.getString("JOB_TITLE"));
-            prepSt.setString( 18 ,res.getString("JOB_ADD"));
-            prepSt.setString( 19 ,res.getString("JOB_PHONE"));
+            prepSt.setString( 17 ,inputBean.getJobTitle());
+            prepSt.setString( 18 ,inputBean.getJobAddress());
+            prepSt.setString( 19 ,inputBean.getJobPhone());
 
-            prepSt.setString( 20 ,res.getString("FAT_NAME"));
-            prepSt.setString( 21 ,res.getString("FAT_ADD"));
-            prepSt.setString( 22 ,res.getString("FAT_CAST"));
-            prepSt.setString( 23 ,res.getString("MOT_NAME"));
-            prepSt.setString( 24 ,res.getString("MOT_ADD"));
-            prepSt.setString( 25 ,res.getString("MOT_CAST"));
+            prepSt.setString( 20 ,inputBean.getFatName());
+            prepSt.setString( 21 ,inputBean.getFatBirthPlace());
+            prepSt.setString( 22 ,inputBean.getFatCast());
+            prepSt.setString( 23 ,inputBean.getMothName());
+            prepSt.setString( 24 ,inputBean.getMothBirthPlace());
+            prepSt.setString( 25 ,inputBean.getMothCast());
 
-            prepSt.setString( 26 ,res.getString("GRAN_FAT_NAME"));
-            prepSt.setString( 27 ,res.getString("GRAN_FAT_ADD"));
-            prepSt.setString( 28 ,res.getString("GRAN_FAT_CAST"));
-            prepSt.setString( 29 ,res.getString("GRAN_MOT_NAME"));
-            prepSt.setString( 30 ,res.getString("GRAN_MOT_ADD"));
-            prepSt.setString( 31 ,res.getString("GRAN_MOT_CAST"));
+            prepSt.setString( 26 ,inputBean.getGrandFatName());
+            prepSt.setString( 27 ,inputBean.getGrandFatBirthPlace());
+            prepSt.setString( 28 ,inputBean.getGrandFatCast());
+            prepSt.setString( 29 ,inputBean.getGrandMothName());
+            prepSt.setString( 30 ,inputBean.getGrandMothBirthPlace());
+            prepSt.setString( 31 ,inputBean.getGrandMothCast());
 
-            prepSt.setString( 32 ,res.getString("IS_MARRIED"));
-            prepSt.setString( 33 ,res.getString("WI_NAME"));
-            prepSt.setString( 34 ,res.getString("NUM_OF_SUN"));
-            prepSt.setString( 35 ,res.getString("NUM_OF_DOT"));
-            prepSt.setString( 36 ,res.getString("STATUS"));
+            prepSt.setString( 32 ,inputBean.getIsMerrid());
+            prepSt.setString( 33 ,inputBean.getWifeName());
+            prepSt.setString( 34 ,inputBean.getNoOfSuns());
+            prepSt.setString( 35 ,inputBean.getNoOfDoters());
+            prepSt.setString( 36 ,inputBean.getStatus());
 
                             //wife details
-            prepSt.setString( 37 ,res.getString("WI_DOB"));
-            prepSt.setString( 38 ,res.getString("WI_ADD"));
-            prepSt.setString( 39 ,res.getString("WI_EMAIL"));
-            prepSt.setString( 40 ,res.getString("WI_MOBILE"));
-            prepSt.setString( 41 ,res.getString("WI_BORN_PLACE"));
+            prepSt.setString( 37 ,inputBean.getWifeDob());
+            prepSt.setString( 38 ,inputBean.getWifeAdd());
+            prepSt.setString( 39 ,inputBean.getWifeEmail());
+            prepSt.setString( 40 ,inputBean.getWifeMobile());
+            prepSt.setString( 41 ,inputBean.getWifeBirPlace());
 
-            prepSt.setString( 42 ,res.getString("WI_CAST"));
-            prepSt.setString( 43 ,res.getString("WI_FAT_NAME"));
-            prepSt.setString( 44 ,res.getString("WI_FAT_BORN_PLACE"));
-            prepSt.setString( 45 ,res.getString("WI_FAT_CAST"));
-            prepSt.setString( 46 ,res.getString("WI_MOT_NAME"));
+            prepSt.setString( 42 ,inputBean.getWifeCast());
+            prepSt.setString( 43 ,inputBean.getWifeFatName());
+            prepSt.setString( 44 ,inputBean.getWifeFatBirthPlace());
+            prepSt.setString( 45 ,inputBean.getWifeFatCast());
+            prepSt.setString( 46 ,inputBean.getWifeMothName());
 
-            prepSt.setString( 47 ,res.getString("WI_MOT_BORN_PLACE"));
-            prepSt.setString( 48 ,res.getString("WI_MOT_CAST"));
-            prepSt.setString( 49 ,res.getString("WI_GRAN_FAT_NAME"));
-            prepSt.setString( 50 ,res.getString("WI_GRAN_FAT_BORN_PLACE"));
-            prepSt.setString( 51 ,res.getString("WI_GRAN_FAT_CAST"));
+            prepSt.setString( 47 ,inputBean.getWifeMothBirthPlace());
+            prepSt.setString( 48 ,inputBean.getWifeMothCast());
+            prepSt.setString( 49 ,inputBean.getWifeGrandFatName());
+            prepSt.setString( 50 ,inputBean.getWifeGrandFatBirthPlace());
+            prepSt.setString( 51 ,inputBean.getWifeGrandFatCast());
 
-            prepSt.setString( 52 ,res.getString("WI_GRAN_MOT_NAME"));
-            prepSt.setString( 53 ,res.getString("WI_GRAN_MOT_BORN_PLACE"));
-            prepSt.setString( 54 ,res.getString("WI_GRAN_MOT_CAST"));
+            prepSt.setString( 52 ,inputBean.getWifeGrandMothName());
+            prepSt.setString( 53 ,inputBean.getWifeGrandMothBirthPlace());
+            prepSt.setString( 54 ,inputBean.getWifeGrandMothCast());
 
-            if(res.getString("IMG_MEMBER")!=null){
-                        prepSt.setString( 55 ,res.getString("IMG_MEMBER"));
+            if(mem_img){
+                prepSt.setString(55, "PRO_"+inputBean.getMemIdDes()+".png"); //PRO_M00011.jsp
+            }else{
+                prepSt.setString(55, null);
             }
-                
-            if(res.getString("IMG_FAMILY")!=null){
-                    prepSt.setString( 56 ,res.getString("IMG_FAMILY"));
+            if(fam_img){
+                prepSt.setString(56, "FAM_"+inputBean.getMemIdDes()+".png"); //FAM_M00011.jsp
+            }else{
+                prepSt.setString(56, null);
             }
-            prepSt.setString(57, inputBean.getMemId());
+            
+//            if(inputBean.getMemImgFileFileName()!=null){
+//                        prepSt.setString( 55 ,inputBean.getString("IMG_MEMBER"));
+//            }
+//                
+//            if(inputBean.getString("IMG_FAMILY")!=null){
+//                    prepSt.setString( 56 ,inputBean.getString("IMG_FAMILY"));
+//            }
+            prepSt.setString(57, inputBean.getMemIdUp());
 
 
             int n = prepSt.executeUpdate();
+            
+            System.out.println("commit:"+n);
+           // con.commit();
             if (n > 0) {
                 ok = true;
             }
 
         } catch (Exception e) {
 //            con.rollback();
+            ok = false;
             throw e;
         } finally {
             if (res != null) {

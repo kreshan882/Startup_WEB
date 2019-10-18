@@ -122,7 +122,8 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
         ImageIO.write(resized, "png", output);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.err.println("ERR:"+e.getMessage());
             return false;
         }
         return true;
