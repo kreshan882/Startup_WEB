@@ -141,7 +141,7 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
             if (userBean.getMemName() == null || userBean.getMemName().isEmpty()) {
                 addActionError(SystemMessage.MEMB_NAME_EMPTY);
                 return ok;
-            } else if (!Util.validateSTRING(userBean.getMemName())) {
+            } else if (!Util.validateNAME(userBean.getMemName())) {
                 addActionError(SystemMessage.MEMB_NAME_INVALID);
                 return ok;
             } 
@@ -219,37 +219,37 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
             } else if (!Util.validateDESCRIPTION(userBean.getFatBirthPlace())) {
                 addActionError(SystemMessage.MEMB_FAT_BIRPLAC_INVALID);
                 return ok;
-            } else if (!Util.validateNAME(userBean.getFatCast())) {
+            } else if (!Util.validateDESCRIPTION(userBean.getFatCast())) {
                 addActionError(SystemMessage.MEMB_FAT_CAST_INVALID);
                 return ok;
             }
             
-            else if (!Util.validateNAME(userBean.getMothName())) {
+            else if (!Util.validateDESCRIPTION(userBean.getMothName())) {
                 addActionError(SystemMessage.MEMB_MOT_NAME_INVALID);
                 return ok;
-            } else if (!Util.validateNAME(userBean.getMothBirthPlace())) {
+            } else if (!Util.validateDESCRIPTION(userBean.getMothBirthPlace())) {
                 addActionError(SystemMessage.MEMB_MOT_BIRPLAC_INVALID);
                 return ok;
-            } else if (!Util.validateNAME(userBean.getMothCast())) {
+            } else if (!Util.validateDESCRIPTION(userBean.getMothCast())) {
                 addActionError(SystemMessage.MEMB_MOT_CAST_INVALID);
                 return ok;
             }
             
-            else if (!Util.validateNAME(userBean.getGrandFatName())) {
+            else if (!Util.validateDESCRIPTION(userBean.getGrandFatName())) {
                 addActionError(SystemMessage.MEMB_GRANDFAT_NAME_INVALID);
                 return ok;
-            } else if (!Util.validateNAME(userBean.getGrandFatBirthPlace())) {
+            } else if (!Util.validateDESCRIPTION(userBean.getGrandFatBirthPlace())) {
                 addActionError(SystemMessage.MEMB_GRANDFAT_BIRPLAC_INVALID);
                 return ok;
-            } else if (!userBean.getGrandFatCast().isEmpty() && !Util.validateNAME(userBean.getGrandFatCast())) {
+            } else if (!userBean.getGrandFatCast().isEmpty() && !Util.validateDESCRIPTION(userBean.getGrandFatCast())) {
                 addActionError(SystemMessage.MEMB_GRANDFAT_CAST_INVALID);
                 return ok;
             }
             
-            else if (!Util.validateNAME(userBean.getGrandMothName())) {
+            else if (!Util.validateDESCRIPTION(userBean.getGrandMothName())) {
                 addActionError(SystemMessage.MEMB_GRANDMOT_NAME_INVALID);
                 return ok;
-            } else if (!Util.validateNAME(userBean.getGrandMothBirthPlace())) {
+            } else if (!Util.validateDESCRIPTION(userBean.getGrandMothBirthPlace())) {
                 addActionError(SystemMessage.MEMB_GRANDMOT_BIRPLAC_INVALID);
                 return ok;
             } else if (!userBean.getGrandMothCast().isEmpty() && !Util.validateNAME(userBean.getGrandMothCast())) {

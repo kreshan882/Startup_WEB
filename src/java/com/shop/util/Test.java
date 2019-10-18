@@ -41,7 +41,7 @@ public class Test {
 //		QRHelper.createQRImage(new File(filePath), qrCodeText, 200, "png");
 //		System.out.println("DONE");
 
-            System.out.println(">>>"+Util.validateDESCRIPTION(""));
+            System.out.println(">>>"+Util.validateDESCRIPTION("dsdsd  sds22#"));
         }catch(Exception e){
             e.printStackTrace();
         }

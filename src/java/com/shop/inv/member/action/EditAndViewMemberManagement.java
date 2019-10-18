@@ -114,7 +114,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
     }
 
     public String Update() {
-
+        System.out.println("Update...");
         try {
             if (doValidationUpdate(inputBean)) {
 

@@ -158,10 +158,10 @@
                           
                                 <tr>
                                     <td class="formLable">Land Phone Number<span class="mandatory">*</span></td> <td >:</td>
-                                    <td><s:textfield id="phoneNo" name="phoneNo" cssClass="textField" /></td>                                    
+                                    <td><s:textfield id="phoneNo" name="phoneNo" cssClass="textField" placeholder="0117123456"/></td>                                    
                                     <td width="25px;"></td>
                                     <td class="formLable">Mobile Number<span class="mandatory">*</span></td> <td>:</td>
-                                    <td><s:textfield id="mobileNo" name="mobileNo" cssClass="textField" /></td>  
+                                    <td><s:textfield id="mobileNo" name="mobileNo" cssClass="textField" placeholder="0777123456"/></td>  
                                     <td width="25px;"></td>
                                     <td class="formLable">Email</td> <td>:</td>
                                     <td><s:textfield id="email" name="email" cssClass="textField" /></td> 

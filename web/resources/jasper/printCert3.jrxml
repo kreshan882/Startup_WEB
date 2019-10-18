@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="1.2100000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="64"/>
+	<property name="ireport.y" value="498"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -108,6 +108,13 @@
 	<parameter name="GRA_MOT_NAME" class="java.lang.String"/>
 	<parameter name="GRA_MOT_PLACE" class="java.lang.String"/>
 	<parameter name="GRA_MOT_CAST" class="java.lang.String"/>
+	<parameter name="PERM_ADD" class="java.lang.String"/>
+	<parameter name="WI_NAME" class="java.lang.String"/>
+	<parameter name="NUM_OF_SUN" class="java.lang.String"/>
+	<parameter name="NUM_OF_DOT" class="java.lang.String"/>
+	<parameter name="WI_DOB" class="java.lang.String"/>
+	<parameter name="WI_BORN_PLACE" class="java.lang.String"/>
+	<parameter name="WI_CAST" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -232,7 +239,7 @@
 				<text><![CDATA[Native Place]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="349" width="89" height="20" uuid="d14c65b1-32ed-4cba-876c-7879e8c7d0a7"/>
+				<reportElement x="3" y="368" width="89" height="20" uuid="d14c65b1-32ed-4cba-876c-7879e8c7d0a7"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[Member Type]]></text>
 			</staticText>
@@ -242,12 +249,12 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="92" y="348" width="5" height="20" uuid="e3b335e4-e201-4b96-931e-fb0ce92daabf"/>
+				<reportElement x="92" y="368" width="5" height="20" uuid="e3b335e4-e201-4b96-931e-fb0ce92daabf"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="97" y="349" width="117" height="20" uuid="58f10ec3-9054-4385-afeb-b8aca99fe7d7"/>
+				<reportElement x="98" y="368" width="117" height="20" uuid="58f10ec3-9054-4385-afeb-b8aca99fe7d7"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{MEM_TYPE}.equals("1")?"Life Time":"Annual"]]></textFieldExpression>
 			</textField>
@@ -312,7 +319,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="98" y="328" width="116" height="20" uuid="28964e31-6552-4cbf-924e-4231afd5af9f"/>
+				<reportElement x="98" y="328" width="189" height="20" uuid="28964e31-6552-4cbf-924e-4231afd5af9f"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{MEM_EMAIL}]]></textFieldExpression>
 			</textField>
@@ -507,7 +514,7 @@
 				<textFieldExpression><![CDATA[$P{GRA_MOT_CAST}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="66" y="637" width="400" height="84" uuid="b09a311c-16ca-4bad-a73e-5f7ee86ff1d1"/>
+				<reportElement x="66" y="194" width="400" height="572" uuid="b09a311c-16ca-4bad-a73e-5f7ee86ff1d1"/>
 				<imageExpression><![CDATA["C:\\my_sys_k\\conf\\logo\\blackandwhite10.png"]]></imageExpression>
 			</image>
 			<staticText>
@@ -525,6 +532,111 @@
 				</box>
 				<imageExpression><![CDATA[$P{MEM_IMAGE}]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="3" y="348" width="89" height="20" uuid="32594a9b-bc39-456b-8f95-a48785917f5d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Per Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="348" width="5" height="20" uuid="1b8b5678-5736-4475-b638-cc606b750b14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="348" width="189" height="20" uuid="a27a974f-f1a5-49ec-a9cc-3e343182984e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{PERM_ADD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="537" width="63" height="20" uuid="8daccf3d-84fe-4f0a-84a2-cb08e4f37cdc"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Wife DOB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="537" width="70" height="20" uuid="20054bb3-d747-4a78-b0fa-182ab8c1e94c"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Born place]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="537" width="5" height="20" uuid="0231d1ca-6e21-48f4-949c-420a4226f7a3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="469" y="517" width="5" height="20" uuid="3f90207c-9afa-4549-ba5d-06d90aa9adb5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="517" width="5" height="20" uuid="75dabe30-88e9-4e38-85bd-e5fd00fb144b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="517" width="5" height="20" uuid="cc0c2ca0-be27-4918-8474-c8207e362c90"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="517" width="70" height="20" uuid="646157a6-a4e3-4134-af00-018f0a9d7786"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[No Of Sune]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="537" width="70" height="20" uuid="ba86b9ac-b4be-4dbe-82ac-3bda070b7107"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Cast]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="469" y="537" width="5" height="20" uuid="1e78efd8-2c6b-454b-aad0-0c64b7b61dd8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="537" width="5" height="20" uuid="fcaa20b5-b203-4113-9080-b432eb112556"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="517" width="63" height="20" uuid="931be9c5-845f-424f-98c6-5b57168b32ae"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Wife Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="517" width="70" height="20" uuid="745dd7c6-6c2e-48eb-a7c2-dd9ac845504f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[No of Daughter]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="71" y="517" width="100" height="20" uuid="2800d834-780b-4b1f-bc75-013e3936f6e7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{WI_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="517" width="100" height="20" uuid="fd07ff8f-06b1-4d59-a635-5584fe55993a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NUM_OF_SUN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="517" width="75" height="20" uuid="83c86e02-7ede-4123-96d0-12b3a54cb412"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NUM_OF_DOT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="537" width="100" height="20" uuid="635dabde-8e83-40a9-a9af-df431f52b66c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{WI_DOB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="537" width="100" height="20" uuid="ebc797d8-bd8a-48f7-8a3b-6b9e0bf346a4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{WI_BORN_PLACE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="537" width="75" height="20" uuid="e4f515ae-fcc6-4f9e-a86c-0a2a928db08d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{WI_CAST}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnFooter>

@@ -1,4 +1,16 @@
-1) Database install
+1) Database install MYSQL
+    1.1) cd "C:\Program Files\MySQL\MySQL Server 5.5\bin"
+	1.2) mysql -u root -p password
+	1.3) >>"C:\Program Files\MySQL\MySQL Server 5.5\bin\mysqldump"  -u root -p --databases testk > 18102019dump.sql
+	1.4) insert dump
+			> mysql -u root -p password
+			> create database myProDmpK18192019;
+			> exit;
+			> rename db name to [myProDmpK18192019] on the dump file [18102019dump.sql]
+			> cd "C:\Users\Kreshan Rajendran\Desktop\dump-mysql"
+			> "C:\Program Files\MySQL\MySQL Server 5.5\bin\mysql" -u root -p myProDmpK18192019 < 18102019dump.sql
+     1.5) Db password change
+			
 
 
 
