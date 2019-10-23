@@ -12,7 +12,28 @@
      1.5) Db password change
 			
 
+3) glashfish (java_ee_sdk-8u1/glsshfish/bin]
+      asadmin start-domain
+      asadmin stop-domain
+      3.1) http://localhost:4848/common/index.jsf
+	  3.2) Copy war file [Startup_WEB.war]
+			C:\Users\Kreshan Rajendran\Downloads\glassfish5\glassfish\domains\domain1\autodeploy
+	  3.3) 	copy image file folder	[imagesK\members]
+			path: C:/Users/Kreshan Rajendran/Downloads/glassfish5/glassfish/domains/domain1/docroot/imagesK/members/    
+	
+	  3.4) Auto Start glashfish when com start
+				Start > Settings > Control Panel > Administrative Tools > Services (for open service)
+				Right Click "Apache Tomcat" > Properties
+				Set "Startup Type" to Automatic
+				Click Start or restart your pc
+				
+				asadmin create-service --name domain1
+				sc config domain1 DisplayName= "GlassFish 4"
+			    sc delete domain1
+			    you should delete all files in cd \glassfish\domains\domain1\bin
 
+***--> https://wiki.openmrs.org/display/docs/Step+3+-+Install+Tomcat
+	  
 
 2) image folder permition
    rclick-> proporty->sequrity->user/IB-> edit-> full control

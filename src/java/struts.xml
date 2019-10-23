@@ -91,7 +91,7 @@
             <result name="delete"  type="json"  ></result>   
             <result name="loaddata"  type="json"  ></result> 
             <result name="txnreport" type="jasper">            
-                <param name="location">/resources/jasper/printCert3.jasper</param>
+                <param name="location">/resources/jasper/printCert4.jasper</param>
                 <param name="dataSource">reportdatalist</param>
                 <param name="format">PDF</param>
                 <param name="reportParameters">parameterMap</param>

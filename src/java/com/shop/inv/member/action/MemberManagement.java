@@ -293,7 +293,7 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
 
     private boolean applyUserPrivileges() {
         HttpServletRequest request = ServletActionContext.getRequest();
-        List<TaskBean> tasklist = new Common().getUserTaskListByPage(PageVarList.USER_MANAGEMENT, request);
+        List<TaskBean> tasklist = new Common().getUserTaskListByPage(PageVarList.ADD_MEMBER_MANAGEMENT, request);
         inputBean.setVadd(true);
         inputBean.setVupdate(true);
         inputBean.setVdelete(true);

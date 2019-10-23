@@ -167,7 +167,7 @@ public class MemberManagementInputBean {
     
     //report download
     Map parameterMap = new HashMap();
-    List<MemberBean> reportdatalist = null;
+    List<MemberBean> reportdatalist = new ArrayList<MemberBean>();
     private String fileName;   // pdf download file
     
     

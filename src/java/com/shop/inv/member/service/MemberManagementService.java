@@ -747,7 +747,12 @@ public class MemberManagementService {
                     + "M.MOT_NAME,M.MOT_ADD,M.MOT_CAST,M.GRAN_FAT_NAME,M.GRAN_FAT_ADD,"
                     + "M.GRAN_FAT_CAST,M.GRAN_MOT_NAME,M.GRAN_MOT_ADD,M.GRAN_MOT_CAST ,M.IMG_MEMBER,"
                     + "M.PERM_ADD,"
-                    + "M.WI_NAME,M.NUM_OF_SUN,M.NUM_OF_DOT,M.WI_DOB,M.WI_BORN_PLACE,M.WI_CAST "
+                    + "M.WI_NAME,M.NUM_OF_SUN,M.NUM_OF_DOT,M.WI_DOB,M.WI_BORN_PLACE,M.WI_CAST,"
+                    + "M.MEM_EXP_DATE, "
+                    + "M.NUM_OF_BRO, M.NUM_OF_SIS,"
+                    + "M.JOB_TITLE, M.JOB_ADD, M.JOB_PHONE,"
+                    + "M.WI_FAT_NAME,M.WI_FAT_BORN_PLACE,M.WI_FAT_CAST,M.WI_MOT_NAME,M.WI_MOT_BORN_PLACE,M.WI_MOT_CAST,"
+                    + "M.WI_GRAN_FAT_NAME,M.WI_GRAN_FAT_BORN_PLACE,M.WI_GRAN_FAT_CAST,M.WI_GRAN_MOT_NAME,M.WI_GRAN_MOT_BORN_PLACE,M.WI_GRAN_MOT_CAST "
                     + "FROM dma_member M, dma_cast MC  "
                     + "where M.MEM_CAST=MC.CAST_ID  and M.MEM_ID = ? ";
 
@@ -797,12 +802,40 @@ public class MemberManagementService {
                 inputBean.getParameterMap().put("MEM_IMAGE", imagePath);
                 }
 
+                inputBean.getParameterMap().put("EXP_DATE", res.getString("MEM_EXP_DATE"));
+                
+                inputBean.getParameterMap().put("JOB_TITLE", res.getString("JOB_TITLE"));
+                inputBean.getParameterMap().put("JOB_ADD", res.getString("JOB_ADD"));
+                inputBean.getParameterMap().put("JOB_PHONE", res.getString("JOB_PHONE"));
+                
+                inputBean.getParameterMap().put("NUM_OF_BRO", res.getString("NUM_OF_BRO"));
+                inputBean.getParameterMap().put("NUM_OF_SIS", res.getString("NUM_OF_SIS"));
+                
+                
                 inputBean.getParameterMap().put("WI_NAME", res.getString("WI_NAME"));
                 inputBean.getParameterMap().put("NUM_OF_SUN", res.getString("NUM_OF_SUN"));
                 inputBean.getParameterMap().put("NUM_OF_DOT", res.getString("NUM_OF_DOT"));
                 inputBean.getParameterMap().put("WI_DOB", res.getString("WI_DOB"));
                 inputBean.getParameterMap().put("WI_BORN_PLACE", res.getString("WI_BORN_PLACE"));  
                 inputBean.getParameterMap().put("WI_CAST", res.getString("WI_CAST"));
+                
+                inputBean.getParameterMap().put("WI_FAT_NAME", res.getString("WI_FAT_NAME"));
+                inputBean.getParameterMap().put("WI_FAT_BORN_PLACE", res.getString("WI_FAT_BORN_PLACE"));
+                inputBean.getParameterMap().put("WI_FAT_CAST", res.getString("WI_FAT_CAST"));
+                inputBean.getParameterMap().put("WI_MOT_NAME", res.getString("WI_MOT_NAME"));
+                inputBean.getParameterMap().put("WI_MOT_BORN_PLACE", res.getString("WI_MOT_BORN_PLACE"));
+                inputBean.getParameterMap().put("WI_MOT_CAST", res.getString("WI_MOT_CAST"));
+                
+                inputBean.getParameterMap().put("WI_GRAN_FAT_NAME", res.getString("WI_GRAN_FAT_NAME"));
+                inputBean.getParameterMap().put("WI_GRAN_FAT_BORN_PLACE", res.getString("WI_GRAN_FAT_BORN_PLACE"));
+                inputBean.getParameterMap().put("WI_GRAN_FAT_CAST", res.getString("WI_GRAN_FAT_CAST"));
+                inputBean.getParameterMap().put("WI_GRAN_MOT_NAME", res.getString("WI_GRAN_MOT_NAME"));
+                inputBean.getParameterMap().put("WI_GRAN_MOT_BORN_PLACE", res.getString("WI_GRAN_MOT_BORN_PLACE"));
+                inputBean.getParameterMap().put("WI_GRAN_MOT_CAST", res.getString("WI_GRAN_MOT_CAST"));
+                
+                
+                
+                
                 
             }
         } catch (Exception e) {
