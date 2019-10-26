@@ -17,6 +17,7 @@
             }
 
             function resetData() {
+                
                 $('#childName').val("");
                 $('#childDob').val("");
                 $('#childGender').val("-1");
@@ -93,7 +94,7 @@
                     dataType: "json",
                     type: "POST",
                     success: function (data) {
-                        alert("finfffff:"+data.childName)
+
                         $('#editForm').show();
                         $('#addForm').hide();
 
@@ -120,14 +121,14 @@
             }
 
 
-            function backToMain() {
-                $('#editForm').hide();
-                $('#addForm').hide();
-
-                $('#divmsg').empty();
-                jQuery("#gridtable").trigger("reloadGrid");
-
-            }
+//            function backToMain() {
+//                $('#editForm').hide();
+//                $('#addForm').hide();
+//
+//                $('#divmsg').empty();
+//                jQuery("#gridtable").trigger("reloadGrid");
+//
+//            }
 
 
 
@@ -143,6 +144,13 @@
             function ResetAddForm() {
                 resetData();
                 $('#divmsg').empty();
+                
+                $('#memberload').val("-1");
+                var memload=$('#memberload')
+                $("#gridtable").jqGrid('setGridParam', {postData: {memberload: memload, search: true}});
+                $("#gridtable").jqGrid('setGridParam', {page: 1});
+                jQuery("#gridtable").trigger("reloadGrid");
+
             }
 
             function resetUpdateForm() {
@@ -208,16 +216,18 @@
                                     <td width="25px;"></td>
                                     <td class="formLable">Date Of Birth</td> <td >:</td>
                                     <td><sj:datepicker id="childDob" name="childDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1950" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>
-                    <td width="25px;"></td>
+									<td width="25px;"></td>
                                     <td class="formLable">Gender<span class="mandatory">*</span></td> <td >:</td>
                                     <td><s:select  name="childGender" id="childGender"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{childGenderList}"  cssClass="dropdown" /></td>                                    
                                     <td width="25px;"></td>
+									
+								</tr>
+                                <tr>
                                     <td class="formLable">married Status<span class="mandatory">*</span></td> <td>:</td>
                                     <td><s:select  name="childMerStatus" id="childMerStatus"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{childMerStatusList}"  cssClass="dropdown" /></td> 
-                                </tr>
-                                <tr>
+									<td width="25px;"></td>
                                     <td class="formLable">Education</td> <td >:</td>
                                     <td><s:textfield id="childEdu" name="childEdu" cssClass="textField" /></td>
                                     <td width="25px;"></td>
@@ -232,8 +242,7 @@
                                     <td class="formLable">Mobile</td> <td >:</td>
                                     <td><s:textfield id="childMobile" name="childMobile" cssClass="textField" /></td>
                                     <td width="25px;"></td>
-                                </tr>
-                                <tr>
+                                
                                     <td class="formLable">Email</td> <td >:</td>
                                     <td><s:textfield id="childEmail" name="childEmail" cssClass="textField" /></td>
                                     <td width="25px;"></td>
@@ -249,7 +258,7 @@
                                     <td> <s:url var="addurl" action="AddchildMng"/>                                   
                                         <sj:submit   button="true" href="%{addurl}" value="Add"   targets="divmsg"  cssClass="button_sadd" disabled="#vadd"/> 
                                         <sj:submit id="resetida" button="true" value="Reset" onclick="ResetAddForm()"   cssClass="button_aback" disabled="false" />
-                                        <sj:submit id="backida" button="true" value="Back" onclick="backToMain()"   cssClass="button_aback" disabled="false" /> 
+
                                     </td>
                                 </tr>
                             </table>
@@ -274,19 +283,18 @@
                                     <td width="25px;"></td>
                                     <td class="formLable">Date Of Birth</td> <td >:</td>
                                     <td><sj:datepicker id="upchildDob" name="upchildDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1950" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>
-    
-                                </tr>
-
-                                <tr>
+									<td width="25px;"></td>
+                                
                                     <td class="formLable">Gender<span class="mandatory">*</span></td> <td >:</td>
                                     <td><s:select  name="upchildGender" id="upchildGender"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{childGenderList}"  cssClass="dropdown" /></td>                                    
                                     <td width="25px;"></td>
+								</tr>
+                                <tr>
                                     <td class="formLable">married Status<span class="mandatory">*</span></td> <td>:</td>
                                     <td><s:select  name="upchildMerStatus" id="upchildMerStatus"  headerKey="-1" 
                                                headerValue="---Select---"  list="%{childMerStatusList}"  cssClass="dropdown" /></td> 
-                                </tr>
-                                <tr>
+									<td width="25px;"></td>
                                     <td class="formLable">Education</td> <td >:</td>
                                     <td><s:textfield id="upchildEdu" name="upchildEdu" cssClass="textField" /></td>
                                     <td width="25px;"></td>
@@ -301,8 +309,7 @@
                                     <td class="formLable">Mobile</td> <td >:</td>
                                     <td><s:textfield id="upchildMobile" name="upchildMobile" cssClass="textField" /></td>
                                     <td width="25px;"></td>
-                                </tr>
-                                <tr>
+                                
                                     <td class="formLable">Email</td> <td >:</td>
                                     <td><s:textfield id="upchildEmail" name="upchildEmail" cssClass="textField" /></td>
                                     <td width="25px;"></td>

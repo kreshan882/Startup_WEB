@@ -168,7 +168,8 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
         System.out.println("here 1"+inputBean.getMemId());
         inputBean.setMemId(inputBean.getMemId());
         try{ 
-                service.loadReportData(inputBean);
+                service.loadReportData(inputBean); //getParameterMap
+                inputBean.setReportdatalist(service.loadReportDataChildrens(inputBean)); //setReportdatalist [ChildrenBean]
 
                 
 //                inputBean.getParameterMap().put("Txn_From", "3");

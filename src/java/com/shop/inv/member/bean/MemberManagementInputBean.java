@@ -167,7 +167,7 @@ public class MemberManagementInputBean {
     
     //report download
     Map parameterMap = new HashMap();
-    List<MemberBean> reportdatalist = new ArrayList<MemberBean>();
+    List<ChildrenBean> reportdatalist = new ArrayList<ChildrenBean>();
     private String fileName;   // pdf download file
     
     
@@ -430,13 +430,15 @@ public class MemberManagementInputBean {
         this.parameterMap = parameterMap;
     }
 
-    public List<MemberBean> getReportdatalist() {
+    public List<ChildrenBean> getReportdatalist() {
         return reportdatalist;
     }
 
-    public void setReportdatalist(List<MemberBean> reportdatalist) {
+    public void setReportdatalist(List<ChildrenBean> reportdatalist) {
         this.reportdatalist = reportdatalist;
     }
+
+
     
     
     

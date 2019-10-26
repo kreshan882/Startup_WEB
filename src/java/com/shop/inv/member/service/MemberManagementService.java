@@ -8,6 +8,7 @@ package com.shop.inv.member.service;
 import com.shop.db.DBConnection;
 import com.shop.init.InitConfigValue;
 import com.shop.init.Status;
+import com.shop.inv.member.bean.ChildrenBean;
 import com.shop.inv.member.bean.MemberBean;
 import com.shop.inv.member.bean.MemberManagementInputBean;
 import com.shop.util.Util;
@@ -652,63 +653,48 @@ public class MemberManagementService {
     return lastMemIdStr;
     }
     
-    public List<MemberBean> downloadData(MemberManagementInputBean bean) throws SQLException, Exception {
+    public List<ChildrenBean> loadReportDataChildrens(MemberManagementInputBean bean) throws SQLException, Exception {
         //System.out.println("here 4");
         PreparedStatement prepSt = null;
         ResultSet res = null;
         Connection con = null;
         String getHistoryRecordsQuery = null;
-        List<MemberBean> dataList = null;
+        List<ChildrenBean> dataList = null;
         long totalCount = 0;
 
 
         try {
 
-//            con = DBConnection.getConnection();
-//            //con.setAutoCommit(true);
-//
-//            getHistoryRecordsQuery = "SELECT  * FROM (select t.TXN_ID AS ID,tt.DESCRIPTION as TXN_TYPE, T.CUSTOMER_ID,\n"
-//                    + "T.RECEPIENT_MOBILE AS RECEPIENT_MOBILE,\n"
-//                    + "t.CHANNEL_TYPE,T.AMOUNT AS AMOUNT,T.ORD_ID AS ORD_ID,T.CUSTOMER_ACCOUNT_NUMBER AS CUSTOMER_ACCOUNT_NUMBER,\n"
-//                    + "T.CUSTOMER_MOBILE AS CUSTOMER_MOBILE,T.TRACE_NO AS REF_NO,T.BATCH_NO,T.SERVICE_CHARGE AS SERVICE_CHARGE  ,\n"
-//                    + "T.TXN_DATE_TIME AS TXN_DATE,T.TIMESTAMP,T.RESPONSE_CODE,S.DESCRIPTION AS STATUS\n"
-//                    + "from CLA_TRANSACTION t,CLA_MT_TXN_TYPE tt,\n"
-//                    + "CLA_MT_STATUS S \n"
-//                    + "where " + where + " and tt.CODE = t.TXN_TYPE AND T.STATUS=S.CODE)t\n"
-//                    + "LEFT OUTER JOIN (select DESCRIPTION AS CH_TYPE ,CODE FROM CLA_MT_LISTENER_TYPE)  t2\n"
-//                    + "ON t.CHANNEL_TYPE = t2.CODE \n"
-//                    + "LEFT  OUTER JOIN (select name AS CUSTOMER_NAME,CUSTOMER_ID FROM CLA_CUSTOMER)  t3\n"
-//                    + "ON t.CUSTOMER_ID = t3.CUSTOMER_ID";
-//
-//            prepSt = con.prepareStatement(getHistoryRecordsQuery);
-//
-//            res = prepSt.executeQuery();
+            con = DBConnection.getConnection();
+            //con.setAutoCommit(true);
 
-            dataList = new ArrayList<MemberBean>();
+            getHistoryRecordsQuery = "SELECT CHILD_NAME,CHILD_DOB,GENDER,MARRIED_STATUS "
+                    + "FROM dma_member_children where MEM_ID=?";
 
-            MemberBean dataBean = null;
+            prepSt = con.prepareStatement(getHistoryRecordsQuery);
+            prepSt.setString(1, bean.getMemId());
+            res = prepSt.executeQuery();
 
-            dataBean = new MemberBean();
-                dataBean.setCUS_NAME("kkkk");
-                //dataBean.setFullCount(2);
-                dataList.add(dataBean);
-//            while (res.next()) {
-//
-//                dataBean = new MemberManagementInputBean();
-//                dataBean.setTXN_TYPE(res.getString("TXN_TYPE"));
-//                dataBean.setCUS_NAME(res.getString("CUSTOMER_NAME"));
-//                dataBean.setREC_MOBILE(res.getString("RECEPIENT_MOBILE"));
-//                dataBean.setAMOUNT("Rs " + Util.round(res.getString("AMOUNT")));
-//                dataBean.setORDER_ID(res.getString("ORD_ID"));
-//                dataBean.setCUS_ACOUNT(res.getString("CUSTOMER_ACCOUNT_NUMBER"));
-//                dataBean.setChannel(res.getString("CH_TYPE"));
-//                dataBean.setCUS_MOBILE(res.getString("CUSTOMER_MOBILE"));
-//                dataBean.setSERVICE_FEE(Util.round(res.getString("SERVICE_CHARGE")));
-//                dataBean.setDATETIME(Util.formatTimestamp(res.getTimestamp("TIMESTAMP")).toString());
-//                dataBean.setFullCount(totalCount);
+            dataList = new ArrayList<ChildrenBean>();
+
+            
+            ChildrenBean dataBean = null;
+//            dataBean = new ChildrenBean();
+//                dataBean.setCUS_NAME("kkkk");
+//                //dataBean.setFullCount(2);
 //                dataList.add(dataBean);
-//
-//            }
+            while (res.next()) {
+
+                dataBean = new ChildrenBean();
+                dataBean.setChild_name(res.getString("CHILD_NAME"));
+                dataBean.setChild_dob(res.getString("CHILD_DOB"));
+                dataBean.setChild_gender(res.getString("GENDER"));
+                dataBean.setChild_merrid_status(res.getString("MARRIED_STATUS"));
+
+                dataBean.setFullCount(totalCount);
+                dataList.add(dataBean);
+
+            }
 
         } catch (Exception e) {
             throw e;
