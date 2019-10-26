@@ -121,7 +121,7 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
             if (doValidation(inputBean)) {
                 System.out.println("update validation sucess");
                 boolean me_img=MemberManagement.imageUpload(inputBean.getMemImgFile() ,"PRO_"+inputBean.getMemIdDes()+".png");
-               boolean fam_img=MemberManagement.imageUpload(inputBean.getFamImgFile(),"FAM_"+inputBean.getMemIdDes()+".png");
+                boolean fam_img=MemberManagement.imageUpload(inputBean.getFamImgFile(),"FAM_"+inputBean.getMemIdDes()+".png");
                 System.out.println("me_img  :"+me_img);
                 System.out.println("fam_img :"+fam_img);
                if (service.updateData(inputBean,me_img,fam_img)) {

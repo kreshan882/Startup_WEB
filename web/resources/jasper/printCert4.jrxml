@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="1.2100000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="466"/>
+	<property name="ireport.y" value="322"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -261,7 +261,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="98" y="397" width="101" height="20" uuid="58f10ec3-9054-4385-afeb-b8aca99fe7d7"/>
+				<reportElement x="98" y="397" width="73" height="20" uuid="58f10ec3-9054-4385-afeb-b8aca99fe7d7"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{MEM_TYPE}.equals("1")?"Life Time":"Annual"]]></textFieldExpression>
 			</textField>
@@ -351,7 +351,7 @@
 				<text><![CDATA[Born Place]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="424" y="513" width="37" height="20" uuid="772a066c-659c-45e0-a837-0f927f6d7632"/>
+				<reportElement x="431" y="513" width="30" height="20" uuid="772a066c-659c-45e0-a837-0f927f6d7632"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
@@ -386,7 +386,7 @@
 				<text><![CDATA[Mother Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="424" y="533" width="37" height="20" uuid="3d96c6a8-b678-4659-b2c6-88cea2575b7b"/>
+				<reportElement x="431" y="533" width="30" height="20" uuid="3d96c6a8-b678-4659-b2c6-88cea2575b7b"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
@@ -426,12 +426,12 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="424" y="471" width="37" height="20" uuid="989d754f-f366-4c51-88b0-ecade1342fb5"/>
+				<reportElement x="431" y="471" width="30" height="20" uuid="989d754f-f366-4c51-88b0-ecade1342fb5"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="424" y="491" width="37" height="20" uuid="438862b8-91d4-4bd8-ad88-e8952b29e1a1"/>
+				<reportElement x="431" y="491" width="30" height="20" uuid="438862b8-91d4-4bd8-ad88-e8952b29e1a1"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
@@ -546,101 +546,102 @@
 				<textFieldExpression><![CDATA[$P{PERM_ADD}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="3" y="591" width="63" height="20" uuid="8daccf3d-84fe-4f0a-84a2-cb08e4f37cdc"/>
+				<reportElement x="3" y="591" width="94" height="20" uuid="8daccf3d-84fe-4f0a-84a2-cb08e4f37cdc"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Wife DOB]]></text>
+				<text><![CDATA[Wife Date Of Birth]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="199" y="591" width="70" height="20" uuid="20054bb3-d747-4a78-b0fa-182ab8c1e94c"/>
+				<reportElement x="217" y="591" width="70" height="20" uuid="20054bb3-d747-4a78-b0fa-182ab8c1e94c"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Born place]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="269" y="591" width="5" height="20" uuid="0231d1ca-6e21-48f4-949c-420a4226f7a3"/>
+				<reportElement x="287" y="591" width="5" height="20" uuid="0231d1ca-6e21-48f4-949c-420a4226f7a3"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="469" y="571" width="5" height="20" uuid="3f90207c-9afa-4549-ba5d-06d90aa9adb5"/>
+				<reportElement x="461" y="571" width="5" height="20" uuid="3f90207c-9afa-4549-ba5d-06d90aa9adb5"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="269" y="571" width="5" height="20" uuid="75dabe30-88e9-4e38-85bd-e5fd00fb144b"/>
+				<reportElement x="287" y="571" width="5" height="20" uuid="75dabe30-88e9-4e38-85bd-e5fd00fb144b"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="66" y="571" width="5" height="20" uuid="cc0c2ca0-be27-4918-8474-c8207e362c90"/>
+				<reportElement x="97" y="571" width="5" height="20" uuid="cc0c2ca0-be27-4918-8474-c8207e362c90"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="199" y="571" width="70" height="20" uuid="646157a6-a4e3-4134-af00-018f0a9d7786"/>
+				<reportElement x="217" y="571" width="70" height="20" uuid="646157a6-a4e3-4134-af00-018f0a9d7786"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[No Of Sune]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="399" y="591" width="70" height="20" uuid="ba86b9ac-b4be-4dbe-82ac-3bda070b7107"/>
+				<reportElement x="431" y="591" width="30" height="20" uuid="ba86b9ac-b4be-4dbe-82ac-3bda070b7107"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="469" y="591" width="5" height="20" uuid="1e78efd8-2c6b-454b-aad0-0c64b7b61dd8"/>
+				<reportElement x="461" y="591" width="5" height="20" uuid="1e78efd8-2c6b-454b-aad0-0c64b7b61dd8"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="66" y="591" width="5" height="20" uuid="fcaa20b5-b203-4113-9080-b432eb112556"/>
+				<reportElement x="97" y="591" width="5" height="20" uuid="fcaa20b5-b203-4113-9080-b432eb112556"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="571" width="63" height="20" uuid="931be9c5-845f-424f-98c6-5b57168b32ae"/>
+				<reportElement x="3" y="571" width="94" height="20" uuid="931be9c5-845f-424f-98c6-5b57168b32ae"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Wife Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="399" y="571" width="70" height="20" uuid="745dd7c6-6c2e-48eb-a7c2-dd9ac845504f"/>
+				<reportElement x="391" y="571" width="70" height="20" uuid="745dd7c6-6c2e-48eb-a7c2-dd9ac845504f"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[No of Daughter]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="71" y="571" width="100" height="20" uuid="2800d834-780b-4b1f-bc75-013e3936f6e7"/>
+				<reportElement x="103" y="571" width="100" height="20" uuid="2800d834-780b-4b1f-bc75-013e3936f6e7"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{WI_NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="274" y="571" width="100" height="20" uuid="fd07ff8f-06b1-4d59-a635-5584fe55993a"/>
+				<reportElement x="293" y="571" width="81" height="20" uuid="fd07ff8f-06b1-4d59-a635-5584fe55993a"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{NUM_OF_SUN}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="474" y="571" width="75" height="20" uuid="83c86e02-7ede-4123-96d0-12b3a54cb412"/>
+				<reportElement x="466" y="571" width="75" height="20" uuid="83c86e02-7ede-4123-96d0-12b3a54cb412"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{NUM_OF_DOT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="71" y="591" width="100" height="20" uuid="635dabde-8e83-40a9-a9af-df431f52b66c"/>
+				<reportElement x="102" y="591" width="100" height="20" uuid="635dabde-8e83-40a9-a9af-df431f52b66c"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{WI_DOB}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="274" y="591" width="100" height="20" uuid="ebc797d8-bd8a-48f7-8a3b-6b9e0bf346a4"/>
+				<reportElement x="293" y="591" width="100" height="20" uuid="ebc797d8-bd8a-48f7-8a3b-6b9e0bf346a4"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{WI_BORN_PLACE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="474" y="591" width="75" height="20" uuid="e4f515ae-fcc6-4f9e-a86c-0a2a928db08d"/>
+				<reportElement x="469" y="591" width="75" height="20" uuid="e4f515ae-fcc6-4f9e-a86c-0a2a928db08d"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{WI_CAST}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="215" y="397" width="100" height="20" uuid="1b5a33db-3dd5-4871-9907-727377b554f6"/>
-				<textFieldExpression><![CDATA[$P{MEM_TYPE}.equals("1")?" ":"Exp Date : "+$P{EXP_DATE}]]></textFieldExpression>
+				<reportElement x="174" y="397" width="169" height="20" uuid="1b5a33db-3dd5-4871-9907-727377b554f6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{MEM_TYPE}.equals("1")?" ":"(Exp Date: "+$P{EXP_DATE}+")"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="399" y="420" width="70" height="20" uuid="08827635-0c72-48b6-a4be-02d35fa4b366"/>
+				<reportElement x="399" y="420" width="63" height="20" uuid="08827635-0c72-48b6-a4be-02d35fa4b366"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Office Phone]]></text>
 			</staticText>
@@ -650,7 +651,7 @@
 				<text><![CDATA[Office Address]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="469" y="420" width="5" height="20" uuid="3b3d685c-7dfd-4203-9028-de11f0ca68db"/>
+				<reportElement x="461" y="420" width="5" height="20" uuid="3b3d685c-7dfd-4203-9028-de11f0ca68db"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
@@ -700,7 +701,7 @@
 				<textFieldExpression><![CDATA[$P{JOB_ADD}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="474" y="420" width="100" height="20" uuid="2497a66a-183d-4b30-b97e-c1264e230326"/>
+				<reportElement x="466" y="420" width="100" height="20" uuid="2497a66a-183d-4b30-b97e-c1264e230326"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{JOB_PHONE}]]></textFieldExpression>
 			</textField>
@@ -715,7 +716,7 @@
 				<textFieldExpression><![CDATA[$P{NUM_OF_SIS}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="425" y="683" width="37" height="20" uuid="49c0e2fd-e6e9-4465-bd10-619333ada038"/>
+				<reportElement x="431" y="683" width="31" height="20" uuid="49c0e2fd-e6e9-4465-bd10-619333ada038"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
@@ -755,7 +756,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="425" y="641" width="37" height="20" uuid="acfca16d-b75e-474d-a9ee-05a286d0a133"/>
+				<reportElement x="431" y="641" width="31" height="20" uuid="acfca16d-b75e-474d-a9ee-05a286d0a133"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
@@ -785,7 +786,7 @@
 				<text><![CDATA[Wife Mother Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="425" y="663" width="37" height="20" uuid="d28835a9-5c1d-45df-b0af-e87305f129b7"/>
+				<reportElement x="431" y="663" width="31" height="20" uuid="d28835a9-5c1d-45df-b0af-e87305f129b7"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>
@@ -795,7 +796,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="425" y="621" width="37" height="20" uuid="2d5e7e5c-f039-4213-855f-7eac5bf57d5c"/>
+				<reportElement x="431" y="621" width="31" height="20" uuid="2d5e7e5c-f039-4213-855f-7eac5bf57d5c"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Cast]]></text>
 			</staticText>

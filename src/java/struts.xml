@@ -99,6 +99,15 @@
 <!--                <param name="contentDisposition">attachment;filename=CERT_My.pdf</param>-->
             </result> 
         </action> 
+        
+        <action name="*childMng"    class="com.shop.inv.member.action.ChildrenManagement"   method="{1}"> 
+            <result name="success">/pages/memberManagement/addChildren.jsp</result>        
+            <result name="update">/pages/msgFrag.jsp</result>
+            <result name="add">/pages/msgFrag.jsp</result>
+            <result name="list" type="json"></result>           
+            <result name="find" type="json"></result>              
+            <result name="delete"  type="json"  ></result>  
+        </action>
     </package>   
     
     <package name="KMA_member_report" namespace="/" extends="pglobal">

@@ -150,4 +150,21 @@ public class SystemMessage {
 //    public static final String TRANSACTION_VIEWTRANS_DOWNLOAD_PDF = "Transaction File Downloaded";
 //    public static final String TRANSACTION_CHANNELTYPE_EMPTY = "Empty Channel Type";
 //    public static final String TRANSACTION_AUDIT_DOWNLOAD_PDF = "Audit File Downloaded";
+    
+    public static final String CHILD_NAME_EMPTY = "Empty name";
+    public static final String CHILD_NAME_INVALID = "Invalid name";
+    
+    public static final String CHILD_GENDER_SELECT = "Select Gender";
+    public static final String CHILD_MERRIED_SELECT = "Select Merried Status";
+    
+    
+    
+    public static final String CHILD_ADD = "Child registration successful";
+    public static final String CHILD_ADD_FAIL = "Child registration fail";
+    
+    public static final String CHILD_UPDATED = "Child updated successfully";
+    public static final String CHILD_UPDATED_ERROR = "Child update failed";
+
+    public static final String CHILD_DELETED = "Child deleted successfully";
+    public static final String CHILD_DELETED_ERROR = "Child delete failed";
 }

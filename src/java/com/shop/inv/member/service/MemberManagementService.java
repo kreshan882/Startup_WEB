@@ -335,12 +335,12 @@ public class MemberManagementService {
             if(mem_img){
                 prepSt.setString(55, "PRO_"+inputBean.getMemIdDes()+".png"); //PRO_M00011.jsp
             }else{
-                prepSt.setString(55, null);
+                prepSt.setString(55, "PRO_"+inputBean.getMemIdDes()+".png");
             }
             if(fam_img){
                 prepSt.setString(56, "FAM_"+inputBean.getMemIdDes()+".png"); //FAM_M00011.jsp
             }else{
-                prepSt.setString(56, null);
+                prepSt.setString(56, "FAM_"+inputBean.getMemIdDes()+".png");
             }
             
 //            if(inputBean.getMemImgFileFileName()!=null){

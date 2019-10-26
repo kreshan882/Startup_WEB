@@ -210,7 +210,19 @@ public class Util {
 
 
 
-    
+    public static Map<String, String> getChildGenderdList() {
+        Map<String, String> merrStatList = new HashMap<String, String>();
+        merrStatList.put("M", "Male");
+        merrStatList.put("F", "Feamle");
+        return merrStatList;
+    }
+        
+    public static Map<String, String> getChildMerriedStatusList() {
+        Map<String, String> merrStatList = new HashMap<String, String>();
+        merrStatList.put("M", "Merrid");
+        merrStatList.put("S", "Single");
+        return merrStatList;
+    }
 
     public static <K extends Comparable, V extends Comparable> Map<K, V> sortByValues(Map<K, V> map) {
         List<Map.Entry<K, V>> entries = new LinkedList<Map.Entry<K, V>>(map.entrySet());
