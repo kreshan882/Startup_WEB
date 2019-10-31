@@ -90,6 +90,8 @@ public class MemberManagement extends ActionSupport implements ModelDriven<Membe
                 System.out.println("fam_img:"+fam_img);
                 
                 if (service.addData(inputBean,me_img,fam_img)) {
+                    
+                    inputBean.setMemIdDes(service.getlastMemId()); // get next member id
                     addActionMessage(SystemMessage.MEMB_ADD);
                     LogFileCreator.writeInfoToLog(SystemMessage.MEMB_ADD);
 

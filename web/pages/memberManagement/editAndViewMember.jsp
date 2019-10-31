@@ -214,8 +214,9 @@
                         $('#wifeGrandMothBirthPlace').val(data.wifeGrandMothBirthPlace);
                         $('#wifeGrandMothCast').val(data.wifeGrandMothCast);
                         
-                        //$('#memImgFileFileName').val(data.memImgFileFileName);
-                        //$('#famImgFileFileName').val(data.famImgFileFileName);
+                        //need to check
+                        $('#memImgFileFileName').val(data.memImgFileFileName);
+                        $('#famImgFileFileName').val(data.famImgFileFileName);
 
                         
                         var src = document.getElementById("memImgFileFileName");
@@ -280,7 +281,12 @@
             $.subscribe('grideReload', function (event, data) {
                 $('#searchname').val("");
                 $('#divmsg').empty();
-               // window.location = "${pageContext.request.contextPath}/editViewMember.action"
+                
+                var searchname = $('#searchname').val();
+                $("#gridtable").jqGrid('setGridParam', {postData: {searchname: searchname, search: true}});
+                $("#gridtable").jqGrid('setGridParam', {page: 1});
+                jQuery("#gridtable").trigger("reloadGrid");
+
             });
         </script>
     </head>
@@ -556,14 +562,14 @@
                                         <td class="formLable">Member Photo<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:file  id = "memImgFile" name="memImgFile" label="File" cssClass="fileField"  /></td>                                    
                                         <td width="25px;"></td>
-                                        <td><img id="memImgFileFileName"  width="100" height="100"/></td>
+                                        <td><img id="memImgFileFileName" name="memImgFileFileName"  width="100" height="100"/></td>
                                     </tr>
                                     <tr
                                     <tr>
                                         <td class="formLable">Member Family Photo<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:file  id = "famImgFile" name="famImgFile" label="File" cssClass="fileField"  /></td>                                    
                                         <td width="25px;"></td>
-                                        <td><img id="famImgFileFileName"  width="100" height="100"/></td>
+                                        <td><img id="famImgFileFileName"  name="famImgFileFileName"  width="100" height="100"/></td>
                                         
                                     </tr>
 

@@ -114,7 +114,7 @@ CREATE TABLE `dma_member` (
   `STATUS` int(1) DEFAULT NULL,
   `CREATE_DATE` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`MEM_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,8 +123,41 @@ CREATE TABLE `dma_member` (
 
 LOCK TABLES `dma_member` WRITE;
 /*!40000 ALTER TABLE `dma_member` DISABLE KEYS */;
-INSERT INTO `dma_member` VALUES (4,'kreshan','880201573V','1988-01-20','0777418581','0444','kreshan882@gmail.com','master','matale,gsgjdjsfgdf,dfrfg,frgfrddddddd','colombo','matale','01','daver','0','2020-09-22',1,0,'sw engineer','inter','0114141414','raja','matale','01','than','matale','01','nava','matale','03','magas','','02','1','krish',1,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2019-09-22 07:22:11'),(5,'ffjhf','880201573V','2019-09-26','0777418581','0888787878','kreshan882@gmail.com','master','matale','123','kandy','01','daver','0','2019-09-26',2,2,'swengineer','inter','01114747474','raja','matale','01','than','matale','02','nava','matale','03','magas','','02','0','',0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2019-09-27 05:42:53'),(6,'kreshan','888888848V','2019-10-10','0777418581','0888787878','kk@dd.com','master','123','colombo','matale','01','mar','0','2019-10-17',3,2,'sw engineer','inter','01114747474','raja','matale','01','than','','01','nava','','01','magas','','01','0',', , , , , ',0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2019-10-01 07:26:12'),(7,'mugulan','888989898V','2003-10-01','2222','2222','kkk@gmail.com','dddd','222 colombo','rrrrr','matale','01','sssss','0','2021-10-14',2,4,'buss','colo','0888','dd','ddd','01','fff','fff','02','','','01','','','01','0',', , , , , ',2,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2019-10-07 13:12:24'),(8,'mugulan','888989555V','2019-10-15','2222','2222','kkk@gmail.com','dddd','222 colombo','rrrrr','matale','01','sssss','0','2019-10-24',3,1,'buss','colo','0888','dd','ddd','fff','fff','fff','fff','','','fff','','','fffff','0','',0,0,'2019-10-15','','','','','-1','','','-1','','','-1','','','-1','','','-1',NULL,NULL,2,'2019-10-15 14:37:03'),(9,'dhanshan','914444444V','2002-10-02','07774747474','0777417474','','AL','Matale','colombo-11,kotahena','matale','02','dever','1','2019-10-16',1,0,'Accountan','malasiya','07774747475745','rajendran','matale','maraver','than','matale','maraver','navaratnam','','kalar','','','maraver','0','',0,0,'2019-10-16','','','','','','','','','','','','','','','','','','PRO_M00009.png','FAM_M00009.png',1,'2019-10-15 19:03:36'),(10,'mugulan','888989555V','2019-10-08','07774747474','0777417474','','','222 colombo','','swswdw','02','','0','2019-10-16',0,1,'','','','','','maraver','','','maraver','','','kalar','','','maraver','0','',0,0,'2019-10-16','','','','','','','','','','','','','','','','','','PRO_M00010.png',NULL,1,'2019-10-15 19:19:27'),(11,'ddd','888989898V','2019-10-16','2222','2222','kkk@gmail.com','dddd','222 colombo','rrrrr','matale','04','sssss','0','2019-10-16',1,3,'buss','colo','0888','dd','ddd','maraver','than','matale','maraver','navaratnam','dd','kalar','dd','ddd','maraver','0','',0,0,'2019-10-16','','','','','','','','','','','','','','','','','',NULL,NULL,1,'2019-10-16 16:47:41'),(12,'KreshanRajendran','880201574V','1988-01-20','0665625885','0777418581','kreshan882@gmail.com','MSC','222, kendagolla road, matale','kirulapone','Matale','02','deaver','1','2019-10-18',1,0,'Senior software Engineer','interblocks','0112525245','rajendran','matale','deaver','thanga','matale','deaver','navarathnam','matale','deaver','magashawary','matale','deaver','1','kirish',1,0,'1991-10-16','mawanella','krishdl@gmail.com','0777474747','kandy','agamudiyar','moorthy','mawanal','agamudiyar','bawani','','deaver','','','','','','','PRO_M00012.png','FAM_M00012.png',1,'2019-10-17 19:00:21');
+INSERT INTO `dma_member` VALUES (4,'kreshan','880201573V','1988-01-21','0777418581','0444','kreshan882@gmail.com','master','matale,gsgjdjsfgdf,dfrfg,frgfrddddddd','colombo','matale','01','daver','0','2020-09-22',1,0,'sw engineer','inter','0114141414','raja','matale','ddd','than','matale','dd','nava','matale','ddd','magas','','ddd','1','krish',1,2,'2019-10-24','222,mat','email@gmail.com','','','ddd','','','aa','','','sss','','','ddd','','','ddferfre','PRO_M00004.png','FAM_M00004.png',1,'2019-09-22 07:22:11'),(5,'ffjhf','880201573V','2019-09-26','0777418581','0888787878','kreshan882@gmail.com','master','matale','123','kandy','01','daver','0','2019-09-26',2,2,'swengineer','inter','01114747474','raja','matale','01','than','matale','02','nava','matale','03','magas','','02','0','',0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2019-09-27 05:42:53'),(6,'kreshan','888888848V','2019-10-10','0777418581','0888787878','kk@dd.com','master','123','colombo','matale','01','mar','0','2019-10-17',3,2,'sw engineer','inter','01114747474','raja','matale','01','than','','01','nava','','01','magas','','01','0',', , , , , ',0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2019-10-01 07:26:12'),(7,'mugulan','888989898V','2003-10-01','2222','2222','kkk@gmail.com','dddd','222 colombo','rrrrr','matale','01','sssss','0','2021-10-14',2,4,'buss','colo','0888','dd','ddd','01','fff','fff','02','','','01','','','01','0',', , , , , ',2,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2019-10-07 13:12:24'),(8,'mugulan','888989555V','2019-10-15','2222','2222','kkk@gmail.com','dddd','222 colombo','rrrrr','matale','01','sssss','0','2019-10-24',3,1,'buss','colo','0888','dd','ddd','fff','fff','fff','fff','','','fff','','','fffff','0','',0,0,'2019-10-15','','','','','-1','','','-1','','','-1','','','-1','','','-1',NULL,NULL,2,'2019-10-15 14:37:03'),(9,'dhanshan','914444444V','2002-10-02','07774747474','0777417474','','AL','Matale','colombo-11,kotahena','matale','02','dever','1','2019-10-16',1,0,'Accountan','malasiya','07774747475745','rajendran','matale','maraver','than','matale','maraver','navaratnam','','kalar','','','maraver','0','',0,0,'2019-10-16','','','','','','','','','','','','','','','','','','PRO_M00009.png','FAM_M00009.png',1,'2019-10-15 19:03:36'),(10,'mugulan','888989555V','2019-10-08','07774747474','0777417474','','','222 colombo','','swswdw','02','','1','2019-10-16',0,1,'','','','','','maraver','','','maraver','','','kalar','','','maraver','0','',0,0,'2019-10-16','','','','','','','','','','','','','','','','','',NULL,NULL,1,'2019-10-15 19:19:27'),(12,'KreshanRajendran','880201574V','1988-01-20','0665625885','0777418581','kreshan882@gmail.com','MSC','222, kendagolla road, matale','kirulapone','Matale','02','deaver','1','2019-10-18',1,0,'Senior software Engineer','interblocks','0112525245','rajendran','matale','deaver','thanga','matale','deaver','navarathnam','matale','deaver','magashawary','matale','deaver','1','kirish',1,0,'1991-10-16','mawanella','krishdl@gmail.com','0777474747','kandy','agamudiyar','moorthy','mawanal','agamudiyar','bawani','','deaver','','','','','','','PRO_M00012.png','FAM_M00012.png',1,'2019-10-17 19:00:21'),(13,'Ravi','92456754v','1980-02-20','0352258285','0771234567','ravi@gmail.com','degree','perdadeniya road kandy','kandy road matale','Kandy','02','Devar','1','2019-10-27',1,2,'Doctor','245/7, peradeniya road, Gampola.','0812234567','Baala','Matale','Devar','Malini','Colombo','Maravar','jhon','Wattla','others','rani','kirulapone','Agamudiyar','1','Kamala',1,3,'1990-04-10','23/5 mawanella road kegalle','kamala@gmail.com','078675890','kandy','others','Baabu','NuwaraEliya','Devar','bawani','Nawalapitiya','Maravar','Naveen','Ulapone','Others','Vani','Alawathugoda','Agamidiyar','PRO_M00013.png','FAM_M00013.png',1,'2019-10-27 06:33:06'),(14,'kreshan','880201573V','2019-10-02','07774747474','2222','kkk@gmail.com','master','matale,gsgjdjsfgdf,dfrfg,frgfrddddddd','rrrrr','Matale','01','daver','1','2019-10-27',0,0,'','','0114141414','','','maraver','','','deaver','','','kalar','','','maraver','1','Kamala',1,3,'1990-04-10','23/5 mawanella road kegalle','kamala@gmail.com','078675890','kandy','others','Baabu','NuwaraEliya','Devar','bawani','Nawalapitiya','Maravar','Naveen','Ulapone','Others','Vani','Alawathugoda','Agamidiyar','PRO_M00013.png','FAM_M00013.png',1,'2019-10-27 06:35:34'),(15,'mugulan','888989585V','2019-10-16','0777418581','0777417474','','','','','matale','01','daver','1','2019-10-27',0,0,'','','','','','','','','','','','','','','','1','Kamala',3,0,'2019-10-27','','kamala@gmail.com','','','ddd','Baabu','','Devar','bawani','','sss','Naveen','','Others','Vani','','ddferfre','PRO_M00015.png',NULL,1,'2019-10-27 07:37:36');
 /*!40000 ALTER TABLE `dma_member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dma_member_children`
+--
+
+DROP TABLE IF EXISTS `dma_member_children`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dma_member_children` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `MEM_ID` varchar(45) DEFAULT NULL,
+  `CHILD_NAME` varchar(45) DEFAULT NULL,
+  `CHILD_DOB` date DEFAULT NULL,
+  `GENDER` varchar(1) DEFAULT 'M',
+  `MARRIED_STATUS` varchar(1) DEFAULT NULL,
+  `EDUCATION` varchar(45) DEFAULT NULL,
+  `ADDRESS` varchar(45) DEFAULT NULL,
+  `PHONE` varchar(45) DEFAULT NULL,
+  `MOBILE` varchar(45) DEFAULT NULL,
+  `EMAIL` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dma_member_children`
+--
+
+LOCK TABLES `dma_member_children` WRITE;
+/*!40000 ALTER TABLE `dma_member_children` DISABLE KEYS */;
+INSERT INTO `dma_member_children` VALUES (1,'12','kowsik','2019-06-23','M','S','aaaa','rrr','','',''),(2,'12','kkkk','2016-06-23','F','S','','hhhh','','',''),(4,'11','kohaa','2019-10-03','M','S',NULL,NULL,NULL,NULL,NULL),(5,'11','ddd','2019-10-08','F','S','','','','',''),(7,'12','gg','2019-10-16','F','S','','','','',''),(8,'4','kkk','2019-10-16','F','M','kkkr','kkkk','','',''),(9,'13','Hari','2018-09-01','M','S','O/L','90/7Perdiniya rd,Kandy','0786789065','077890759','Hari@gmail.com');
+/*!40000 ALTER TABLE `dma_member_children` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -175,7 +208,7 @@ CREATE TABLE `mt_section` (
 
 LOCK TABLES `mt_section` WRITE;
 /*!40000 ALTER TABLE `mt_section` DISABLE KEYS */;
-INSERT INTO `mt_section` VALUES ('0101','User Managements','usrMng','01'),('0102','User Profile Managemant','usrprofileMng','01'),('0201','Add Member','addMember','02'),('0202','Edit and View Member','editViewMember','02'),('0301','Total Member Report','totMemReport','03'),('0302','Total Member Summary','totMemSummary','03');
+INSERT INTO `mt_section` VALUES ('0101','User Managements','usrMng','01'),('0102','User Profile Managemant','usrprofileMng','01'),('0201','Add Member','addMember','02'),('0202','Edit and View Member','editViewMember','02'),('0203','Children Management','childMng','02'),('0301','Total Member Report','totMemReport','03'),('0302','Total Member Summary','totMemSummary','03');
 /*!40000 ALTER TABLE `mt_section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +228,7 @@ CREATE TABLE `mt_section_task` (
   KEY `fk_task_id_idx` (`TASK_ID`),
   CONSTRAINT `fk_section_id` FOREIGN KEY (`SECTION_ID`) REFERENCES `mt_section` (`SECTION_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_task_id` FOREIGN KEY (`TASK_ID`) REFERENCES `mt_tasks` (`TASK_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +237,7 @@ CREATE TABLE `mt_section_task` (
 
 LOCK TABLES `mt_section_task` WRITE;
 /*!40000 ALTER TABLE `mt_section_task` DISABLE KEYS */;
-INSERT INTO `mt_section_task` VALUES (1,'0101','01'),(2,'0101','02'),(3,'0101','03'),(4,'0101','04'),(5,'0102','01'),(6,'0102','02'),(7,'0102','03'),(8,'0102','04'),(9,'0201','02'),(10,'0202','01'),(11,'0202','03'),(12,'0202','04'),(13,'0202','05'),(14,'0301','01'),(15,'0301','05'),(16,'0302','01');
+INSERT INTO `mt_section_task` VALUES (1,'0101','01'),(2,'0101','02'),(3,'0101','03'),(4,'0101','04'),(5,'0102','01'),(6,'0102','02'),(7,'0102','03'),(8,'0102','04'),(9,'0201','02'),(10,'0202','01'),(11,'0202','03'),(12,'0202','04'),(13,'0202','05'),(14,'0301','01'),(15,'0301','05'),(16,'0302','01'),(17,'0203','01'),(18,'0203','02'),(19,'0203','03'),(20,'0203','04'),(21,'0203','05');
 /*!40000 ALTER TABLE `mt_section_task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,7 +335,7 @@ CREATE TABLE `web_user_profile_privilage` (
   `SECTION_ID` varchar(4) DEFAULT NULL,
   `TASK_ID` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,7 +344,7 @@ CREATE TABLE `web_user_profile_privilage` (
 
 LOCK TABLES `web_user_profile_privilage` WRITE;
 /*!40000 ALTER TABLE `web_user_profile_privilage` DISABLE KEYS */;
-INSERT INTO `web_user_profile_privilage` VALUES (1,1,'01','0101','01'),(2,1,'01','0101','02'),(3,1,'01','0101','03'),(4,1,'01','0101','04'),(5,1,'01','0102','01'),(6,1,'01','0102','02'),(7,1,'01','0102','03'),(8,1,'01','0102','04'),(11,1,'03','0301','01'),(12,1,'03','0301','05'),(13,5,'03','0301','01'),(14,5,'03','0301','05'),(15,1,'02','0202','01'),(16,1,'02','0202','03'),(17,1,'02','0202','04'),(18,1,'02','0202','05'),(19,1,'02','0201','02'),(20,5,'02','0202','01'),(21,5,'02','0202','03'),(22,5,'02','0202','04'),(23,5,'02','0202','05'),(24,5,'02','0201','02'),(25,1,'03','0302','01'),(26,5,'03','0302','01');
+INSERT INTO `web_user_profile_privilage` VALUES (1,1,'01','0101','01'),(2,1,'01','0101','02'),(3,1,'01','0101','03'),(4,1,'01','0101','04'),(5,1,'01','0102','01'),(6,1,'01','0102','02'),(7,1,'01','0102','03'),(8,1,'01','0102','04'),(11,1,'03','0301','01'),(12,1,'03','0301','05'),(13,5,'03','0301','01'),(14,5,'03','0301','05'),(15,1,'02','0202','01'),(16,1,'02','0202','03'),(17,1,'02','0202','04'),(18,1,'02','0202','05'),(19,1,'02','0201','02'),(20,5,'02','0202','01'),(21,5,'02','0202','03'),(22,5,'02','0202','04'),(23,5,'02','0202','05'),(24,5,'02','0201','02'),(25,1,'03','0302','01'),(26,5,'03','0302','01'),(27,1,'02','0203','01'),(28,1,'02','0203','02'),(29,1,'02','0203','03'),(30,1,'02','0203','04'),(31,1,'02','0203','05'),(32,5,'02','0203','01'),(33,5,'02','0203','02'),(34,5,'02','0203','03'),(35,5,'02','0203','04'),(36,5,'02','0203','05');
 /*!40000 ALTER TABLE `web_user_profile_privilage` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -324,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-19  9:39:10
+-- Dump completed on 2019-10-31 11:49:56

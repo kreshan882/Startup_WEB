@@ -44,7 +44,7 @@
 
                 $('#memIslife').val("-1");
                 $('#noOfBrother').val("0");
-                $('#noOfSister').val("");
+                $('#noOfSister').val("0");
 
                 $('#jobTitle').val("");
                 $('#jobAddress').val("");
@@ -64,20 +64,42 @@
                 $('#grandMothBirthPlace').val("");
                 $('#grandMothCast').val("");
                 
-                jQuery("#gridtable").trigger("reloadGrid");
+                $('#isMerrid').val("-1");
+                $('#wifeName').val("");
+                $('#noOfSuns').val("0");
+                $('#noOfDoters').val("0");
+                
+                $('#wifeDob').val("");
+                $('#wifeAdd').val("");
+                $('#wifeEmail').val("");
+                $('#wifeMobile').val("");
+                $('#wifeBirPlace').val("");
+                $('#wifeCast').val("");
+                
+                $('#wifeFatName').val("");
+                $('#wifeFatBirthPlace').val("");
+                $('#wifeFatCast').val("");
+                $('#wifeMothName').val("");
+                $('#wifeMothBirthPlace').val("");
+                $('#wifeMothCast').val("");
+                
+                $('#wifeGrandFatName').val("");
+                $('#wifeGrandFatBirthPlace').val("");
+                $('#wifeGrandFatCast').val("");
+                $('#wifeGrandMothName').val("");
+                $('#wifeGrandMothBirthPlace').val("");
+                $('#wifeGrandMothCast').val("");
+                
+                $('#memImgFileFileName').val("");
+                $('#famImgFileFileName').val("");
+                
+                //$('#memIdDes').val("");
+                
             }
 
             
 
 
-
-            function backToMain() {
-                $('#addForm').hide();
-                
-                $('#divmsg').empty();
-                jQuery("#gridtable").trigger("reloadGrid");
-
-            }
 
 
 
@@ -149,10 +171,10 @@
                                     <td class="formLable">Member Name<span class="mandatory">*</span></td> <td >:</td>
                                     <td><s:textfield id="memName" name="memName" cssClass="textField" /></td>                                    
                                     <td width="25px;"></td>
-                                    <td class="formLable">Member Nic<span class="mandatory">*</span></td> <td>:</td>
+                                    <td class="formLable">Member NIC<span class="mandatory">*</span></td> <td>:</td>
                                     <td><s:textfield id="memNic" name="memNic" cssClass="textField" /></td> 
                                     <td width="25px;"></td>
-                                    <td class="formLable">Member Dob<span class="mandatory">*</span></td> <td>:</td>
+                                    <td class="formLable">Member DOB<span class="mandatory">*</span></td> <td>:</td>
                                     <td><sj:datepicker id="memDob" name="memDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1950" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>
                                 </tr>    
                           
@@ -168,10 +190,10 @@
                                 </tr> 
                                 
                                 <tr>
-                                    <td class="formLable">Qualification<span class="mandatory">*</span></td> <td >:</td>
+                                    <td class="formLable">Qualification</td> <td >:</td>
                                     <td><s:textfield id="qualification" name="qualification" cssClass="textField" /></td>                                    
                                     <td width="25px;"></td>
-                                    <td class="formLable">Permanent Address<span class="mandatory">*</span></td> <td>:</td>
+                                    <td class="formLable">Permanent Address</td> <td>:</td>
                                     <td><s:textfield id="perAddress" name="perAddress" cssClass="textField" /></td>  
                                     <td width="25px;"></td>
                                     <td class="formLable">Temporary Address</td> <td>:</td>
@@ -221,45 +243,45 @@
                                     <legend>Parent Details</legend>
                                     <table>
                                     <tr>
-                                        <td class="formLable">Father Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Father's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="fatName" name="fatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Father Birth Place</td> <td>:</td>
+                                        <td class="formLable">Father's Birth Place</td> <td>:</td>
                                         <td><s:textfield id="fatBirthPlace" name="fatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Father Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Father's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="fatCast" id="fatCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
-                                        <td class="formLable">Mother Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Mother's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="mothName" name="mothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Mother Birth Place</td> <td>:</td>
+                                        <td class="formLable">Mother's Birth Place</td> <td>:</td>
                                         <td><s:textfield id="mothBirthPlace" name="mothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Mother Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Mother's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="mothCast" id="mothCast"  cssClass="textField" /></td> 
                                     </tr>
                                     
                                     <tr>
-                                        <td class="formLable">Grandfather Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Grandfather's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="grandFatName" name="grandFatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Grandfather Birth Place</td> <td>:</td>
+                                        <td class="formLable">Grandfather's Birth Place</td> <td>:</td>
                                         <td><s:textfield id="grandFatBirthPlace" name="grandFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Grandfather Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Grandfather's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="grandFatCast" id="grandFatCast"  cssClass="textField" /></td> 
 
                                     </tr>
                                     <tr>
-                                        <td class="formLable">Grandmother Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Grandmother's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="grandMothName" name="grandMothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Grandmother Birth Place</td> <td>:</td>
+                                        <td class="formLable">Grandmother's Birth Place</td> <td>:</td>
                                         <td><s:textfield id="grandMothBirthPlace" name="grandMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Grandmother Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Grandmother's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="grandMothCast" id="grandMothCast"  cssClass="textField" /></td> 
                                         
                                     </tr>
@@ -270,7 +292,7 @@
                                 
                             <table>  
                                 <tr>
-                                        <td class="formLable">Meride Status<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Married Status<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:select  name="isMerrid" id="isMerrid" list="%{isMerridList}" 
                                                listKey="key" listValue="value"  onchange="callIsMerried(this.value)"  headerKey="-1"    headerValue="---Select---"     cssClass="dropdown" /></td> 
                                 </tr>
@@ -282,11 +304,11 @@
                                         <td class="formLable">Spouse Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="wifeName" name="wifeName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Num of Sun<span class="mandatory">*</span></td> <td>:</td> 
-                                        <td><s:select  name="noOfSuns" id="noOfSuns"  list="%{numberList}"  cssClass="dropdown" headerKey="0"    headerValue="-0-" /></td>
+                                        <td class="formLable">Num of Son's<span class="mandatory">*</span></td> <td>:</td> 
+                                        <td><s:select  name="noOfSuns" id="noOfSuns"  list="%{numberList}"  cssClass="dropdown"  /></td>
                                         <td width="25px;"></td>
-                                        <td class="formLable">Num of Daughter<span class="mandatory">*</span></td> <td>:</td> 
-                                        <td><s:select  name="noOfDoters" id="noOfDoters"  list="%{numberList}"  cssClass="dropdown" headerKey="0"    headerValue="-0-"/></td>
+                                        <td class="formLable">Num of Daughter's<span class="mandatory">*</span></td> <td>:</td> 
+                                        <td><s:select  name="noOfDoters" id="noOfDoters"  list="%{numberList}"  cssClass="dropdown" /></td>
                                     </tr>
                                     <tr>
                                         <td class="formLable">DOB<span class="mandatory">*</span></td> <td >:</td>
@@ -302,51 +324,51 @@
                                         <td class="formLable">Mobile<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="wifeMobile" name="wifeMobile" cssClass="textField" /></td>                                     
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife's Birth Place<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield id="wifeBirPlace" name="wifeBirPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="wifeCast" id="wifeCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
-                                        <td class="formLable">Wife Father Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Wife Father's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="wifeFatName" name="wifeFatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Father Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife Father's Birth Place<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield id="wifeFatBirthPlace" name="wifeFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
                                         <td class="formLable">Wife Father Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="wifeFatCast" id="wifeFatCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
-                                        <td class="formLable">Wife Mother Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Wife Mother's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="wifeMothName" name="wifeMothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Mother Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife Mother's Birth Place<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield id="wifeMothBirthPlace" name="wifeMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Mother Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife Mother's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="wifeMothCast" id="wifeMothCast"  cssClass="textField" /></td> 
                                     </tr>
                                     
                                     <tr>
-                                        <td class="formLable">Wife Grandfather Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Wife Grandfather's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="wifeGrandFatName" name="wifeGrandFatName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Grandfather Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife Grandfather's Birth Place<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield id="wifeGrandFatBirthPlace" name="wifeGrandFatBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Grandfather Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife Grandfather's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="wifeGrandFatCast" id="wifeGrandFatCast"  cssClass="textField" /></td> 
                                     </tr>
                                     <tr>
-                                        <td class="formLable">Wife Grandmother Name<span class="mandatory">*</span></td> <td >:</td>
+                                        <td class="formLable">Wife Grandmother's Name<span class="mandatory">*</span></td> <td >:</td>
                                         <td><s:textfield id="wifeGrandMothName" name="wifeGrandMothName" cssClass="textField" /></td>                                    
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Grandmother Birth Place<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife Grandmother's Birth Place<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield id="wifeGrandMothBirthPlace" name="wifeGrandMothBirthPlace" cssClass="textField" /></td>  
                                         <td width="25px;"></td>
-                                        <td class="formLable">Wife Grandmother Cast<span class="mandatory">*</span></td> <td>:</td>
+                                        <td class="formLable">Wife Grandmother's Cast<span class="mandatory">*</span></td> <td>:</td>
                                         <td><s:textfield  name="wifeGrandMothCast" id="wifeGrandMothCast"  cssClass="textField" /></td> 
                                     </tr>
                                     </table>
@@ -380,7 +402,7 @@
                                     <td> <s:url var="addurl" action="AddaddMember"/>                                   
                                         <sj:submit   button="true" href="%{addurl}" value="Add"   targets="divmsg"  cssClass="button_sadd" disabled="#vadd"/> 
                                         <sj:submit id="resetida" button="true" value="Reset" onclick="ResetAddForm()"   cssClass="button_aback" disabled="false" />
-                                        <sj:submit id="backida" button="true" value="Back" onclick="backToMain()"   cssClass="button_aback" disabled="false" /> 
+
                                     </td>
                                 </tr>
                             </table>

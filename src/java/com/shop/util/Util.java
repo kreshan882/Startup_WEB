@@ -185,7 +185,7 @@ public class Util {
 
     public static Map<String, String> getMerriedList() {
         Map<String, String> merrStatList = new HashMap<String, String>();
-        merrStatList.put("1", "Merrid");
+        merrStatList.put("1", "Married");
         merrStatList.put("0", "Single");
         return merrStatList;
     }

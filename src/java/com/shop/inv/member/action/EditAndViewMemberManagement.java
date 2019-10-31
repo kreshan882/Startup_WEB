@@ -78,6 +78,8 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
 
             if (!inputBean.getSidx().isEmpty()) {
                 orderBy = " order by " + inputBean.getSidx() + " " + inputBean.getSord();
+            }else{
+                orderBy = " order by M.MEM_ID ";
             }
 
             dataList = service.loadData(inputBean, orderBy, from, rows);

@@ -1,0 +1,1 @@
+"E:/SOFTWARES/glassfish5/bin/asadmin" "stop-domain"
