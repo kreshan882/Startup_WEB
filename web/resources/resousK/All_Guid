@@ -31,6 +31,16 @@
 				sc config domain1 DisplayName= "GlassFish 4"
 			    sc delete domain1
 			    you should delete all files in cd \glassfish\domains\domain1\bin
+				
+				
+				=========================================================
+				run-> shell:startup
+				[C:\Users\Kreshan Rajendran\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup]
+				copy startK .(startup folder)
+				restart computer
+		3.5) show bookmark bar in chrome 
+				chrome-> setting ...-> bookmark-> Show bookmark bar
+				
 
 ***--> https://wiki.openmrs.org/display/docs/Step+3+-+Install+Tomcat
 	  

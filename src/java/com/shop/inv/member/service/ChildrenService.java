@@ -291,14 +291,14 @@ public class ChildrenService {
         try {
             connection = DBConnection.getConnection();
             connection.setAutoCommit(true);
-            String sql = " SELECT MEM_ID,MEM_NAME FROM dma_member where STATUS=? order by MEM_ID";
+            String sql = " SELECT MEM_ID,MEM_NAME FROM dma_member where STATUS=? order by MEM_ID ASC ";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, Status.ACTIVE);
             result = ps.executeQuery();
 
             while (result.next()) {
                 String memStr="[M"+ISOUtil.zeropad(result.getString("MEM_ID"), 5)+"] "+result.getString("MEM_NAME");
-                inputBean.getMemberloadList().put(result.getString("MEM_ID"), memStr);
+                inputBean.getMemberloadList().put(result.getInt("MEM_ID"), memStr);
             }
         } catch (Exception ex) {
             throw ex;

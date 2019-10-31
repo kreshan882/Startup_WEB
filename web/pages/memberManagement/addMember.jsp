@@ -312,7 +312,7 @@
                                     </tr>
                                     <tr>
                                         <td class="formLable">DOB<span class="mandatory">*</span></td> <td >:</td>
-                                        <td><sj:datepicker id="wifeDob" name="wifeDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1950" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>                                  
+                                        <td><sj:datepicker id="wifeDob" name="wifeDob" readonly="true" value="today"   changeYear="true"  changeMonth = "true" yearRange = "1900" buttonImageOnly="true" displayFormat="yy-mm-dd" cssClass="textField"  /></td>                                  
                                         <td width="25px;"></td>
                                         <td class="formLable">Address</td> <td>:</td> 
                                         <td><s:textfield id="wifeAdd" name="wifeAdd" cssClass="textField" /></td> 

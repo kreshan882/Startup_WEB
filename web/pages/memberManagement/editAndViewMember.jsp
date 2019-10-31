@@ -656,7 +656,7 @@
                                 viewrecords="true"
                                 >
                                 
-                                <sjg:gridColumn name="memId" index="MEM_ID" title="ProfileId"  frozen="false" hidden="true"/>
+                                <sjg:gridColumn name="memId" index="MEM_ID" title="ProfileId"  frozen="true" hidden="true"/>
                                 
                                 <sjg:gridColumn name="memIdDes" index="MEM_ID" title="Member ID" align="left" width="150" frozen="true" sortable="true"/>
                                 <sjg:gridColumn name="memName" index="MEM_NAME" title="Name" align="left" width="150" sortable="true" frozen="true" />                    

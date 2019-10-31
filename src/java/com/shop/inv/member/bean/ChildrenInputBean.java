@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ChildrenInputBean {
     //Add data
 
     private String memberload;
-    private HashMap<String,String> memberloadList = new HashMap<String,String>();
+    private TreeMap<Integer,String> memberloadList = new TreeMap<Integer,String>();
     private String childName;
     private String childDob;
     private String childGender; //M/F
@@ -277,13 +278,17 @@ public class ChildrenInputBean {
         this.memberload = memberload;
     }
 
-    public HashMap<String, String> getMemberloadList() {
+    public TreeMap<Integer, String> getMemberloadList() {
         return memberloadList;
     }
 
-    public void setMemberloadList(HashMap<String, String> memberloadList) {
+    public void setMemberloadList(TreeMap<Integer, String> memberloadList) {
         this.memberloadList = memberloadList;
     }
+
+
+
+  
 
     public boolean isSearch() {
         return search;
