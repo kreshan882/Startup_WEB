@@ -41,6 +41,14 @@
 		3.5) show bookmark bar in chrome 
 				chrome-> setting ...-> bookmark-> Show bookmark bar
 				
+		3.6) change to domain name [http://localhost:8080/Startup_WEB/  ==> http://www.mukkulathor.lk
+				- glashfish (8080-> 80)  + root folder (Startup_WEB -> / )   ====> http://localhost/
+						glashfish Admin-> configuration-> server configuration-> network conf->
+							network listner-> http-listener-1 ->  [[ 8080 -> 80  ]]
+						glashfish Admin-> Applications-> Startup_WEB-> Context Root: [/Startup_WEB -> /]
+						
+				- C:\Windows\System32\drivers\etc\hosts  => 
+						127.0.0.1       localhost         www.mukkulathor.lk  
 
 ***--> https://wiki.openmrs.org/display/docs/Step+3+-+Install+Tomcat
 	  
