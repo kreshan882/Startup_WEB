@@ -1117,7 +1117,7 @@
 				<text><![CDATA[Gender]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="302" y="1" width="100" height="13" uuid="53929fd3-73f7-4ac3-b317-e9a4f3549b7d"/>
+				<reportElement x="302" y="1" width="72" height="13" uuid="53929fd3-73f7-4ac3-b317-e9a4f3549b7d"/>
 				<box>
 					<bottomPen lineWidth="0.75"/>
 				</box>
@@ -1156,12 +1156,12 @@
 				<textFieldExpression><![CDATA[$F{child_gender}.equals("M")?"Male":"Female"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="303" y="0" width="100" height="13" uuid="65ee9424-9c32-4827-8e28-e776b0d69a50"/>
+				<reportElement x="303" y="0" width="71" height="13" uuid="65ee9424-9c32-4827-8e28-e776b0d69a50"/>
 				<textElement verticalAlignment="Middle">
 					<font size="9"/>
 					<paragraph leftIndent="2"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{child_merrid_status}.equals("S")?"Single":"Merrid"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{child_merrid_status}.equals("S")?"Single":"Married"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

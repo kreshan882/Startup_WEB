@@ -114,7 +114,7 @@ public class Util {
     }
 
     public static boolean validateDESCRIPTION(String text) {
-        return text.matches("^(.*/)?(?:$|(.+?)(?:(\\.[^.]*$)|$))") && text.length() <= 150;
+        return text.matches("^(.*/)?(?:$|(.+?)(?:(\\.[^.]*$)|$))") && text.length() <= 200;
     }
 
     private static final Pattern PATTERN = Pattern.compile(
@@ -219,7 +219,7 @@ public class Util {
         
     public static Map<String, String> getChildMerriedStatusList() {
         Map<String, String> merrStatList = new HashMap<String, String>();
-        merrStatList.put("M", "Merrid");
+        merrStatList.put("M", "Married");
         merrStatList.put("S", "Single");
         return merrStatList;
     }
