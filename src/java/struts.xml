@@ -98,6 +98,14 @@
                 <param name="contentDisposition">attachment;filename="${fileName}"</param>
 <!--                <param name="contentDisposition">attachment;filename=CERT_My.pdf</param>-->
             </result> 
+            <result name="txnreportSingle" type="jasper">            
+                <param name="location">/resources/jasper/printCert4Single.jasper</param>
+                <param name="dataSource">reportdatalist</param>
+                <param name="format">PDF</param>
+                <param name="reportParameters">parameterMap</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+<!--                <param name="contentDisposition">attachment;filename=CERT_My.pdf</param>-->
+            </result>
         </action> 
         
         <action name="*childMng"    class="com.shop.inv.member.action.ChildrenManagement"   method="{1}"> 

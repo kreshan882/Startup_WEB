@@ -181,6 +181,12 @@ public class EditAndViewMemberManagement extends ActionSupport implements ModelD
                 
                 String Cert_Name="cert_M"+ISOUtil.zeropad(inputBean.getMemId(), 5)+".pdf";
                 inputBean.setFileName(Cert_Name);
+                if((inputBean.getParameterMap().get("MEM_MERR_STAT")).equals("0")){
+                    return "txnreportSingle";
+                }else{
+                    return "txnreport";
+                }
+                //inputBean.getParameterMap().put("MEM_MERR_STAT", res.getString("IS_MARRIED"));
         }catch(Exception e){
             addActionError("error in report generate");
             e.printStackTrace();
